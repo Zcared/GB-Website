@@ -71,6 +71,8 @@
 
     /* About */
     .about-img { aspect-ratio: 4/3; border-bottom:1px solid rgba(255,255,255,.06); }
+    /* Fix: ensure About section sits above hero on desktop (prevents clipping) */
+    #about { position: relative; z-index: 2; }
 
     /* Music embeds */
     .embed-placeholder { display:flex; align-items:center; justify-content:space-between; gap:1rem; border:1px dashed rgba(255,255,255,.2); padding:1rem; border-radius:12px; }
@@ -157,7 +159,7 @@
     <section id="about" aria-label="Über">
       <div class="container grid two">
         <div class="card">
-          <img class="about-img" src="https://www.facebook.com/photo/?fbid=871539808326242&set=a.494065216073705&locale=pl_PL&w=1400&auto=format&fit=crop" alt="Porträt des Künstlers" />
+          <img class="about-img" src="https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=1400&auto=format&fit=crop" alt="Porträt des Künstlers" />
           <div class="pad">
             <h2 class="section-title">Über Gabriel</h2>
             <p id="aboutText">Gabriel Benedek ist ein in Zürich ansässiger Singer/Songwriter. Ehrliche Texte, warme Gitarren und eine Stimme, die hängen bleibt. Neue EP <em>“City Lights”</em> erscheint bald.</p>
@@ -165,10 +167,11 @@
         </div>
         <div class="card pad">
           <h3 class="section-title">Schnellinfos</h3>
-          <ul>
-            <li><strong>Stil:</strong> Indie · Folk · Pop</li>
-            <li><strong>Base:</strong> Zürich, Schweiz</li>
-            <li><strong>Für Booking:</strong> <a id="bookingEmail" href="mailto:booking@example.com">booking@example.com</a></li>
+          <ul id="quickFacts">
+            <li>Swiss Artist🇨🇭with Irish/Hungarian roots</li>
+            <li>Label: <a href="https://www.instagram.com/universalmusicswitzerland/" target="_blank" rel="noopener">@universalmusicswitzerland</a></li>
+            <li><strong>Bookings:</strong> <a id="bookingEmail" href="mailto:mgmt@gabrielbenedek.com">mgmt@gabrielbenedek.com</a></li>
+            <li><strong>LOST IN YOU</strong> out now!</li>
           </ul>
           <div class="pad" style="padding-left:0;">
             <div class="socials" id="socials"></div>
@@ -263,7 +266,7 @@
         </div>
         <div class="card pad">
           <h3 class="section-title">Booking & Presse</h3>
-          <p>E‑Mail: <a id="pressEmail" href="mailto:press@example.com">press@example.com</a></p>
+          <p>E‑Mail: <a id="pressEmail" href="mailto:mgmt@gabrielbenedek.com">mgmt@gabrielbenedek.com</a></p>
           <p>Management: <span id="mgmtName">—</span></p>
           <p>Adresse: <span id="mgmtAddr">—</span></p>
         </div>
@@ -275,7 +278,7 @@
       <div class="container grid two">
         <div class="card pad">
           <h2 class="section-title">Impressum</h2>
-          <p><strong>Verantwortlich:</strong><br><span id="impName">Gabriel Benedek</span><br><span id="impAddr">[Straße, PLZ Ort, Schweiz]</span><br>E‑Mail: <a id="impEmail" href="mailto:info@example.com">info@example.com</a></p>
+          <p><strong>Verantwortlich:</strong><br><span id="impName">Gabriel Benedek</span><br><span id="impAddr">[Straße, PLZ Ort, Schweiz]</span><br>E‑Mail: <a id="impEmail" href="mailto:mgmt@gabrielbenedek.com">mgmt@gabrielbenedek.com</a></p>
           <p>Umsatzsteuer-ID / CHE (falls vorhanden): <span id="impVat">—</span></p>
           <p>Inhaltlich Verantwortlicher gem. § 55 Abs. 2 RStV (DE, falls anwendbar): <span id="impResp">—</span></p>
         </div>
@@ -308,28 +311,29 @@
       tagline: "Singer · Songwriter · Guitar",
       heroImage: "https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1600&auto=format&fit=crop",
       aboutText: "Gabriel Benedek ist ein in Zürich ansässiger Singer/Songwriter. Ehrliche Texte, warme Gitarren und eine Stimme, die hängen bleibt. Neue EP \"City Lights\" erscheint bald.",
-      bookingEmail: "booking@example.com",
-      pressEmail: "press@example.com",
+      bookingEmail: "mgmt@gabrielbenedek.com",
+      pressEmail: "mgmt@gabrielbenedek.com",
       management: { name: "—", address: "—" },
       epkUrl: "#", // Link zu PDF oder Google Drive/Dropbox
-      impressum: { name: "Gabriel Benedek", address: "[Straße, PLZ Ort, Schweiz]", email: "info@example.com", vat: "—", responsible: "—" },
+      impressum: { name: "Gabriel Benedek", address: "[Straße, PLZ Ort, Schweiz]", email: "mgmt@gabrielbenedek.com", vat: "—", responsible: "—" },
       privacyUrl: "#",
       socials: [
-        { name: "Instagram", url: "https://instagram.com/", icon: "mdi:instagram" },
-        { name: "Spotify", url: "https://open.spotify.com/intl-de/artist/0BBZxotcIVnEEPhjA4iSiu/", icon: "mdi:spotify" },
-        { name: "YouTube", url: "https://youtube.com/", icon: "mdi:youtube" },
-        { name: "TikTok", url: "https://tiktok.com/", icon: "mdi:tiktok" },
-        { name: "E‑Mail", url: "mailto:info@example.com", icon: "mdi:email" }
+        { name: "Instagram", url: "https://www.instagram.com/gabrielbenedek_official/", icon: "mdi:instagram" },
+        { name: "Spotify",   url: "https://open.spotify.com/intl-de/artist/0BBZxotcIVnEEPhjA4iSiu", icon: "mdi:spotify" },
+        { name: "YouTube",   url: "https://www.youtube.com/@GabrielBenedek/featured", icon: "mdi:youtube" },
+        { name: "E‑Mail",    url: "mailto:mgmt@gabrielbenedek.com", icon: "mdi:email" }
       ],
       linktree: [
-        { label: "🎧 Spotify", url: "https://open.spotify.com/", highlight: true },
-        { label: "▶️ YouTube", url: "https://music.youtube.com/channel/UC8YZ4ncbezs6MG5D96sTOQQ" },
-        { label: "📸 Instagram", url: "https://www.instagram.com/gabrielbenedek_official/" },
-        { label: "🎫 Tickets & Tour", url: "#tours" },
-        { label: "📰 EPK / Presse", url: "#" }
+        { label: "🎧 Spotify",           url: "https://open.spotify.com/intl-de/artist/0BBZxotcIVnEEPhjA4iSiu", highlight: true },
+        { label: "▶️ YouTube",           url: "https://www.youtube.com/@GabrielBenedek/featured" },
+        { label: "🎵 YouTube Music",     url: "https://music.youtube.com/channel/UC0RxibqX7b6CnxNWmxG0JJw" },
+        { label: "📸 Instagram",         url: "https://www.instagram.com/gabrielbenedek_official/" },
+        { label: "🌐 All platforms",     url: "https://gabrielbenedek.lnk.to/LostInYou?prerelease_service=SpotifyPreRelease&prerelease_result=success&has_email=1&notification_id=86de4e88-a0a8-5d8e-879c-063887d8902b&fbclid=PAZXh0bgNhZW0CMTEAAaeoyxVCiyuursO5Ama7PnyXw-VwkG8sWZmxf6lpCJKnMG9lnm5Mv32Mudw0iw_aem_5KfkixLe0iyAA3G9h675VA" },
+        { label: "🎫 Tickets & Tour",    url: "#tours" },
+        { label: "📰 EPK / Presse",      url: "#" }
       ],
       embeds: {
-        spotify: "https://open.spotify.com/embed/artist/0v0uXw0X0X0?utm_source=generator", // ersetze mit echter Embed-URL
+        spotify: "https://open.spotify.com/embed/artist/0BBZxotcIVnEEPhjA4iSiu", // ersetze mit echter Embed-URL
         youtube: "https://www.youtube.com/embed/dQw4w9WgXcQ" // ersetze mit Video-ID / Playlist
       },
       tour: {
@@ -348,7 +352,7 @@
         "https://images.unsplash.com/photo-1516927001710-81e1e0e62d1e?q=80&w=1200&auto=format&fit=crop",
         "https://images.unsplash.com/photo-1496372412473-e8548ffd82bc?q=80&w=1200&auto=format&fit=crop"
       ],
-      contact: { provider: "formspree", endpoint: "https://formspree.io/f/your-id" }
+      contact: { provider: "formsubmit", endpoint: "https://formsubmit.co/mgmt@gabrielbenedek.com" }
     };
   </script>
 
@@ -406,6 +410,10 @@
       const form = $('#contactForm');
       if (CONFIG.contact.provider === 'formspree' && CONFIG.contact.endpoint) {
         form.action = CONFIG.contact.endpoint;
+      } else if (CONFIG.contact.provider === 'formsubmit' && CONFIG.contact.endpoint) {
+        form.action = CONFIG.contact.endpoint;
+        form.method = 'POST';
+        form.insertAdjacentHTML('beforeend','<input type="hidden" name="_captcha" value="false"><input type="hidden" name="_subject" value="New message from website"><input type="hidden" name="_next" value="#contact">');
       } else {
         form.addEventListener('submit', (e) => { e.preventDefault(); alert('Formularziel noch nicht konfiguriert.'); });
       }
