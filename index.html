@@ -85,7 +85,7 @@
     .pad { padding: 1.2rem; }
 
     /* About */
-    .about-img { aspect-ratio: 4/3; border-bottom:1px solid rgba(255,255,255,.06); }
+    .about-img { width:100%; aspect-ratio: 4 / 3; object-fit: cover; border-bottom:1px solid rgba(255,255,255,.06); }
     /* Fix: ensure About section sits above hero on desktop (prevents clipping) */
     #about { position: relative; z-index: 2; }
 
@@ -256,24 +256,9 @@
           <span class="badge" id="tourSourceBadge">Quelle: lokal</span>
         </div>
       </div>
-    </section>
+    </section>$2
 
-    <!-- GALLERY -->
-    <section id="gallery" aria-label="Galerie">
-      <div class="container">
-        <h2 class="section-title" id="galleryTitle">Galerie</h2>
-        <div class="gallery" id="galleryGrid"></div>
-      </div>
-    </section>
-
-    <!-- LINKS / LINKTREE -->
-    <section id="links" aria-label="Links">
-      <div class="container">
-        <h2 class="section-title" id="linksTitle">Links</h2>
-        <p class="section-sub" id="linksSub">Alle wichtigen Kanäle auf einen Blick – perfekt für Bio-Links.</p>
-        <div class="linktree" id="linktreeList"></div>
-      </div>
-    </section>
+$1
 
     <!-- CONTACT -->
     <section id="contact" aria-label="Kontakt">
@@ -350,7 +335,7 @@
         galleryDir: "assets/gallery/",
         bannerFile: "banner.jpg",
         aboutFile: "artist.jpg",
-        galleryFiles: ["g (1).jpg","g (2).jpg","g (3).jpg","g (4).jpg","g (5).jpg","g (6).jpg","g (7).jpg","g (8).jpg","g (9).jpg","g (10).jpg","g (11).jpg","g (12).jpg","g (13).jpg","g (14).jpg"]
+        galleryFiles: ["g1.jpg","g2.jpg","g3.jpg","g4.jpg"]
       },
       socials: [
         { name: "Instagram", url: "https://www.instagram.com/gabrielbenedek_official/", icon: "mdi:instagram" },
@@ -369,7 +354,7 @@
       ],
       embeds: {
         spotify: "https://open.spotify.com/embed/artist/0BBZxotcIVnEEPhjA4iSiu", // ersetze mit echter Embed-URL
-        youtube: "https://www.youtube.com/watch?v=yzzXvjFCyaE" // ersetze mit Video-ID / Playlist
+        youtube: "https://www.youtube.com/embed/dQw4w9WgXcQ" // ersetze mit Video-ID / Playlist
       },
       tour: {
         source: "local", // "local" | "bandsintown" | "csv"
@@ -634,6 +619,23 @@
       return `<svg aria-hidden="true" width="18" height="18" viewBox="0 0 20 20" fill="currentColor"><path d="${path}"/></svg>`;
     }
 
+    // Normalize various YouTube URLs to proper embed URLs
+    function toEmbedUrl(url){
+      try {
+        if (!url) return url;
+        if (url.includes('watch?v=')) {
+          const u = new URL(url);
+          const id = u.searchParams.get('v');
+          return id ? `https://www.youtube.com/embed/${id}` : url;
+        }
+        if (url.includes('youtu.be/')) {
+          const id = url.split('youtu.be/')[1].split(/[?&]/)[0];
+          return `https://www.youtube.com/embed/${id}`;
+        }
+        return url;
+      } catch(e){ return url; }
+    }
+
     function renderLinktree(){
       const list = (CONFIG.linktree && CONFIG.linktree.length)
         ? CONFIG.linktree
@@ -693,7 +695,7 @@
       if (!btn) return;
       const type = btn.dataset.embed;
       const target = type === 'spotify' ? '#spotifyEmbed' : '#youtubeEmbed';
-      const src = type === 'spotify' ? CONFIG.embeds.spotify : CONFIG.embeds.youtube;
+      const src = type === 'spotify' ? CONFIG.embeds.spotify : toEmbedUrl(CONFIG.embeds.youtube);
       if (!src) return alert('Embed-URL fehlt in der Konfiguration.');
       const html = type === 'spotify'
         ? `<iframe style="border-radius:12px" src="${src}" width="100%" height="352" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>`
