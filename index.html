@@ -1,1 +1,752 @@
-<!doctype html> <html lang="de"> <head> <meta charset="utf-8" /> <meta name="viewport" content="width=device-width, initial-scale=1" /> <title>Gabriel Benedek — Official Site</title> <meta name="description" content="Offizielle Website von Gabriel Benedek – Singer/Songwriter. Tourdaten, Musik, Videos, Kontakt, Pressekit." /> <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"> <meta property="og:title" content="Gabriel Benedek — Official Site" /> <meta property="og:description" content="Tourdaten, Musik und mehr." /> <meta property="og:type" content="website" /> <meta property="og:image" content="https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1600&auto=format&fit=crop" /> <style> :root { --bg: #0b0b10; --card: #14141d; --ink: #eaeaf2; --muted: #b9b9c7; --brand: #9d7cff; /* Accent */ --brand-2: #3dd6d0; /* Accent 2 */ --maxw: 1100px; --radius: 16px; --shadow: 0 10px 30px rgba(0,0,0,.35); } *, *::before, *::after { box-sizing: border-box; } html, body { margin:0; padding:0; background:var(--bg); color:var(--ink); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; } a { color: var(--brand-2); text-decoration: none; } a:hover { text-decoration: underline; } img { max-width: 100%; display: block; } .container { width: min(100% - 2rem, var(--maxw)); margin-inline: auto; } /* Theme: Light mode variables */ [data-theme="light"] { --bg: #f6f7fb; --card: #ffffff; --ink: #0b0b10; --muted: #4b5563; } /* Header controls (lang + theme) */ .controls { display:flex; align-items:center; gap:.5rem; } .controls select, .controls .theme-toggle { background: var(--card); color: var(--ink); border:1px solid rgba(255,255,255,.14); padding:.45rem .6rem; border-radius:10px; font-weight:600; } .controls select { cursor:pointer; } .controls .theme-toggle { cursor:pointer; } @media (max-width: 860px){ .controls{ position:absolute; right:1rem; top:10px; } } /* Header / Nav */ header { position: sticky; top:0; z-index: 50; backdrop-filter: blur(8px); background: rgba(11,11,16,.6); border-bottom: 1px solid rgba(255,255,255,.06); } .nav { display:flex; align-items:center; justify-content: space-between; padding: .9rem 0; } .logo { display:flex; align-items:center; gap:.6rem; font-weight:800; letter-spacing:.2px; } .logo .dot { width:10px; height:10px; border-radius:50%; background: linear-gradient(135deg,var(--brand),var(--brand-2)); box-shadow: 0 0 20px var(--brand-2); } nav ul { list-style: none; display:flex; gap:1rem; margin:0; padding:0; } nav a { color: var(--ink); font-weight:600; opacity:.9; } nav a:hover { opacity:1; } .burger { display:none; background:none; border:1px solid rgba(255,255,255,.12); color:var(--ink); padding:.45rem .6rem; border-radius:10px; } @media (max-width: 860px) { nav ul { display:none; position:absolute; left:1rem; right:1rem; top:60px; background:var(--card); padding:1rem; border-radius:12px; box-shadow: var(--shadow); border:1px solid rgba(255,255,255,.06); } nav ul.open { display:block; } .burger { display:block; } } /* Hero */ .hero { position:relative; isolation:isolate; } .hero .media { position:absolute; inset:0; z-index:-1; } .hero .media::after { content:""; position:absolute; inset:0; background: radial-gradient(60% 80% at 50% 30%, rgba(157,124,255,.35), transparent 60%), linear-gradient(180deg, rgba(11,11,16,0.1) 0%, rgba(11,11,16,0.9) 70%, rgba(11,11,16,1) 100% ); } .hero img { width:100%; height: min(72vh, 680px); object-fit: cover; object-position: 50% 40%; filter: grayscale(.1) contrast(1.05) saturate(1.1); } .hero .content { padding: min(12vw, 6rem) 0 3rem; text-align:center; } .eyebrow { display:inline-block; padding:.25rem .6rem; border:1px solid rgba(255,255,255,.14); border-radius:999px; font-size:.8rem; color:var(--muted); } h1 { font-family: "Playfair Display", serif; font-weight:700; font-size: clamp(2.2rem, 5vw, 4rem); margin:.8rem 0 .4rem; letter-spacing:.4px; } .tagline { font-size: clamp(1rem, 2.2vw, 1.25rem); color: var(--muted); max-width: 60ch; margin: 0 auto; } .cta-row { display:flex; gap:.8rem; justify-content:center; margin-top:1.2rem; flex-wrap:wrap; } .btn { display:inline-flex; align-items:center; gap:.5rem; padding:.75rem 1rem; border-radius:12px; font-weight:700; border:1px solid rgba(255,255,255,.14); background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04)); box-shadow: var(--shadow); } .btn.primary { border-color: transparent; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color:#0b0b10; } /* Sections */ section { padding: 3.5rem 0; } .section-title { font-size: clamp(1.4rem, 2.2vw, 2rem); margin-bottom: .75rem; font-weight:800; } .section-sub { color: var(--muted); margin-bottom: 1.4rem; } .grid { display:grid; gap:1.2rem; } @media (min-width: 860px) { .grid.two { grid-template-columns: 1.1fr .9fr; } } .card { background: var(--card); border:1px solid rgba(255,255,255,.06); border-radius: var(--radius); box-shadow: var(--shadow); overflow:hidden; } .pad { padding: 1.2rem; } /* About */ .about-img { aspect-ratio: 4/3; border-bottom:1px solid rgba(255,255,255,.06); } /* Fix: ensure About section sits above hero on desktop (prevents clipping) */ #about { position: relative; z-index: 2; } /* Music embeds */ .embed-placeholder { display:flex; align-items:center; justify-content:space-between; gap:1rem; border:1px dashed rgba(255,255,255,.2); padding:1rem; border-radius:12px; } .embed-placeholder p { margin:0; color:var(--muted); } /* Tour table */ table { width:100%; border-collapse: collapse; } th, td { padding: .9rem; border-bottom:1px solid rgba(255,255,255,.08); text-align:left; } th { color:var(--muted); font-weight:600; } tr:hover td { background: rgba(255,255,255,.03); } .badge { display:inline-block; padding:.2rem .5rem; border-radius:999px; border:1px solid rgba(255,255,255,.14); color: var(--muted); font-size:.8rem; } /* Gallery */ .gallery { columns: 2 260px; column-gap: .8rem; } .gallery img { width:100%; border-radius:12px; margin:0 0 .8rem; border:1px solid rgba(255,255,255,.06); } /* Linktree */ .linktree { display:flex; flex-direction:column; gap:.9rem; max-width: 620px; margin: 0 auto; } .link-btn { display:flex; align-items:center; justify-content:center; gap:.6rem; padding:1rem 1.2rem; border-radius:14px; background: var(--card); border:1px solid rgba(255,255,255,.14); box-shadow: var(--shadow); font-weight:800; letter-spacing:.2px; } .link-btn:hover { transform: translateY(-1px); transition: transform .12s ease; } .link-btn.highlight { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color:#0b0b10; border-color: transparent; } /* Contact */ form { display:grid; gap:.8rem; } input, textarea { background:#0f0f16; color:var(--ink); border:1px solid rgba(255,255,255,.14); padding:.8rem; border-radius:10px; font: inherit; } input:focus, textarea:focus { outline:2px solid var(--brand-2); border-color: transparent; } /* Footer */ footer { padding: 2.5rem 0 4rem; color: var(--muted); border-top: 1px solid rgba(255,255,255,.06); } .socials { display:flex; gap:.8rem; flex-wrap:wrap; } .socials a { border:1px solid rgba(255,255,255,.14); padding:.5rem .7rem; border-radius:999px; display:inline-flex; align-items:center; gap:.5rem; } /* Cookie banner */ .cookie { position: fixed; bottom: 12px; left: 12px; right: 12px; z-index: 99; background: var(--card); border:1px solid rgba(255,255,255,.12); border-radius: 12px; box-shadow: var(--shadow); padding: 1rem; display:none; } .cookie.show { display:block; } /* Skip link */ .skip { position:absolute; left:-9999px; } .skip:focus { left: 12px; top: 12px; background: #fff; color:#000; padding:.5rem; border-radius:8px; } </style> </head> <body> <a class="skip" href="#main">Zum Inhalt springen</a> <header> <div class="container nav"> <div class="logo" aria-label="Gabriel Benedek"> <span class="dot" aria-hidden="true"></span> <span>Gabriel&nbsp;Benedek</span> </div> <button class="burger" aria-expanded="false" aria-controls="menu">☰ Menü</button> <nav> <ul id="menu"> <li><a id="navStart" href="#start">Start<\/a><\/li> <li><a id="navAbout" href="#about">Über<\/a><\/li> <li><a id="navMusic" href="#music">Musik<\/a><\/li> <li><a id="navTours" href="#tours">Tours&nbsp;&amp;&nbsp;Gigs<\/a><\/li> <li><a id="navGallery" href="#gallery">Galerie<\/a><\/li> <li><a id="navLinks" href="#links">Links<\/a><\/li> <li><a id="navContact" href="#contact">Kontakt<\/a><\/li> <li><a id="navImpressum" href="#impressum">Impressum<\/a><\/li> </ul> </nav> <div class="controls"> <select id="langSel" aria-label="Language"> <option value="de">DE</option> <option value="en">EN</option> <option value="fr">FR</option> <option value="it">IT</option> </select> <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☾</button> </div> </div> </header> <main id="main"> <!-- HERO / START --> <section class="hero" id="start" aria-label="Start"> <div class="media" aria-hidden="true"> <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1600&auto=format&fit=crop" alt="Bühnenlicht und Gitarre" /> </div> <div class="container content"> <span class="eyebrow">Official</span> <h1 id="artistName">Gabriel Benedek</h1> <p class="tagline" id="artistTag">Singer · Songwriter · Guitar</p> <div class="cta-row"> <a class="btn primary" id="ctaTickets" href="#tours">Tickets & Termine</a> <a class="btn" id="ctaListen" href="#music">Jetzt reinhören</a> </div> </div> </section> <!-- ABOUT --> <section id="about" aria-label="Über"> <div class="container grid two"> <div class="card"> <img class="about-img" src="https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=1400&auto=format&fit=crop" alt="Porträt des Künstlers" /> <div class="pad"> <h2 class="section-title" id="aboutTitle">Über Gabriel</h2> <p id="aboutText">Gabriel Benedek ist ein in Zürich ansässiger Singer/Songwriter. Ehrliche Texte, warme Gitarren und eine Stimme, die hängen bleibt. Neue EP <em>“City Lights”</em> erscheint bald.</p> </div> </div> <div class="card pad"> <h3 class="section-title">Schnellinfos</h3> <ul id="quickFacts"> <li>Swiss Artist🇨🇭with Irish/Hungarian roots</li> <li>Label: <a href="https://www.instagram.com/universalmusicswitzerland/" target="_blank" rel="noopener">@universalmusicswitzerland</a></li> <li><strong>Bookings:</strong> <a id="bookingEmail" href="mailto:mgmt@gabrielbenedek.com">mgmt@gabrielbenedek.com</a></li> <li><strong>LOST IN YOU</strong> out now!</li> </ul> <div class="pad" style="padding-left:0;"> <div class="socials" id="socials"></div> </div> <div class="pad" style="padding-left:0;"> <a class="btn" id="epkLink" href="#" target="_blank" rel="noopener">EPK / Pressekit</a> </div> </div> </div> </section> <!-- MUSIC --> <section id="music" aria-label="Musik"> <div class="container"> <h2 class="section-title" id="musicTitle">Musik & Videos</h2> <p class="section-sub" id="musicSub">Externe Medien werden erst nach Zustimmung geladen (Datenschutz). Klicke unten, um Spotify/YouTube einzublenden.</p> <div class="grid"> <div class="card pad"> <h3>Spotify</h3> <div id="spotifyEmbed" class="embed-placeholder"> <p>Spotify-Player laden?</p> <button class="btn" data-embed="spotify">Einblenden</button> </div> </div> <div class="card pad"> <h3>YouTube</h3> <div id="youtubeEmbed" class="embed-placeholder"> <p>YouTube-Video laden?</p> <button class="btn" data-embed="youtube">Einblenden</button> </div> </div> </div> </div> </section> <!-- TOURS --> <section id="tours" aria-label="Tours & Gigs"> <div class="container"> <h2 class="section-title" id="toursTitle">Tours & Gigs</h2> <p class="section-sub">Alle bestätigten Termine. Folge den Links für Tickets & Infos.</p> <div class="card pad" id="tourCard"> <table aria-describedby="tourHelp"> <thead> <tr> <th id="thDate">Datum</th> <th id="thCity">Stadt</th> <th id="thVenue">Venue</th> <th></th> </tr> </thead> <tbody id="tourBody"> <tr><td colspan="4">Lade Termine…</td></tr> </tbody> </table> <p id="tourHelp" class="section-sub">Tourdaten werden aus der Konfiguration oder einer externen Quelle geladen.</p> </div> <div class="pad" style="padding-left:0; margin-top:.6rem;"> <span class="badge" id="tourSourceBadge">Quelle: lokal</span> </div> </div> </section> <!-- GALLERY --> <section id="gallery" aria-label="Galerie"> <div class="container"> <h2 class="section-title" id="galleryTitle">Galerie</h2> <div class="gallery" id="galleryGrid"></div> </div> </section> <!-- LINKS / LINKTREE --> <section id="links" aria-label="Links"> <div class="container"> <h2 class="section-title" id="linksTitle">Links</h2> <p class="section-sub" id="linksSub">Alle wichtigen Kanäle auf einen Blick – perfekt für Bio-Links.</p> <div class="linktree" id="linktreeList"></div> </div> </section> <!-- CONTACT --> <section id="contact" aria-label="Kontakt"> <div class="container grid two"> <div class="card pad"> <h2 class="section-title" id="contactTitle">Schreib eine Nachricht</h2> <form id="contactForm" method="POST"> <input type="text" name="name" placeholder="Dein Name" required /> <input type="email" name="email" placeholder="Deine E‑Mail" required /> <textarea name="message" rows="5" placeholder="Nachricht" required></textarea> <button class="btn primary" type="submit">Absenden</button> <small class="section-sub" id="contactConsent">Mit dem Absenden stimmst du der Verarbeitung gemäß Datenschutz zu.</small> </form> </div> <div class="card pad"> <h3 class="section-title">Booking & Presse</h3> <p>E‑Mail: <a id="pressEmail" href="mailto:mgmt@gabrielbenedek.com">mgmt@gabrielbenedek.com</a></p> <p>Management: <span id="mgmtName">—</span></p> <p>Adresse: <span id="mgmtAddr">—</span></p> </div> </div> </section> <!-- IMPRESSUM / DATENSCHUTZ --> <section id="impressum" aria-label="Impressum & Datenschutz"> <div class="container grid two"> <div class="card pad"> <h2 class="section-title" id="impressumTitle">Impressum</h2> <p><strong>Verantwortlich:</strong><br><span id="impName">Gabriel Benedek</span><br><span id="impAddr">[Straße, PLZ Ort, Schweiz]</span><br>E‑Mail: <a id="impEmail" href="mailto:mgmt@gabrielbenedek.com">mgmt@gabrielbenedek.com</a></p> <p>Umsatzsteuer-ID / CHE (falls vorhanden): <span id="impVat">—</span></p> <p>Inhaltlich Verantwortlicher gem. § 55 Abs. 2 RStV (DE, falls anwendbar): <span id="impResp">—</span></p> </div> <div class="card pad"> <h2 class="section-title" id="privacyTitle">Datenschutz (Kurz)</h2> <p>Diese Website verarbeitet nur die Daten, die du im Kontaktformular eingibst. Externe Einbettungen (Spotify/YouTube) werden erst nach deinem Klick geladen. Details siehe vollständige <a href="#" id="ppLink">Datenschutzerklärung</a>.</p> <div class="cookie" id="cookie"> <p id="cookieText">Wir verwenden technisch notwendige Cookies. Externe Medien werden erst nach deiner Zustimmung geladen.</p> <div class="cta-row" style="justify-content:flex-start;"> <button class="btn" id="acceptAll">Externe Medien erlauben</button> <button class="btn" id="dismiss">Nur notwendige</button> </div> </div> </div> </div> </section> </main> <footer> <div class="container"> <div class="socials" id="footerSocials"></div> <p style="margin-top:1rem;">© <span id="year"></span> <span id="footerArtist">Gabriel Benedek</span> · All rights reserved.</p> </div> </footer> <!-- SIMPLE CONFIG (edit here) --> <script> const CONFIG = { artist: "Gabriel Benedek", tagline: "Singer · Songwriter · Guitar", heroImage: "https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1600&auto=format&fit=crop", aboutText: "Gabriel Benedek ist ein in Zürich ansässiger Singer/Songwriter. Ehrliche Texte, warme Gitarren und eine Stimme, die hängen bleibt. Neue EP \"City Lights\" erscheint bald.", bookingEmail: "mgmt@gabrielbenedek.com", pressEmail: "mgmt@gabrielbenedek.com", management: { name: "—", address: "—" }, epkUrl: "#", // Link zu PDF oder Google Drive/Dropbox impressum: { name: "Gabriel Benedek", address: "[Straße, PLZ Ort, Schweiz]", email: "mgmt@gabrielbenedek.com", vat: "—", responsible: "—" }, privacyUrl: "#", // === ASSETS (put your image files here) === // Folder structure suggestion: // - assets/other/ -> banner.jpg, artist.jpg (about) // - assets/gallery/ -> g1.jpg, g2.jpg, ... (gallery images) assets: { otherDir: "assets/other/", galleryDir: "assets/gallery/", bannerFile: "banner.jpg", aboutFile: "artist.jpg", galleryFiles: ["g (1).jpg","g (2).jpg","g (3).jpg","g (4).jpg","g (5).jpg","g (6).jpg","g (7).jpg","g (8).jpg","g (9).jpg","g (10).jpg","g (11).jpg","g (12).jpg","g (13).jpg","g (14).jpg"] }, socials: [ { name: "Instagram", url: "https://www.instagram.com/gabrielbenedek_official/", icon: "mdi:instagram" }, { name: "Spotify", url: "https://open.spotify.com/intl-de/artist/0BBZxotcIVnEEPhjA4iSiu", icon: "mdi:spotify" }, { name: "YouTube", url: "https://www.youtube.com/@GabrielBenedek/featured", icon: "mdi:youtube" }, { name: "E‑Mail", url: "mailto:mgmt@gabrielbenedek.com", icon: "mdi:email" } ], linktree: [ { label: "🎧 Spotify", url: "https://open.spotify.com/intl-de/artist/0BBZxotcIVnEEPhjA4iSiu", highlight: true }, { label: "▶️ YouTube", url: "https://www.youtube.com/@GabrielBenedek/featured" }, { label: "🎵 YouTube Music", url: "https://music.youtube.com/channel/UC0RxibqX7b6CnxNWmxG0JJw" }, { label: "📸 Instagram", url: "https://www.instagram.com/gabrielbenedek_official/" }, { label: "🌐 All platforms", url: "https://gabrielbenedek.lnk.to/LostInYou?prerelease_service=SpotifyPreRelease&prerelease_result=success&has_email=1&notification_id=86de4e88-a0a8-5d8e-879c-063887d8902b&fbclid=PAZXh0bgNhZW0CMTEAAaeoyxVCiyuursO5Ama7PnyXw-VwkG8sWZmxf6lpCJKnMG9lnm5Mv32Mudw0iw_aem_5KfkixLe0iyAA3G9h675VA" }, { label: "🎫 Tickets & Tour", url: "#tours" }, { label: "📰 EPK / Presse", url: "#" } ], embeds: { spotify: "https://open.spotify.com/embed/artist/0BBZxotcIVnEEPhjA4iSiu", // ersetze mit echter Embed-URL youtube: "https://www.youtube.com/watch?v=yzzXvjFCyaE" // ersetze mit Video-ID / Playlist }, tour: { source: "local", // "local" | "bandsintown" | "csv" bandsintownId: "", // z.B. GabrielBenedek csvUrl: "", // optional: veröffentlichte Google Sheet CSV URL items: [ { date: "2025-10-12", city: "Zürich, CH", venue: "Mascotte", url: "#" }, { date: "2025-11-04", city: "Basel, CH", venue: "Kaserne", url: "#" }, { date: "2026-01-18", city: "München, DE", venue: "Muffathalle", url: "#" } ] }, gallery: [ "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1200&auto=format&fit=crop", "https://images.unsplash.com/photo-1516048015710-1cad4dd3ed4c?q=80&w=1200&auto=format&fit=crop", "https://images.unsplash.com/photo-1516927001710-81e1e0e62d1e?q=80&w=1200&auto=format&fit=crop", "https://images.unsplash.com/photo-1496372412473-e8548ffd82bc?q=80&w=1200&auto=format&fit=crop" ], contact: { provider: "formsubmit", endpoint: "https://formsubmit.co/mgmt@gabrielbenedek.com" } }; </script> <!-- Scripts: UI + dynamic content --> <script> const $ = sel => document.querySelector(sel); /* ========= I18N + Theme ========= */ const I18N = { de: { nav: { start: 'Start', about: 'Über', music: 'Musik', tours: 'Tours & Gigs', gallery: 'Galerie', links: 'Links', contact: 'Kontakt', impressum: 'Impressum' }, cta: { tickets: 'Tickets & Termine', listen: 'Jetzt reinhören' }, titles: { about: 'Über Gabriel', music: 'Musik & Videos', tours: 'Tours & Gigs', gallery: 'Galerie', links: 'Links', contact: 'Schreib eine Nachricht', impressum: 'Impressum', privacy: 'Datenschutz (Kurz)' }, subs: { music: 'Externe Medien werden erst nach Zustimmung geladen (Datenschutz). Klicke unten, um Spotify/YouTube einzublenden.', tours: 'Alle bestätigten Termine. Folge den Links für Tickets & Infos.', links: 'Alle wichtigen Kanäle auf einen Blick – perfekt für Bio-Links.', contactConsent: 'Mit dem Absenden stimmst du der Verarbeitung gemäß Datenschutz zu.' }, tour: { thDate: 'Datum', thCity: 'Stadt', thVenue: 'Venue', ticketsBtn: 'Tickets', none: 'Keine Termine verfügbar.', source: 'Quelle' }, contact: { namePh: 'Dein Name', emailPh: 'Deine E‑Mail', msgPh: 'Nachricht', send: 'Absenden' }, cookie: { text: 'Wir verwenden technisch notwendige Cookies. Externe Medien werden erst nach deiner Zustimmung geladen.', allow: 'Externe Medien erlauben', dismiss: 'Nur notwendige' } }, en: { nav: { start: 'Start', about: 'About', music: 'Music', tours: 'Tours & Gigs', gallery: 'Gallery', links: 'Links', contact: 'Contact', impressum: 'Imprint' }, cta: { tickets: 'Tickets & Dates', listen: 'Listen now' }, titles: { about: 'About Gabriel', music: 'Music & Videos', tours: 'Tours & Gigs', gallery: 'Gallery', links: 'Links', contact: 'Send a message', impressum: 'Imprint', privacy: 'Privacy (short)' }, subs: { music: 'External media only load after consent (privacy). Click below to load Spotify/YouTube.', tours: 'All confirmed dates. Follow the links for tickets & info.', links: 'All key channels at a glance — perfect for link-in-bio.', contactConsent: 'By sending, you agree to data processing as described in the privacy policy.' }, tour: { thDate: 'Date', thCity: 'City', thVenue: 'Venue', ticketsBtn: 'Tickets', none: 'No dates available.', source: 'Source' }, contact: { namePh: 'Your name', emailPh: 'Your email', msgPh: 'Message', send: 'Send' }, cookie: { text: 'We use essential cookies. External media only load after your consent.', allow: 'Allow external media', dismiss: 'Essentials only' } }, fr: { nav: { start: 'Accueil', about: 'À propos', music: 'Musique', tours: 'Concerts', gallery: 'Galerie', links: 'Liens', contact: 'Contact', impressum: 'Mentions' }, cta: { tickets: 'Billets & dates', listen: 'Écouter maintenant' }, titles: { about: 'À propos de Gabriel', music: 'Musique & vidéos', tours: 'Concerts', gallery: 'Galerie', links: 'Liens', contact: 'Envoyer un message', impressum: 'Mentions légales', privacy: 'Protection des données (court)' }, subs: { music: 'Les médias externes ne se chargent qu’après votre consentement (protection des données). Cliquez ci‑dessous pour afficher Spotify/YouTube.', tours: 'Toutes les dates confirmées. Suivez les liens pour billets & infos.', links: 'Tous les canaux importants en un coup d’œil – idéal pour le lien‑in‑bio.', contactConsent: 'En envoyant, vous acceptez le traitement des données selon la politique de confidentialité.' }, tour: { thDate: 'Date', thCity: 'Ville', thVenue: 'Salle', ticketsBtn: 'Billets', none: 'Aucune date disponible.', source: 'Source' }, contact: { namePh: 'Votre nom', emailPh: 'Votre e‑mail', msgPh: 'Message', send: 'Envoyer' }, cookie: { text: 'Nous utilisons des cookies nécessaires. Les médias externes ne se chargent qu’après votre consentement.', allow: 'Autoriser les médias externes', dismiss: 'Essentiels seulement' } }, it: { nav: { start: 'Home', about: 'Info', music: 'Musica', tours: 'Concerti', gallery: 'Galleria', links: 'Link', contact: 'Contatto', impressum: 'Note legali' }, cta: { tickets: 'Biglietti & date', listen: 'Ascolta ora' }, titles: { about: 'Info su Gabriel', music: 'Musica & video', tours: 'Concerti', gallery: 'Galleria', links: 'Link', contact: 'Scrivi un messaggio', impressum: 'Note legali', privacy: 'Protezione dati (breve)' }, subs: { music: 'I media esterni si caricano solo dopo il consenso (privacy). Clicca sotto per mostrare Spotify/YouTube.', tours: 'Tutte le date confermate. Segui i link per biglietti e info.', links: 'Tutti i canali principali in un colpo d’occhio — perfetto per link‑in‑bio.', contactConsent: 'Inviando accetti il trattamento dei dati secondo l’informativa.' }, tour: { thDate: 'Data', thCity: 'Città', thVenue: 'Locale', ticketsBtn: 'Biglietti', none: 'Nessuna data disponibile.', source: 'Fonte' }, contact: { namePh: 'Il tuo nome', emailPh: 'La tua e‑mail', msgPh: 'Messaggio', send: 'Invia' }, cookie: { text: 'Utilizziamo cookie necessari. I media esterni si caricano solo dopo il consenso.', allow: 'Consenti media esterni', dismiss: 'Solo necessari' } } }; function t(path){ const parts = path.split('.'); let ref = I18N[CURRENT_LANG] || I18N.de; for(const p of parts){ ref = ref?.[p]; if(ref == null) break; } return ref || path; } let CURRENT_LANG = (localStorage.getItem('lang') || 'de'); function applyLang(){ document.documentElement.lang = CURRENT_LANG; // Nav $('#navStart').textContent = t('nav.start'); $('#navAbout').textContent = t('nav.about'); $('#navMusic').textContent = t('nav.music'); $('#navTours').textContent = t('nav.tours'); $('#navGallery').textContent = t('nav.gallery'); $('#navLinks').textContent = t('nav.links'); $('#navContact').textContent = t('nav.contact'); $('#navImpressum').textContent = t('nav.impressum'); // Hero CTAs $('#ctaTickets').textContent = t('cta.tickets'); $('#ctaListen').textContent = t('cta.listen'); // Titles $('#aboutTitle').textContent = t('titles.about'); $('#musicTitle').textContent = t('titles.music'); $('#toursTitle').textContent = t('titles.tours'); $('#galleryTitle').textContent = t('titles.gallery'); $('#linksTitle').textContent = t('titles.links'); $('#contactTitle').textContent = t('titles.contact'); $('#impressumTitle').textContent = t('titles.impressum'); $('#privacyTitle').textContent = t('titles.privacy'); // Subs $('#musicSub').textContent = t('subs.music'); const thd = $('#tourHelp'); if (thd) thd.textContent = t('subs.tours'); $('#linksSub').textContent = t('subs.links'); $('#contactConsent').textContent = t('subs.contactConsent'); // Tour table headers $('#thDate').textContent = t('tour.thDate'); $('#thCity').textContent = t('tour.thCity'); $('#thVenue').textContent = t('tour.thVenue'); // Tickets button text in rows document.querySelectorAll('#tourBody a.btn').forEach(b => b.textContent = t('tour.ticketsBtn')); // Empty state const emptyCell = document.querySelector('#tourBody td[colspan]'); if (emptyCell) emptyCell.textContent = t('tour.none'); // Source badge const srcMap = { de: {local:'lokal', csv:'CSV', bandsintown:'Bandsintown'}, en:{local:'local', csv:'CSV', bandsintown:'Bandsintown'}, fr:{local:'local', csv:'CSV', bandsintown:'Bandsintown'}, it:{local:'locale', csv:'CSV', bandsintown:'Bandsintown'} }; const langKey = (CURRENT_LANG in srcMap) ? CURRENT_LANG : 'en'; const src = (CONFIG.tour.source||'local'); $('#tourSourceBadge').textContent = ${t('tour.source')}: ${srcMap[langKey][src]||src}; // Contact placeholders & button const f = $('#contactForm'); if (f){ f.querySelector('input[name="name"]').placeholder = t('contact.namePh'); f.querySelector('input[name="email"]').placeholder = t('contact.emailPh'); f.querySelector('textarea[name="message"]').placeholder = t('contact.msgPh'); const btn = f.querySelector('button[type="submit"]'); if (btn) btn.textContent = t('contact.send'); } // Cookie const c = $('#cookieText'); if (c) c.textContent = t('cookie.text'); const acc = $('#acceptAll'); if (acc) acc.textContent = t('cookie.allow'); const dis = $('#dismiss'); if (dis) dis.textContent = t('cookie.dismiss'); // Set select value const sel = $('#langSel'); if (sel) sel.value = CURRENT_LANG; } function setLang(lang){ CURRENT_LANG = lang; localStorage.setItem('lang', lang); applyLang(); } function setTheme(mode){ document.documentElement.setAttribute('data-theme', mode); localStorage.setItem('theme', mode); $('#themeToggle').textContent = (mode === 'light') ? '☀︎' : '☾'; } function setupThemeAndLang(){ // Theme const pref = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'); setTheme(pref); $('#themeToggle')?.addEventListener('click', () => { setTheme(document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light'); }); // Lang $('#langSel')?.addEventListener('change', (e)=> setLang(e.target.value)); setLang(localStorage.getItem('lang') || 'de'); } /* ======== END I18N + Theme ======== */ // NAV const burger = document.querySelector('.burger'); const menu = document.getElementById('menu'); burger?.addEventListener('click', () => { menu.classList.toggle('open'); const expanded = burger.getAttribute('aria-expanded') === 'true'; burger.setAttribute('aria-expanded', String(!expanded)); }); menu?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open'))); // Fill from CONFIG function initFromConfig() { document.title = ${CONFIG.artist} — Official Site; $('#artistName').textContent = CONFIG.artist; $('#footerArtist').textContent = CONFIG.artist; $('#artistTag').textContent = CONFIG.tagline; $('#bookingEmail').href = mailto:${CONFIG.bookingEmail}; $('#bookingEmail').textContent = CONFIG.bookingEmail; $('#pressEmail').href = mailto:${CONFIG.pressEmail}; $('#pressEmail').textContent = CONFIG.pressEmail; $('#mgmtName').textContent = CONFIG.management.name; $('#mgmtAddr').textContent = CONFIG.management.address; $('#epkLink').href = CONFIG.epkUrl || '#'; $('#ppLink').href = CONFIG.privacyUrl || '#'; // Impressum $('#impName').textContent = CONFIG.impressum.name; $('#impAddr').textContent = CONFIG.impressum.address; $('#impEmail').href = mailto:${CONFIG.impressum.email}; $('#impEmail').textContent = CONFIG.impressum.email; $('#impVat').textContent = CONFIG.impressum.vat || '—'; $('#impResp').textContent = CONFIG.impressum.responsible || '—'; // About text & hero image $('#aboutText').textContent = CONFIG.aboutText; const heroEl = document.querySelector('.hero img'); if (CONFIG.assets && CONFIG.assets.bannerFile) { heroEl.src = (CONFIG.assets.otherDir || '') + CONFIG.assets.bannerFile; } else { heroEl.src = CONFIG.heroImage; } const aboutEl = document.querySelector('.about-img'); if (CONFIG.assets && CONFIG.assets.aboutFile) { aboutEl.src = (CONFIG.assets.otherDir || '') + CONFIG.assets.aboutFile; } // Socials const socials = CONFIG.socials.map(s => socialChip(s.name, s.url)).join(''); $('#socials').innerHTML = socials; $('#footerSocials').innerHTML = socials; // Gallery let galleryList = CONFIG.gallery; if (CONFIG.assets && CONFIG.assets.galleryFiles && CONFIG.assets.galleryFiles.length) { const base = CONFIG.assets.galleryDir || ''; galleryList = CONFIG.assets.galleryFiles.map(f => base + f); } const g = (galleryList || []).map(src => <img src="${src}" alt="Konzertfoto" loading="lazy">).join(''); $('#galleryGrid').innerHTML = g; // Contact form const form = $('#contactForm'); if (CONFIG.contact.provider === 'formspree' && CONFIG.contact.endpoint) { form.action = CONFIG.contact.endpoint; } else if (CONFIG.contact.provider === 'formsubmit' && CONFIG.contact.endpoint) { form.action = CONFIG.contact.endpoint; form.method = 'POST'; form.insertAdjacentHTML('beforeend','<input type="hidden" name="_captcha" value="false"><input type="hidden" name="_subject" value="New message from website"><input type="hidden" name="_next" value="#contact">'); } else { form.addEventListener('submit', (e) => { e.preventDefault(); alert('Formularziel noch nicht konfiguriert.'); }); } // Tours loadTours(); // Linktree renderLinktree(); // Footer year $('#year').textContent = new Date().getFullYear(); } function socialChip(name, url){ const icon = { Instagram: svg('M12 2.2c-2.7 0-3 .01-4.05.06-1.05.05-1.77.22-2.4.47-.65.25-1.2.6-1.74 1.14-.54.54-.89 1.09-1.14 1.74-.25.63-.42 1.35-.47 2.4C2.2 9 2.2 9.3 2.2 12s.01 3 .06 4.05.22 1.77.47 2.4c.25.65.6 1.2 1.14 1.74.54.54 1.09.89 1.74 1.14.63.25 1.35.42 2.4.47 1.05.05 1.35.06 4.05.06s3-.01 4.05-.06 1.77-.22 2.4-.47c.65-.25 1.2-.6 1.74-1.14.54-.54.89-1.09 1.14-1.74.25-.63.42-1.35.47-2.4.05-1.05.06-1.35.06-4.05s-.01-3-.06-4.05-.22-1.77-.47-2.4a4.8 4.8 0 0 0-1.14-1.74 4.8 4.8 0 0 0-1.74-1.14c-.63-.25-1.35-.42-2.4-.47C15 2.21 14.7 2.2 12 2.2Zm0 1.8c2.67 0 2.98.01 4.03.06.97.05 1.5.2 1.85.33.47.18.8.39 1.15.73.34.35.55.68.73 1.15.13.35.28.88.33 1.85.05 1.05.06 1.36.06 4.03s-.01 2.98-.06 4.03c-.05.97-.2 1.5-.33 1.85-.18.47-.39.8-.73 1.15-.35.34-.68.55-1.15.73-.35.13-.88.28-1.85.33-1.05.05-1.36.06-4.03.06s-2.98-.01-4.03-.06c-.97-.05-1.5-.2-1.85-.33a3.1 3.1 0 0 1-1.15-.73 3.1 3.1 0 0 1-.73-1.15c-.13-.35-.28-.88-.33-1.85C3.99 14.98 3.98 14.67 3.98 12s.01-2.98.06-4.03c.05-.97.2-1.5.33-1.85.18-.47.39-.8.73-1.15.35-.34.68-.55 1.15-.73.35-.13.88-.28 1.85-.33C9.02 4.01 9.33 4 12 4Zm0 2.8a5.2 5.2 0 1 0 0 10.4 5.2 5.2 0 0 0 0-10.4Zm0 2a3.2 3.2 0 1 1 0 6.4 3.2 3.2 0 0 1 0-6.4Zm5.6-2.24a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4Z'), Spotify: svg('M9.5 2C5.36 2 2 5.36 2 9.5S5.36 17 9.5 17 17 13.64 17 9.5 13.64 2 9.5 2Zm3.9 10.77a.74.74 0 0 1-1.02.25c-2.8-1.7-6.33-2.1-10.5-1.18a.75.75 0 1 1-.32-1.46c4.52-1 8.4-.56 11.49 1.29.35.21.46.66.26 1.01Zm.86-2.53a.9.9 0 0 1-1.24.3C9.69 8.49 6.3 8.1 3.1 8.82a.9.9 0 0 1-.39-1.76c3.58-.8 7.35-.37 10.7 1.4.44.24.6.79.35 1.18Zm.14-2.65c-3.07-1.72-7.52-1.88-10.23-1.28a1.05 1.05 0 1 1-.43-2.07c3.16-.66 8.15-.47 11.67 1.49a1.05 1.05 0 1 1-1.01 1.86Z'), YouTube: svg('M2.5 5.5C2.5 4.12 3.62 3 5 3h10c1.38 0 2.5 1.12 2.5 2.5v7c0 1.38-1.12 2.5-2.5 2.5H5A2.5 2.5 0 0 1 2.5 12.5v-7Zm6.86 1.64v5.72l4.9-2.86-4.9-2.86Z'), TikTok: svg('M11 2h2.5c.2 1.34 1.18 2.9 3.2 3.3V8.2c-1.36-.07-2.68-.47-3.7-1.15v4.95A4.99 4.99 0 1 1 8 7.2v2.38a2.5 2.5 0 1 0 3.01 2.44L11 2Z'), 'E‑Mail': svg('M3 5h14a1 1 0 0 1 .8.4L10 11 2.2 5.4A1 1 0 0 1 3 5Zm15 1.2-8 6-8-6V15a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V6.2Z') }[name] || ''; return <a href="${url}" target="_blank" rel="noopener">${icon}<span>${name}</span></a>; } function svg(path){ return <svg aria-hidden="true" width="18" height="18" viewBox="0 0 20 20" fill="currentColor"><path d="${path}"/></svg>; } function renderLinktree(){ const list = (CONFIG.linktree && CONFIG.linktree.length) ? CONFIG.linktree : (CONFIG.socials || []).map(s => ({ label: s.name, url: s.url })); const html = list.map(i => <a class="link-btn ${i.highlight ? 'highlight' : ''}" href="${i.url}" target="_blank" rel="noopener"><span>${i.label}</span></a>).join(''); const host = document.getElementById('linktreeList'); if (host) host.innerHTML = html; } // Tours loader async function loadTours(){ const { source, items, csvUrl, bandsintownId } = CONFIG.tour; $('#tourSourceBadge').textContent = Quelle: ${source}; let data = []; try { if (source === 'local') data = items; else if (source === 'csv' && csvUrl) data = await fetchCsv(csvUrl); else if (source === 'bandsintown' && bandsintownId) data = await bandsintownData(bandsintownId); } catch (e) { console.error(e); } renderTours(data); } function renderTours(list){ const tbody = $('#tourBody'); if (!list || !list.length) { tbody.innerHTML = <tr><td colspan="4">Keine Termine verfügbar.</td></tr>; return; } const fmt = new Intl.DateTimeFormat('de-CH', { dateStyle: 'medium' }); tbody.innerHTML = list.map(ev => { const d = new Date(ev.date); const date = isNaN(d) ? ev.date : fmt.format(d); const btn = ev.url ? <a class=\"btn\" href=\"${ev.url}\" target=\"_blank\" rel=\"noopener\">Tickets</a> : ''; return <tr><td>${date}</td><td>${ev.city || ''}</td><td>${ev.venue || ''}</td><td>${btn}</td></tr>; }).join(''); } async function fetchCsv(url){ const text = await fetch(url).then(r=>r.text()); const rows = text.trim().split(/\r?\n/).map(r => r.split(',')); const [head, ...rest] = rows; return rest.map(r => Object.fromEntries(r.map((v,i)=>[head[i].trim().toLowerCase(), v.trim()]))).map(o => ({ date: o.date || o.datum || '', city: o.city || o.stadt || '', venue: o.venue || o.ort || '', url: o.url || o.tickets || '' })); } async function bandsintownData(artist){ // Simple client-side embed alternative: let user include Bandsintown widget manually if API not available. // Here we just link to the Bandsintown page. $('#tourCard').insertAdjacentHTML('beforeend', <p class="section-sub">Detaillierte Einbindung via Bandsintown Widget empfohlen.</p>); return CONFIG.tour.items; // fallback to local list } // Embeds with consent document.addEventListener('click', (e) => { const btn = e.target.closest('[data-embed]'); if (!btn) return; const type = btn.dataset.embed; const target = type === 'spotify' ? '#spotifyEmbed' : '#youtubeEmbed'; const src = type === 'spotify' ? CONFIG.embeds.spotify : CONFIG.embeds.youtube; if (!src) return alert('Embed-URL fehlt in der Konfiguration.'); const html = type === 'spotify' ? <iframe style="border-radius:12px" src="${src}" width="100%" height="352" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe> : <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;border:1px solid rgba(255,255,255,.08)"><iframe src="${src}" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>; document.querySelector(target).outerHTML = html; }); // Simple cookie/consent banner const cookieBox = $('#cookie'); const ACCEPT_KEY = 'ext-media-ok'; function showCookie(){ if (!localStorage.getItem(ACCEPT_KEY)) cookieBox.classList.add('show'); } $('#acceptAll')?.addEventListener('click', () => { localStorage.setItem(ACCEPT_KEY, '1'); cookieBox.remove(); }); $('#dismiss')?.addEventListener('click', () => cookieBox.remove()); // Smooth scroll offset for sticky header document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', (e) => { const id = a.getAttribute('href'); if (id.length > 1) { const el = document.querySelector(id); if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); } } }); }); // Init initFromConfig(); showCookie(); setupThemeAndLang(); applyLang(); (function linksOnlyMode(){ const p = new URLSearchParams(location.search); if (p.get('links') === '1' || location.hash === '#links-only'){ const hide = ['.hero','#about','#music','#tours','#gallery','#contact','#impressum','footer']; hide.forEach(sel => { const el = document.querySelector(sel); if (el) el.style.display = 'none'; }); const nav = document.querySelector('nav ul'); if (nav) nav.style.display='none'; const links = document.getElementById('links'); if (links) links.style.paddingTop='6rem'; location.hash = '#links'; } })(); </script> <!-- Structured data (basic) --> <script type="application/ld+json"> { "@context": "https://schema.org", "@type": "Person", "name": "Gabriel Benedek", "jobTitle": "Singer-Songwriter", "address": {"@type":"PostalAddress","addressCountry":"CH"}, "url": "", "sameAs": ["https://instagram.com/", "https://youtube.com/", "https://open.spotify.com/"] } </script> </body> </html>
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gabriel Benedek — Official Site</title>
+  <meta name="description" content="Offizielle Website von Gabriel Benedek – Singer/Songwriter. Tourdaten, Musik, Videos, Kontakt, Pressekit." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <meta property="og:title" content="Gabriel Benedek — Official Site" />
+  <meta property="og:description" content="Tourdaten, Musik und mehr." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1600&auto=format&fit=crop" />
+  <style>
+    :root {
+      --bg: #0b0b10;
+      --card: #14141d;
+      --ink: #eaeaf2;
+      --muted: #b9b9c7;
+      --brand: #9d7cff; /* Accent */
+      --brand-2: #3dd6d0; /* Accent 2 */
+      --maxw: 1100px;
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin:0; padding:0; background:var(--bg); color:var(--ink); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+    a { color: var(--brand-2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(100% - 2rem, var(--maxw)); margin-inline: auto; }
+
+    /* Theme: Light mode variables */
+    [data-theme="light"] {
+      --bg: #f6f7fb;
+      --card: #ffffff;
+      --ink: #0b0b10;
+      --muted: #4b5563;
+    }
+
+    /* Header controls (lang + theme) */
+    .controls { display:flex; align-items:center; gap:.5rem; }
+    .controls select, .controls .theme-toggle { background: var(--card); color: var(--ink); border:1px solid rgba(255,255,255,.14); padding:.45rem .6rem; border-radius:10px; font-weight:600; }
+    .controls select { cursor:pointer; }
+    .controls .theme-toggle { cursor:pointer; }
+    @media (max-width: 860px){ .controls{ position:absolute; right:1rem; top:10px; } }
+
+    /* Header / Nav */
+    header { position: sticky; top:0; z-index: 50; backdrop-filter: blur(8px); background: rgba(11,11,16,.6); border-bottom: 1px solid rgba(255,255,255,.06); }
+    .nav { display:flex; align-items:center; justify-content: space-between; padding: .9rem 0; }
+    .logo { display:flex; align-items:center; gap:.6rem; font-weight:800; letter-spacing:.2px; }
+    .logo .dot { width:10px; height:10px; border-radius:50%; background: linear-gradient(135deg,var(--brand),var(--brand-2)); box-shadow: 0 0 20px var(--brand-2); }
+    nav ul { list-style: none; display:flex; gap:1rem; margin:0; padding:0; }
+    nav a { color: var(--ink); font-weight:600; opacity:.9; }
+    nav a:hover { opacity:1; }
+    .burger { display:none; background:none; border:1px solid rgba(255,255,255,.12); color:var(--ink); padding:.45rem .6rem; border-radius:10px; }
+    @media (max-width: 860px) {
+      nav ul { display:none; position:absolute; left:1rem; right:1rem; top:60px; background:var(--card); padding:1rem; border-radius:12px; box-shadow: var(--shadow); border:1px solid rgba(255,255,255,.06); }
+      nav ul.open { display:block; }
+      .burger { display:block; }
+    }
+
+    /* Hero */
+    .hero { position:relative; isolation:isolate; }
+    .hero .media { position:absolute; inset:0; z-index:-1; }
+    .hero .media::after { content:""; position:absolute; inset:0; background: radial-gradient(60% 80% at 50% 30%, rgba(157,124,255,.35), transparent 60%), linear-gradient(180deg, rgba(11,11,16,0.1) 0%, rgba(11,11,16,0.9) 70%, rgba(11,11,16,1) 100% ); }
+    .hero img { width:100%; height: min(72vh, 680px); object-fit: cover; object-position: 50% 40%; filter: grayscale(.1) contrast(1.05) saturate(1.1); }
+    .hero .content { padding: min(12vw, 6rem) 0 3rem; text-align:center; }
+    .eyebrow { display:inline-block; padding:.25rem .6rem; border:1px solid rgba(255,255,255,.14); border-radius:999px; font-size:.8rem; color:var(--muted); }
+    h1 { font-family: "Playfair Display", serif; font-weight:700; font-size: clamp(2.2rem, 5vw, 4rem); margin:.8rem 0 .4rem; letter-spacing:.4px; }
+    .tagline { font-size: clamp(1rem, 2.2vw, 1.25rem); color: var(--muted); max-width: 60ch; margin: 0 auto; }
+    .cta-row { display:flex; gap:.8rem; justify-content:center; margin-top:1.2rem; flex-wrap:wrap; }
+    .btn { display:inline-flex; align-items:center; gap:.5rem; padding:.75rem 1rem; border-radius:12px; font-weight:700; border:1px solid rgba(255,255,255,.14); background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04)); box-shadow: var(--shadow); }
+    .btn.primary { border-color: transparent; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color:#0b0b10; }
+
+    /* Sections */
+    section { padding: 3.5rem 0; }
+    .section-title { font-size: clamp(1.4rem, 2.2vw, 2rem); margin-bottom: .75rem; font-weight:800; }
+    .section-sub { color: var(--muted); margin-bottom: 1.4rem; }
+    .grid { display:grid; gap:1.2rem; }
+    @media (min-width: 860px) { .grid.two { grid-template-columns: 1.1fr .9fr; } }
+
+    .card { background: var(--card); border:1px solid rgba(255,255,255,.06); border-radius: var(--radius); box-shadow: var(--shadow); overflow:hidden; }
+    .pad { padding: 1.2rem; }
+
+    /* About */
+    .about-img { aspect-ratio: 4/3; border-bottom:1px solid rgba(255,255,255,.06); }
+    /* Fix: ensure About section sits above hero on desktop (prevents clipping) */
+    #about { position: relative; z-index: 2; }
+
+    /* Music embeds */
+    .embed-placeholder { display:flex; align-items:center; justify-content:space-between; gap:1rem; border:1px dashed rgba(255,255,255,.2); padding:1rem; border-radius:12px; }
+    .embed-placeholder p { margin:0; color:var(--muted); }
+
+    /* Tour table */
+    table { width:100%; border-collapse: collapse; }
+    th, td { padding: .9rem; border-bottom:1px solid rgba(255,255,255,.08); text-align:left; }
+    th { color:var(--muted); font-weight:600; }
+    tr:hover td { background: rgba(255,255,255,.03); }
+    .badge { display:inline-block; padding:.2rem .5rem; border-radius:999px; border:1px solid rgba(255,255,255,.14); color: var(--muted); font-size:.8rem; }
+
+    /* Gallery */
+    .gallery { columns: 2 260px; column-gap: .8rem; }
+    .gallery img { width:100%; border-radius:12px; margin:0 0 .8rem; border:1px solid rgba(255,255,255,.06); }
+
+    /* Linktree */
+    .linktree { display:flex; flex-direction:column; gap:.9rem; max-width: 620px; margin: 0 auto; }
+    .link-btn { display:flex; align-items:center; justify-content:center; gap:.6rem; padding:1rem 1.2rem; border-radius:14px; background: var(--card); border:1px solid rgba(255,255,255,.14); box-shadow: var(--shadow); font-weight:800; letter-spacing:.2px; }
+    .link-btn:hover { transform: translateY(-1px); transition: transform .12s ease; }
+    .link-btn.highlight { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color:#0b0b10; border-color: transparent; }
+
+    /* Contact */
+    form { display:grid; gap:.8rem; }
+    input, textarea { background:#0f0f16; color:var(--ink); border:1px solid rgba(255,255,255,.14); padding:.8rem; border-radius:10px; font: inherit; }
+    input:focus, textarea:focus { outline:2px solid var(--brand-2); border-color: transparent; }
+
+    /* Footer */
+    footer { padding: 2.5rem 0 4rem; color: var(--muted); border-top: 1px solid rgba(255,255,255,.06); }
+    .socials { display:flex; gap:.8rem; flex-wrap:wrap; }
+    .socials a { border:1px solid rgba(255,255,255,.14); padding:.5rem .7rem; border-radius:999px; display:inline-flex; align-items:center; gap:.5rem; }
+
+    /* Cookie banner */
+    .cookie { position: fixed; bottom: 12px; left: 12px; right: 12px; z-index: 99; background: var(--card); border:1px solid rgba(255,255,255,.12); border-radius: 12px; box-shadow: var(--shadow); padding: 1rem; display:none; }
+    .cookie.show { display:block; }
+
+    /* Skip link */
+    .skip { position:absolute; left:-9999px; }
+    .skip:focus { left: 12px; top: 12px; background: #fff; color:#000; padding:.5rem; border-radius:8px; }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Zum Inhalt springen</a>
+  <header>
+    <div class="container nav">
+      <div class="logo" aria-label="Gabriel Benedek">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Gabriel&nbsp;Benedek</span>
+      </div>
+      <button class="burger" aria-expanded="false" aria-controls="menu">☰ Menü</button>
+      <nav>
+        <ul id="menu">
+          <li><a id="navStart" href="#start">Start<\/a><\/li>
+          <li><a id="navAbout" href="#about">Über<\/a><\/li>
+          <li><a id="navMusic" href="#music">Musik<\/a><\/li>
+          <li><a id="navTours" href="#tours">Tours&nbsp;&amp;&nbsp;Gigs<\/a><\/li>
+          <li><a id="navGallery" href="#gallery">Galerie<\/a><\/li>
+          <li><a id="navLinks" href="#links">Links<\/a><\/li>
+          <li><a id="navContact" href="#contact">Kontakt<\/a><\/li>
+          <li><a id="navImpressum" href="#impressum">Impressum<\/a><\/li>
+        </ul>
+      </nav>
+      <div class="controls">
+        <select id="langSel" aria-label="Language">
+          <option value="de">DE</option>
+          <option value="en">EN</option>
+          <option value="fr">FR</option>
+          <option value="it">IT</option>
+        </select>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☾</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO / START -->
+    <section class="hero" id="start" aria-label="Start">
+      <div class="media" aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1600&auto=format&fit=crop" alt="Bühnenlicht und Gitarre" />
+      </div>
+      <div class="container content">
+        <span class="eyebrow">Official</span>
+        <h1 id="artistName">Gabriel Benedek</h1>
+        <p class="tagline" id="artistTag">Singer · Songwriter · Guitar</p>
+        <div class="cta-row">
+          <a class="btn primary" id="ctaTickets" href="#tours">Tickets & Termine</a>
+          <a class="btn" id="ctaListen" href="#music">Jetzt reinhören</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" aria-label="Über">
+      <div class="container grid two">
+        <div class="card">
+          <img class="about-img" src="https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=1400&auto=format&fit=crop" alt="Porträt des Künstlers" />
+          <div class="pad">
+            <h2 class="section-title" id="aboutTitle">Über Gabriel</h2>
+            <p id="aboutText">Gabriel Benedek ist ein in Zürich ansässiger Singer/Songwriter. Ehrliche Texte, warme Gitarren und eine Stimme, die hängen bleibt. Neue EP <em>“City Lights”</em> erscheint bald.</p>
+          </div>
+        </div>
+        <div class="card pad">
+          <h3 class="section-title">Schnellinfos</h3>
+          <ul id="quickFacts">
+            <li>Swiss Artist🇨🇭with Irish/Hungarian roots</li>
+            <li>Label: <a href="https://www.instagram.com/universalmusicswitzerland/" target="_blank" rel="noopener">@universalmusicswitzerland</a></li>
+            <li><strong>Bookings:</strong> <a id="bookingEmail" href="mailto:mgmt@gabrielbenedek.com">mgmt@gabrielbenedek.com</a></li>
+            <li><strong>LOST IN YOU</strong> out now!</li>
+          </ul>
+          <div class="pad" style="padding-left:0;">
+            <div class="socials" id="socials"></div>
+          </div>
+          <div class="pad" style="padding-left:0;">
+            <a class="btn" id="epkLink" href="#" target="_blank" rel="noopener">EPK / Pressekit</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MUSIC -->
+    <section id="music" aria-label="Musik">
+      <div class="container">
+        <h2 class="section-title" id="musicTitle">Musik & Videos</h2>
+        <p class="section-sub" id="musicSub">Externe Medien werden erst nach Zustimmung geladen (Datenschutz). Klicke unten, um Spotify/YouTube einzublenden.</p>
+        <div class="grid">
+          <div class="card pad">
+            <h3>Spotify</h3>
+            <div id="spotifyEmbed" class="embed-placeholder">
+              <p>Spotify-Player laden?</p>
+              <button class="btn" data-embed="spotify">Einblenden</button>
+            </div>
+          </div>
+          <div class="card pad">
+            <h3>YouTube</h3>
+            <div id="youtubeEmbed" class="embed-placeholder">
+              <p>YouTube-Video laden?</p>
+              <button class="btn" data-embed="youtube">Einblenden</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOURS -->
+    <section id="tours" aria-label="Tours & Gigs">
+      <div class="container">
+        <h2 class="section-title" id="toursTitle">Tours & Gigs</h2>
+        <p class="section-sub">Alle bestätigten Termine. Folge den Links für Tickets & Infos.</p>
+        <div class="card pad" id="tourCard">
+          <table aria-describedby="tourHelp">
+            <thead>
+              <tr>
+                <th id="thDate">Datum</th>
+                <th id="thCity">Stadt</th>
+                <th id="thVenue">Venue</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="tourBody">
+              <tr><td colspan="4">Lade Termine…</td></tr>
+            </tbody>
+          </table>
+          <p id="tourHelp" class="section-sub">Tourdaten werden aus der Konfiguration oder einer externen Quelle geladen.</p>
+        </div>
+        <div class="pad" style="padding-left:0; margin-top:.6rem;">
+          <span class="badge" id="tourSourceBadge">Quelle: lokal</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" aria-label="Galerie">
+      <div class="container">
+        <h2 class="section-title" id="galleryTitle">Galerie</h2>
+        <div class="gallery" id="galleryGrid"></div>
+      </div>
+    </section>
+
+    <!-- LINKS / LINKTREE -->
+    <section id="links" aria-label="Links">
+      <div class="container">
+        <h2 class="section-title" id="linksTitle">Links</h2>
+        <p class="section-sub" id="linksSub">Alle wichtigen Kanäle auf einen Blick – perfekt für Bio-Links.</p>
+        <div class="linktree" id="linktreeList"></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" aria-label="Kontakt">
+      <div class="container grid two">
+        <div class="card pad">
+          <h2 class="section-title" id="contactTitle">Schreib eine Nachricht</h2>
+          <form id="contactForm" method="POST">
+            <input type="text" name="name" placeholder="Dein Name" required />
+            <input type="email" name="email" placeholder="Deine E‑Mail" required />
+            <textarea name="message" rows="5" placeholder="Nachricht" required></textarea>
+            <button class="btn primary" type="submit">Absenden</button>
+            <small class="section-sub" id="contactConsent">Mit dem Absenden stimmst du der Verarbeitung gemäß Datenschutz zu.</small>
+          </form>
+        </div>
+        <div class="card pad">
+          <h3 class="section-title">Booking & Presse</h3>
+          <p>E‑Mail: <a id="pressEmail" href="mailto:mgmt@gabrielbenedek.com">mgmt@gabrielbenedek.com</a></p>
+          <p>Management: <span id="mgmtName">—</span></p>
+          <p>Adresse: <span id="mgmtAddr">—</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- IMPRESSUM / DATENSCHUTZ -->
+    <section id="impressum" aria-label="Impressum & Datenschutz">
+      <div class="container grid two">
+        <div class="card pad">
+          <h2 class="section-title" id="impressumTitle">Impressum</h2>
+          <p><strong>Verantwortlich:</strong><br><span id="impName">Gabriel Benedek</span><br><span id="impAddr">[Straße, PLZ Ort, Schweiz]</span><br>E‑Mail: <a id="impEmail" href="mailto:mgmt@gabrielbenedek.com">mgmt@gabrielbenedek.com</a></p>
+          <p>Umsatzsteuer-ID / CHE (falls vorhanden): <span id="impVat">—</span></p>
+          <p>Inhaltlich Verantwortlicher gem. § 55 Abs. 2 RStV (DE, falls anwendbar): <span id="impResp">—</span></p>
+        </div>
+        <div class="card pad">
+          <h2 class="section-title" id="privacyTitle">Datenschutz (Kurz)</h2>
+          <p>Diese Website verarbeitet nur die Daten, die du im Kontaktformular eingibst. Externe Einbettungen (Spotify/YouTube) werden erst nach deinem Klick geladen. Details siehe vollständige <a href="#" id="ppLink">Datenschutzerklärung</a>.</p>
+          <div class="cookie" id="cookie">
+            <p id="cookieText">Wir verwenden technisch notwendige Cookies. Externe Medien werden erst nach deiner Zustimmung geladen.</p>
+            <div class="cta-row" style="justify-content:flex-start;">
+              <button class="btn" id="acceptAll">Externe Medien erlauben</button>
+              <button class="btn" id="dismiss">Nur notwendige</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="socials" id="footerSocials"></div>
+      <p style="margin-top:1rem;">© <span id="year"></span> <span id="footerArtist">Gabriel Benedek</span> · All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- SIMPLE CONFIG (edit here) -->
+  <script>
+    const CONFIG = {
+      artist: "Gabriel Benedek",
+      tagline: "Singer · Songwriter · Guitar",
+      heroImage: "https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1600&auto=format&fit=crop",
+      aboutText: "Gabriel Benedek ist ein in Zürich ansässiger Singer/Songwriter. Ehrliche Texte, warme Gitarren und eine Stimme, die hängen bleibt. Neue EP \"City Lights\" erscheint bald.",
+      bookingEmail: "mgmt@gabrielbenedek.com",
+      pressEmail: "mgmt@gabrielbenedek.com",
+      management: { name: "—", address: "—" },
+      epkUrl: "#", // Link zu PDF oder Google Drive/Dropbox
+      impressum: { name: "Gabriel Benedek", address: "[Straße, PLZ Ort, Schweiz]", email: "mgmt@gabrielbenedek.com", vat: "—", responsible: "—" },
+      privacyUrl: "#",
+      // === ASSETS (put your image files here) ===
+      // Folder structure suggestion:
+      // - assets/other/   -> banner.jpg, artist.jpg (about)
+      // - assets/gallery/ -> g1.jpg, g2.jpg, ... (gallery images)
+      assets: {
+        otherDir: "assets/other/",
+        galleryDir: "assets/gallery/",
+        bannerFile: "banner.jpg",
+        aboutFile: "artist.jpg",
+        galleryFiles: ["g (1).jpg","g (2).jpg","g (3).jpg","g (4).jpg","g (5).jpg","g (6).jpg","g (7).jpg","g (8).jpg","g (9).jpg","g (10).jpg","g (11).jpg","g (12).jpg","g (13).jpg","g (14).jpg"]
+      },
+      socials: [
+        { name: "Instagram", url: "https://www.instagram.com/gabrielbenedek_official/", icon: "mdi:instagram" },
+        { name: "Spotify",   url: "https://open.spotify.com/intl-de/artist/0BBZxotcIVnEEPhjA4iSiu", icon: "mdi:spotify" },
+        { name: "YouTube",   url: "https://www.youtube.com/@GabrielBenedek/featured", icon: "mdi:youtube" },
+        { name: "E‑Mail",    url: "mailto:mgmt@gabrielbenedek.com", icon: "mdi:email" }
+      ],
+      linktree: [
+        { label: "🎧 Spotify",           url: "https://open.spotify.com/intl-de/artist/0BBZxotcIVnEEPhjA4iSiu", highlight: true },
+        { label: "▶️ YouTube",           url: "https://www.youtube.com/@GabrielBenedek/featured" },
+        { label: "🎵 YouTube Music",     url: "https://music.youtube.com/channel/UC0RxibqX7b6CnxNWmxG0JJw" },
+        { label: "📸 Instagram",         url: "https://www.instagram.com/gabrielbenedek_official/" },
+        { label: "🌐 All platforms",     url: "https://gabrielbenedek.lnk.to/LostInYou?prerelease_service=SpotifyPreRelease&prerelease_result=success&has_email=1&notification_id=86de4e88-a0a8-5d8e-879c-063887d8902b&fbclid=PAZXh0bgNhZW0CMTEAAaeoyxVCiyuursO5Ama7PnyXw-VwkG8sWZmxf6lpCJKnMG9lnm5Mv32Mudw0iw_aem_5KfkixLe0iyAA3G9h675VA" },
+        { label: "🎫 Tickets & Tour",    url: "#tours" },
+        { label: "📰 EPK / Presse",      url: "#" }
+      ],
+      embeds: {
+        spotify: "https://open.spotify.com/embed/artist/0BBZxotcIVnEEPhjA4iSiu", // ersetze mit echter Embed-URL
+        youtube: "https://www.youtube.com/embed/dQw4w9WgXcQ" // ersetze mit Video-ID / Playlist
+      },
+      tour: {
+        source: "local", // "local" | "bandsintown" | "csv"
+        bandsintownId: "", // z.B. GabrielBenedek
+        csvUrl: "", // optional: veröffentlichte Google Sheet CSV URL
+        items: [
+          { date: "2025-10-12", city: "Zürich, CH", venue: "Mascotte", url: "#" },
+          { date: "2025-11-04", city: "Basel, CH", venue: "Kaserne", url: "#" },
+          { date: "2026-01-18", city: "München, DE", venue: "Muffathalle", url: "#" }
+        ]
+      },
+      gallery: [
+        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1200&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1516048015710-1cad4dd3ed4c?q=80&w=1200&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1516927001710-81e1e0e62d1e?q=80&w=1200&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1496372412473-e8548ffd82bc?q=80&w=1200&auto=format&fit=crop"
+      ],
+      contact: { provider: "formsubmit", endpoint: "https://formsubmit.co/mgmt@gabrielbenedek.com" }
+    };
+  </script>
+
+  <!-- Scripts: UI + dynamic content -->
+  <script>
+    const $ = sel => document.querySelector(sel);
+
+    /* ========= I18N + Theme ========= */
+    const I18N = {
+      de: {
+        nav: { start: 'Start', about: 'Über', music: 'Musik', tours: 'Tours & Gigs', gallery: 'Galerie', links: 'Links', contact: 'Kontakt', impressum: 'Impressum' },
+        cta: { tickets: 'Tickets & Termine', listen: 'Jetzt reinhören' },
+        titles: { about: 'Über Gabriel', music: 'Musik & Videos', tours: 'Tours & Gigs', gallery: 'Galerie', links: 'Links', contact: 'Schreib eine Nachricht', impressum: 'Impressum', privacy: 'Datenschutz (Kurz)' },
+        subs: {
+          music: 'Externe Medien werden erst nach Zustimmung geladen (Datenschutz). Klicke unten, um Spotify/YouTube einzublenden.',
+          tours: 'Alle bestätigten Termine. Folge den Links für Tickets & Infos.',
+          links: 'Alle wichtigen Kanäle auf einen Blick – perfekt für Bio-Links.',
+          contactConsent: 'Mit dem Absenden stimmst du der Verarbeitung gemäß Datenschutz zu.'
+        },
+        tour: { thDate: 'Datum', thCity: 'Stadt', thVenue: 'Venue', ticketsBtn: 'Tickets', none: 'Keine Termine verfügbar.', source: 'Quelle' },
+        contact: { namePh: 'Dein Name', emailPh: 'Deine E‑Mail', msgPh: 'Nachricht', send: 'Absenden' },
+        cookie: { text: 'Wir verwenden technisch notwendige Cookies. Externe Medien werden erst nach deiner Zustimmung geladen.', allow: 'Externe Medien erlauben', dismiss: 'Nur notwendige' }
+      },
+      en: {
+        nav: { start: 'Start', about: 'About', music: 'Music', tours: 'Tours & Gigs', gallery: 'Gallery', links: 'Links', contact: 'Contact', impressum: 'Imprint' },
+        cta: { tickets: 'Tickets & Dates', listen: 'Listen now' },
+        titles: { about: 'About Gabriel', music: 'Music & Videos', tours: 'Tours & Gigs', gallery: 'Gallery', links: 'Links', contact: 'Send a message', impressum: 'Imprint', privacy: 'Privacy (short)' },
+        subs: {
+          music: 'External media only load after consent (privacy). Click below to load Spotify/YouTube.',
+          tours: 'All confirmed dates. Follow the links for tickets & info.',
+          links: 'All key channels at a glance — perfect for link-in-bio.',
+          contactConsent: 'By sending, you agree to data processing as described in the privacy policy.'
+        },
+        tour: { thDate: 'Date', thCity: 'City', thVenue: 'Venue', ticketsBtn: 'Tickets', none: 'No dates available.', source: 'Source' },
+        contact: { namePh: 'Your name', emailPh: 'Your email', msgPh: 'Message', send: 'Send' },
+        cookie: { text: 'We use essential cookies. External media only load after your consent.', allow: 'Allow external media', dismiss: 'Essentials only' }
+      },
+      fr: {
+        nav: { start: 'Accueil', about: 'À propos', music: 'Musique', tours: 'Concerts', gallery: 'Galerie', links: 'Liens', contact: 'Contact', impressum: 'Mentions' },
+        cta: { tickets: 'Billets & dates', listen: 'Écouter maintenant' },
+        titles: { about: 'À propos de Gabriel', music: 'Musique & vidéos', tours: 'Concerts', gallery: 'Galerie', links: 'Liens', contact: 'Envoyer un message', impressum: 'Mentions légales', privacy: 'Protection des données (court)' },
+        subs: {
+          music: 'Les médias externes ne se chargent qu’après votre consentement (protection des données). Cliquez ci‑dessous pour afficher Spotify/YouTube.',
+          tours: 'Toutes les dates confirmées. Suivez les liens pour billets & infos.',
+          links: 'Tous les canaux importants en un coup d’œil – idéal pour le lien‑in‑bio.',
+          contactConsent: 'En envoyant, vous acceptez le traitement des données selon la politique de confidentialité.'
+        },
+        tour: { thDate: 'Date', thCity: 'Ville', thVenue: 'Salle', ticketsBtn: 'Billets', none: 'Aucune date disponible.', source: 'Source' },
+        contact: { namePh: 'Votre nom', emailPh: 'Votre e‑mail', msgPh: 'Message', send: 'Envoyer' },
+        cookie: { text: 'Nous utilisons des cookies nécessaires. Les médias externes ne se chargent qu’après votre consentement.', allow: 'Autoriser les médias externes', dismiss: 'Essentiels seulement' }
+      },
+      it: {
+        nav: { start: 'Home', about: 'Info', music: 'Musica', tours: 'Concerti', gallery: 'Galleria', links: 'Link', contact: 'Contatto', impressum: 'Note legali' },
+        cta: { tickets: 'Biglietti & date', listen: 'Ascolta ora' },
+        titles: { about: 'Info su Gabriel', music: 'Musica & video', tours: 'Concerti', gallery: 'Galleria', links: 'Link', contact: 'Scrivi un messaggio', impressum: 'Note legali', privacy: 'Protezione dati (breve)' },
+        subs: {
+          music: 'I media esterni si caricano solo dopo il consenso (privacy). Clicca sotto per mostrare Spotify/YouTube.',
+          tours: 'Tutte le date confermate. Segui i link per biglietti e info.',
+          links: 'Tutti i canali principali in un colpo d’occhio — perfetto per link‑in‑bio.',
+          contactConsent: 'Inviando accetti il trattamento dei dati secondo l’informativa.'
+        },
+        tour: { thDate: 'Data', thCity: 'Città', thVenue: 'Locale', ticketsBtn: 'Biglietti', none: 'Nessuna data disponibile.', source: 'Fonte' },
+        contact: { namePh: 'Il tuo nome', emailPh: 'La tua e‑mail', msgPh: 'Messaggio', send: 'Invia' },
+        cookie: { text: 'Utilizziamo cookie necessari. I media esterni si caricano solo dopo il consenso.', allow: 'Consenti media esterni', dismiss: 'Solo necessari' }
+      }
+    };
+
+    function t(path){
+      const parts = path.split('.');
+      let ref = I18N[CURRENT_LANG] || I18N.de;
+      for(const p of parts){ ref = ref?.[p]; if(ref == null) break; }
+      return ref || path;
+    }
+
+    let CURRENT_LANG = (localStorage.getItem('lang') || 'de');
+
+    function applyLang(){
+      document.documentElement.lang = CURRENT_LANG;
+      // Nav
+      $('#navStart').textContent = t('nav.start');
+      $('#navAbout').textContent = t('nav.about');
+      $('#navMusic').textContent = t('nav.music');
+      $('#navTours').textContent = t('nav.tours');
+      $('#navGallery').textContent = t('nav.gallery');
+      $('#navLinks').textContent = t('nav.links');
+      $('#navContact').textContent = t('nav.contact');
+      $('#navImpressum').textContent = t('nav.impressum');
+      // Hero CTAs
+      $('#ctaTickets').textContent = t('cta.tickets');
+      $('#ctaListen').textContent = t('cta.listen');
+      // Titles
+      $('#aboutTitle').textContent = t('titles.about');
+      $('#musicTitle').textContent = t('titles.music');
+      $('#toursTitle').textContent = t('titles.tours');
+      $('#galleryTitle').textContent = t('titles.gallery');
+      $('#linksTitle').textContent = t('titles.links');
+      $('#contactTitle').textContent = t('titles.contact');
+      $('#impressumTitle').textContent = t('titles.impressum');
+      $('#privacyTitle').textContent = t('titles.privacy');
+      // Subs
+      $('#musicSub').textContent = t('subs.music');
+      const thd = $('#tourHelp'); if (thd) thd.textContent = t('subs.tours');
+      $('#linksSub').textContent = t('subs.links');
+      $('#contactConsent').textContent = t('subs.contactConsent');
+      // Tour table headers
+      $('#thDate').textContent = t('tour.thDate');
+      $('#thCity').textContent = t('tour.thCity');
+      $('#thVenue').textContent = t('tour.thVenue');
+      // Tickets button text in rows
+      document.querySelectorAll('#tourBody a.btn').forEach(b => b.textContent = t('tour.ticketsBtn'));
+      // Empty state
+      const emptyCell = document.querySelector('#tourBody td[colspan]');
+      if (emptyCell) emptyCell.textContent = t('tour.none');
+      // Source badge
+      const srcMap = { de: {local:'lokal', csv:'CSV', bandsintown:'Bandsintown'}, en:{local:'local', csv:'CSV', bandsintown:'Bandsintown'}, fr:{local:'local', csv:'CSV', bandsintown:'Bandsintown'}, it:{local:'locale', csv:'CSV', bandsintown:'Bandsintown'} };
+      const langKey = (CURRENT_LANG in srcMap) ? CURRENT_LANG : 'en';
+      const src = (CONFIG.tour.source||'local');
+      $('#tourSourceBadge').textContent = `${t('tour.source')}: ${srcMap[langKey][src]||src}`;
+      // Contact placeholders & button
+      const f = $('#contactForm');
+      if (f){
+        f.querySelector('input[name="name"]').placeholder = t('contact.namePh');
+        f.querySelector('input[name="email"]').placeholder = t('contact.emailPh');
+        f.querySelector('textarea[name="message"]').placeholder = t('contact.msgPh');
+        const btn = f.querySelector('button[type="submit"]'); if (btn) btn.textContent = t('contact.send');
+      }
+      // Cookie
+      const c = $('#cookieText'); if (c) c.textContent = t('cookie.text');
+      const acc = $('#acceptAll'); if (acc) acc.textContent = t('cookie.allow');
+      const dis = $('#dismiss'); if (dis) dis.textContent = t('cookie.dismiss');
+      // Set select value
+      const sel = $('#langSel'); if (sel) sel.value = CURRENT_LANG;
+    }
+
+    function setLang(lang){ CURRENT_LANG = lang; localStorage.setItem('lang', lang); applyLang(); }
+
+    function setTheme(mode){ document.documentElement.setAttribute('data-theme', mode); localStorage.setItem('theme', mode); $('#themeToggle').textContent = (mode === 'light') ? '☀︎' : '☾'; }
+
+    function setupThemeAndLang(){
+      // Theme
+      const pref = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      setTheme(pref);
+      $('#themeToggle')?.addEventListener('click', () => { setTheme(document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light'); });
+      // Lang
+      $('#langSel')?.addEventListener('change', (e)=> setLang(e.target.value));
+      setLang(localStorage.getItem('lang') || 'de');
+    }
+    /* ======== END I18N + Theme ======== */
+
+    // NAV
+    const burger = document.querySelector('.burger');
+    const menu = document.getElementById('menu');
+    burger?.addEventListener('click', () => {
+      menu.classList.toggle('open');
+      const expanded = burger.getAttribute('aria-expanded') === 'true';
+      burger.setAttribute('aria-expanded', String(!expanded));
+    });
+    menu?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
+
+    // Fill from CONFIG
+    function initFromConfig() {
+      document.title = `${CONFIG.artist} — Official Site`;
+      $('#artistName').textContent = CONFIG.artist;
+      $('#footerArtist').textContent = CONFIG.artist;
+      $('#artistTag').textContent = CONFIG.tagline;
+      $('#bookingEmail').href = `mailto:${CONFIG.bookingEmail}`;
+      $('#bookingEmail').textContent = CONFIG.bookingEmail;
+      $('#pressEmail').href = `mailto:${CONFIG.pressEmail}`;
+      $('#pressEmail').textContent = CONFIG.pressEmail;
+      $('#mgmtName').textContent = CONFIG.management.name;
+      $('#mgmtAddr').textContent = CONFIG.management.address;
+      $('#epkLink').href = CONFIG.epkUrl || '#';
+      $('#ppLink').href = CONFIG.privacyUrl || '#';
+
+      // Impressum
+      $('#impName').textContent = CONFIG.impressum.name;
+      $('#impAddr').textContent = CONFIG.impressum.address;
+      $('#impEmail').href = `mailto:${CONFIG.impressum.email}`;
+      $('#impEmail').textContent = CONFIG.impressum.email;
+      $('#impVat').textContent = CONFIG.impressum.vat || '—';
+      $('#impResp').textContent = CONFIG.impressum.responsible || '—';
+
+      // About text & hero image
+      $('#aboutText').textContent = CONFIG.aboutText;
+      const heroEl = document.querySelector('.hero img');
+      if (CONFIG.assets && CONFIG.assets.bannerFile) {
+        heroEl.src = (CONFIG.assets.otherDir || '') + CONFIG.assets.bannerFile;
+      } else {
+        heroEl.src = CONFIG.heroImage;
+      }
+      const aboutEl = document.querySelector('.about-img');
+      if (CONFIG.assets && CONFIG.assets.aboutFile) {
+        aboutEl.src = (CONFIG.assets.otherDir || '') + CONFIG.assets.aboutFile;
+      }
+
+      // Socials
+      const socials = CONFIG.socials.map(s => socialChip(s.name, s.url)).join('');
+      $('#socials').innerHTML = socials;
+      $('#footerSocials').innerHTML = socials;
+
+      // Gallery
+      let galleryList = CONFIG.gallery;
+      if (CONFIG.assets && CONFIG.assets.galleryFiles && CONFIG.assets.galleryFiles.length) {
+        const base = CONFIG.assets.galleryDir || '';
+        galleryList = CONFIG.assets.galleryFiles.map(f => base + f);
+      }
+      const g = (galleryList || []).map(src => `<img src="${src}" alt="Konzertfoto" loading="lazy">`).join('');
+      $('#galleryGrid').innerHTML = g;
+
+      // Contact form
+      const form = $('#contactForm');
+      if (CONFIG.contact.provider === 'formspree' && CONFIG.contact.endpoint) {
+        form.action = CONFIG.contact.endpoint;
+      } else if (CONFIG.contact.provider === 'formsubmit' && CONFIG.contact.endpoint) {
+        form.action = CONFIG.contact.endpoint;
+        form.method = 'POST';
+        form.insertAdjacentHTML('beforeend','<input type="hidden" name="_captcha" value="false"><input type="hidden" name="_subject" value="New message from website"><input type="hidden" name="_next" value="#contact">');
+      } else {
+        form.addEventListener('submit', (e) => { e.preventDefault(); alert('Formularziel noch nicht konfiguriert.'); });
+      }
+
+      // Tours
+      loadTours();
+
+      // Linktree
+      renderLinktree();
+
+      // Footer year
+      $('#year').textContent = new Date().getFullYear();
+    }
+
+    function socialChip(name, url){
+      const icon = {
+        Instagram: svg('M12 2.2c-2.7 0-3 .01-4.05.06-1.05.05-1.77.22-2.4.47-.65.25-1.2.6-1.74 1.14-.54.54-.89 1.09-1.14 1.74-.25.63-.42 1.35-.47 2.4C2.2 9 2.2 9.3 2.2 12s.01 3 .06 4.05.22 1.77.47 2.4c.25.65.6 1.2 1.14 1.74.54.54 1.09.89 1.74 1.14.63.25 1.35.42 2.4.47 1.05.05 1.35.06 4.05.06s3-.01 4.05-.06 1.77-.22 2.4-.47c.65-.25 1.2-.6 1.74-1.14.54-.54.89-1.09 1.14-1.74.25-.63.42-1.35.47-2.4.05-1.05.06-1.35.06-4.05s-.01-3-.06-4.05-.22-1.77-.47-2.4a4.8 4.8 0 0 0-1.14-1.74 4.8 4.8 0 0 0-1.74-1.14c-.63-.25-1.35-.42-2.4-.47C15 2.21 14.7 2.2 12 2.2Zm0 1.8c2.67 0 2.98.01 4.03.06.97.05 1.5.2 1.85.33.47.18.8.39 1.15.73.34.35.55.68.73 1.15.13.35.28.88.33 1.85.05 1.05.06 1.36.06 4.03s-.01 2.98-.06 4.03c-.05.97-.2 1.5-.33 1.85-.18.47-.39.8-.73 1.15-.35.34-.68.55-1.15.73-.35.13-.88.28-1.85.33-1.05.05-1.36.06-4.03.06s-2.98-.01-4.03-.06c-.97-.05-1.5-.2-1.85-.33a3.1 3.1 0 0 1-1.15-.73 3.1 3.1 0 0 1-.73-1.15c-.13-.35-.28-.88-.33-1.85C3.99 14.98 3.98 14.67 3.98 12s.01-2.98.06-4.03c.05-.97.2-1.5.33-1.85.18-.47.39-.8.73-1.15.35-.34.68-.55 1.15-.73.35-.13.88-.28 1.85-.33C9.02 4.01 9.33 4 12 4Zm0 2.8a5.2 5.2 0 1 0 0 10.4 5.2 5.2 0 0 0 0-10.4Zm0 2a3.2 3.2 0 1 1 0 6.4 3.2 3.2 0 0 1 0-6.4Zm5.6-2.24a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4Z'),
+        Spotify: svg('M9.5 2C5.36 2 2 5.36 2 9.5S5.36 17 9.5 17 17 13.64 17 9.5 13.64 2 9.5 2Zm3.9 10.77a.74.74 0 0 1-1.02.25c-2.8-1.7-6.33-2.1-10.5-1.18a.75.75 0 1 1-.32-1.46c4.52-1 8.4-.56 11.49 1.29.35.21.46.66.26 1.01Zm.86-2.53a.9.9 0 0 1-1.24.3C9.69 8.49 6.3 8.1 3.1 8.82a.9.9 0 0 1-.39-1.76c3.58-.8 7.35-.37 10.7 1.4.44.24.6.79.35 1.18Zm.14-2.65c-3.07-1.72-7.52-1.88-10.23-1.28a1.05 1.05 0 1 1-.43-2.07c3.16-.66 8.15-.47 11.67 1.49a1.05 1.05 0 1 1-1.01 1.86Z'),
+        YouTube: svg('M2.5 5.5C2.5 4.12 3.62 3 5 3h10c1.38 0 2.5 1.12 2.5 2.5v7c0 1.38-1.12 2.5-2.5 2.5H5A2.5 2.5 0 0 1 2.5 12.5v-7Zm6.86 1.64v5.72l4.9-2.86-4.9-2.86Z'),
+        TikTok: svg('M11 2h2.5c.2 1.34 1.18 2.9 3.2 3.3V8.2c-1.36-.07-2.68-.47-3.7-1.15v4.95A4.99 4.99 0 1 1 8 7.2v2.38a2.5 2.5 0 1 0 3.01 2.44L11 2Z'),
+        'E‑Mail': svg('M3 5h14a1 1 0 0 1 .8.4L10 11 2.2 5.4A1 1 0 0 1 3 5Zm15 1.2-8 6-8-6V15a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V6.2Z')
+      }[name] || '';
+      return `<a href="${url}" target="_blank" rel="noopener">${icon}<span>${name}</span></a>`;
+    }
+
+    function svg(path){
+      return `<svg aria-hidden="true" width="18" height="18" viewBox="0 0 20 20" fill="currentColor"><path d="${path}"/></svg>`;
+    }
+
+    function renderLinktree(){
+      const list = (CONFIG.linktree && CONFIG.linktree.length)
+        ? CONFIG.linktree
+        : (CONFIG.socials || []).map(s => ({ label: s.name, url: s.url }));
+      const html = list.map(i => `<a class="link-btn ${i.highlight ? 'highlight' : ''}" href="${i.url}" target="_blank" rel="noopener"><span>${i.label}</span></a>`).join('');
+      const host = document.getElementById('linktreeList');
+      if (host) host.innerHTML = html;
+    }
+
+    // Tours loader
+    async function loadTours(){
+      const { source, items, csvUrl, bandsintownId } = CONFIG.tour;
+      $('#tourSourceBadge').textContent = `Quelle: ${source}`;
+      let data = [];
+      try {
+        if (source === 'local') data = items;
+        else if (source === 'csv' && csvUrl) data = await fetchCsv(csvUrl);
+        else if (source === 'bandsintown' && bandsintownId) data = await bandsintownData(bandsintownId);
+      } catch (e) { console.error(e); }
+      renderTours(data);
+    }
+
+    function renderTours(list){
+      const tbody = $('#tourBody');
+      if (!list || !list.length) { tbody.innerHTML = `<tr><td colspan="4">Keine Termine verfügbar.</td></tr>`; return; }
+      const fmt = new Intl.DateTimeFormat('de-CH', { dateStyle: 'medium' });
+      tbody.innerHTML = list.map(ev => {
+        const d = new Date(ev.date);
+        const date = isNaN(d) ? ev.date : fmt.format(d);
+        const btn = ev.url ? `<a class=\"btn\" href=\"${ev.url}\" target=\"_blank\" rel=\"noopener\">Tickets</a>` : '';
+        return `<tr><td>${date}</td><td>${ev.city || ''}</td><td>${ev.venue || ''}</td><td>${btn}</td></tr>`;
+      }).join('');
+    }
+
+    async function fetchCsv(url){
+      const text = await fetch(url).then(r=>r.text());
+      const rows = text.trim().split(/\r?\n/).map(r => r.split(','));
+      const [head, ...rest] = rows;
+      return rest.map(r => Object.fromEntries(r.map((v,i)=>[head[i].trim().toLowerCase(), v.trim()]))).map(o => ({
+        date: o.date || o.datum || '',
+        city: o.city || o.stadt || '',
+        venue: o.venue || o.ort || '',
+        url: o.url || o.tickets || ''
+      }));
+    }
+
+    async function bandsintownData(artist){
+      // Simple client-side embed alternative: let user include Bandsintown widget manually if API not available.
+      // Here we just link to the Bandsintown page.
+      $('#tourCard').insertAdjacentHTML('beforeend', `<p class="section-sub">Detaillierte Einbindung via Bandsintown Widget empfohlen.</p>`);
+      return CONFIG.tour.items; // fallback to local list
+    }
+
+    // Embeds with consent
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-embed]');
+      if (!btn) return;
+      const type = btn.dataset.embed;
+      const target = type === 'spotify' ? '#spotifyEmbed' : '#youtubeEmbed';
+      const src = type === 'spotify' ? CONFIG.embeds.spotify : CONFIG.embeds.youtube;
+      if (!src) return alert('Embed-URL fehlt in der Konfiguration.');
+      const html = type === 'spotify'
+        ? `<iframe style="border-radius:12px" src="${src}" width="100%" height="352" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>`
+        : `<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;border:1px solid rgba(255,255,255,.08)"><iframe src="${src}" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
+      document.querySelector(target).outerHTML = html;
+    });
+
+    // Simple cookie/consent banner
+    const cookieBox = $('#cookie');
+    const ACCEPT_KEY = 'ext-media-ok';
+    function showCookie(){ if (!localStorage.getItem(ACCEPT_KEY)) cookieBox.classList.add('show'); }
+    $('#acceptAll')?.addEventListener('click', () => { localStorage.setItem(ACCEPT_KEY, '1'); cookieBox.remove(); });
+    $('#dismiss')?.addEventListener('click', () => cookieBox.remove());
+
+    // Smooth scroll offset for sticky header
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href');
+        if (id.length > 1) {
+          const el = document.querySelector(id);
+          if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+        }
+      });
+    });
+
+    // Init
+    initFromConfig();
+    showCookie();
+    setupThemeAndLang();
+    applyLang();
+    (function linksOnlyMode(){
+      const p = new URLSearchParams(location.search);
+      if (p.get('links') === '1' || location.hash === '#links-only'){
+        const hide = ['.hero','#about','#music','#tours','#gallery','#contact','#impressum','footer'];
+        hide.forEach(sel => { const el = document.querySelector(sel); if (el) el.style.display = 'none'; });
+        const nav = document.querySelector('nav ul'); if (nav) nav.style.display='none';
+        const links = document.getElementById('links'); if (links) links.style.paddingTop='6rem';
+        location.hash = '#links';
+      }
+    })();
+  </script>
+
+  <!-- Structured data (basic) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Gabriel Benedek",
+    "jobTitle": "Singer-Songwriter",
+    "address": {"@type":"PostalAddress","addressCountry":"CH"},
+    "url": "",
+    "sameAs": ["https://instagram.com/", "https://youtube.com/", "https://open.spotify.com/"]
+  }
+  </script>
+</body>
+</html>
