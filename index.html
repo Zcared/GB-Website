@@ -1,5 +1,4 @@
 <!doctype html>
-
 <html lang="de">
 <head>
   <meta charset="utf-8" />
@@ -8,7 +7,7 @@
   <meta name="description" content="Offizielle Website von Gabriel Benedek – Singer/Songwriter. Tourdaten, Musik, Videos, Kontakt, Pressekit." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
   <meta property="og:title" content="Gabriel Benedek — Official Site" />
   <meta property="og:description" content="Tourdaten, Musik und mehr." />
   <meta property="og:type" content="website" />
@@ -69,11 +68,17 @@
     .hero img { width:100%; height: min(72vh, 680px); object-fit: cover; object-position: 50% 40%; filter: grayscale(.1) contrast(1.05) saturate(1.1); }
     .hero .content { padding: min(12vw, 6rem) 0 3rem; text-align:center; }
     .eyebrow { display:inline-block; padding:.25rem .6rem; border:1px solid rgba(255,255,255,.14); border-radius:999px; font-size:.8rem; color:var(--muted); }
-    h1 { font-family: "Playfair Display", serif; font-weight:700; font-size: clamp(2.2rem, 5vw, 4rem); margin:.8rem 0 .4rem; letter-spacing:.4px; }
     .tagline { font-size: clamp(1rem, 2.2vw, 1.25rem); color: var(--muted); max-width: 60ch; margin: 0 auto; }
     .cta-row { display:flex; gap:.8rem; justify-content:center; margin-top:1.2rem; flex-wrap:wrap; }
     .btn { display:inline-flex; align-items:center; gap:.5rem; padding:.75rem 1rem; border-radius:12px; font-weight:700; border:1px solid rgba(255,255,255,.14); background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04)); box-shadow: var(--shadow); }
     .btn.primary { border-color: transparent; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color:#0b0b10; }
+
+    /* Wordmark (typographic fallback) */
+    .wordmark { display:grid; line-height:.9; margin:.8rem auto .4rem; }
+    .wordmark .top{ font-weight:900; letter-spacing:.04em; font-size: clamp(2.2rem, 6vw, 4rem); }
+    .wordmark .bottom{ font-weight:900; letter-spacing:.04em; font-size: clamp(2.2rem, 6vw, 4rem); color:transparent; -webkit-text-stroke: 2px var(--ink); text-stroke: 2px var(--ink); }
+    [data-theme="light"] .wordmark .bottom{ -webkit-text-stroke-color:#0b0b10; text-stroke-color:#0b0b10; }
+    .wordmark-img{ width:min(90%, 560px); margin:.8rem auto .4rem; display:block; }
 
     /* Sections */
     section { padding: 3.5rem 0; }
@@ -86,9 +91,7 @@
     .pad { padding: 1.2rem; }
 
     /* About */
-    .about-img { width: 100%;  height: auto; border-bottom: 1px solid rgba(255,255,255,.06);}
-    
-    /* Fix: ensure About section sits above hero on desktop (prevents clipping) */
+    .about-img { width:100%; aspect-ratio: 4 / 3; object-fit: cover; border-bottom:1px solid rgba(255,255,255,.06); }
     #about { position: relative; z-index: 2; }
 
     /* Music embeds */
@@ -142,14 +145,14 @@
       <button class="burger" aria-expanded="false" aria-controls="menu">☰ Menü</button>
       <nav>
         <ul id="menu">
-          <li><a id="navStart" href="#start">Start<\/a><\/li>
-          <li><a id="navAbout" href="#about">Über<\/a><\/li>
-          <li><a id="navMusic" href="#music">Musik<\/a><\/li>
-          <li><a id="navTours" href="#tours">Tours&nbsp;&amp;&nbsp;Gigs<\/a><\/li>
-          <li><a id="navGallery" href="#gallery">Galerie<\/a><\/li>
-          <li><a id="navLinks" href="#links">Links<\/a><\/li>
-          <li><a id="navContact" href="#contact">Kontakt<\/a><\/li>
-          <li><a id="navImpressum" href="#impressum">Impressum<\/a><\/li>
+          <li><a id="navStart" href="#start">Start</a></li>
+          <li><a id="navAbout" href="#about">Über</a></li>
+          <li><a id="navMusic" href="#music">Musik</a></li>
+          <li><a id="navTours" href="#tours">Tours &amp; Gigs</a></li>
+          <li><a id="navLinks" href="#links">Links</a></li>
+          <li><a id="navGallery" href="#gallery">Galerie</a></li>
+          <li><a id="navContact" href="#contact">Kontakt</a></li>
+          <li><a id="navImpressum" href="#impressum">Impressum</a></li>
         </ul>
       </nav>
       <div class="controls">
@@ -159,7 +162,7 @@
           <option value="fr">FR</option>
           <option value="it">IT</option>
         </select>
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☾</button>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">☾</button>
       </div>
     </div>
   </header>
@@ -171,8 +174,8 @@
         <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1600&auto=format&fit=crop" alt="Bühnenlicht und Gitarre" />
       </div>
       <div class="container content">
-        <span class="eyebrow">Official</span>
-        <h1 id="artistName">Gabriel Benedek</h1>
+        <span class="eyebrow" id="heroEyebrow">Official</span>
+        <div id="heroTitle"></div>
         <p class="tagline" id="artistTag">Singer · Songwriter · Guitar</p>
         <div class="cta-row">
           <a class="btn primary" id="ctaTickets" href="#tours">Tickets & Termine</a>
@@ -192,7 +195,7 @@
           </div>
         </div>
         <div class="card pad">
-          <h3 class="section-title">Schnellinfos</h3>
+          <h3 class="section-title" id="quickTitle">Schnellinfos</h3>
           <ul id="quickFacts">
             <li>Swiss Artist🇨🇭with Irish/Hungarian roots</li>
             <li>Label: <a href="https://www.instagram.com/universalmusicswitzerland/" target="_blank" rel="noopener">@universalmusicswitzerland</a></li>
@@ -218,14 +221,14 @@
           <div class="card pad">
             <h3>Spotify</h3>
             <div id="spotifyEmbed" class="embed-placeholder">
-              <p>Spotify-Player laden?</p>
+              <p id="spotifyAsk">Spotify-Player laden?</p>
               <button class="btn" data-embed="spotify">Einblenden</button>
             </div>
           </div>
           <div class="card pad">
             <h3>YouTube</h3>
             <div id="youtubeEmbed" class="embed-placeholder">
-              <p>YouTube-Video laden?</p>
+              <p id="youtubeAsk">YouTube-Video laden?</p>
               <button class="btn" data-embed="youtube">Einblenden</button>
             </div>
           </div>
@@ -237,7 +240,7 @@
     <section id="tours" aria-label="Tours & Gigs">
       <div class="container">
         <h2 class="section-title" id="toursTitle">Tours & Gigs</h2>
-        <p class="section-sub">Alle bestätigten Termine. Folge den Links für Tickets & Infos.</p>
+        <p class="section-sub" id="toursSub">Alle bestätigten Termine. Folge den Links für Tickets & Infos.</p>
         <div class="card pad" id="tourCard">
           <table aria-describedby="tourHelp">
             <thead>
@@ -260,20 +263,20 @@
       </div>
     </section>
 
-    <!-- GALLERY -->
-    <section id="gallery" aria-label="Galerie">
-      <div class="container">
-        <h2 class="section-title" id="galleryTitle">Galerie</h2>
-        <div class="gallery" id="galleryGrid"></div>
-      </div>
-    </section>
-
     <!-- LINKS / LINKTREE -->
     <section id="links" aria-label="Links">
       <div class="container">
         <h2 class="section-title" id="linksTitle">Links</h2>
         <p class="section-sub" id="linksSub">Alle wichtigen Kanäle auf einen Blick – perfekt für Bio-Links.</p>
         <div class="linktree" id="linktreeList"></div>
+      </div>
+    </section>
+
+    <!-- GALLERY (below Links) -->
+    <section id="gallery" aria-label="Galerie">
+      <div class="container">
+        <h2 class="section-title" id="galleryTitle">Galerie</h2>
+        <div class="gallery" id="galleryGrid"></div>
       </div>
     </section>
 
@@ -343,16 +346,14 @@
       epkUrl: "#", // Link zu PDF oder Google Drive/Dropbox
       impressum: { name: "Gabriel Benedek", address: "[Straße, PLZ Ort, Schweiz]", email: "mgmt@gabrielbenedek.com", vat: "—", responsible: "—" },
       privacyUrl: "#",
-      // === ASSETS (put your image files here) ===
-      // Folder structure suggestion:
-      // - assets/other/   -> banner.jpg, artist.jpg (about)
-      // - assets/gallery/ -> g1.jpg, g2.jpg, ... (gallery images)
+      // === ASSETS ===
       assets: {
         otherDir: "assets/other/",
         galleryDir: "assets/gallery/",
         bannerFile: "banner.jpg",
         aboutFile: "artist.jpg",
-        galleryFiles: ["g (1).jpg","g (2).jpg","g (3).jpg","g (4).jpg","g (5).jpg","g (6).jpg","g (7).jpg","g (8).jpg","g (9).jpg","g (10).jpg","g (11).jpg","g (12).jpg","g (13).jpg","g (14).jpg"]
+        wordmarkFile: "", // optional: z.B. wordmark.png – wenn leer, Typo-Wordmark wird gerendert
+        galleryFiles: ["g1.jpg","g2.jpg","g3.jpg","g4.jpg"]
       },
       socials: [
         { name: "Instagram", url: "https://www.instagram.com/gabrielbenedek_official/", icon: "mdi:instagram" },
@@ -370,13 +371,13 @@
         { label: "📰 EPK / Presse",      url: "#" }
       ],
       embeds: {
-        spotify: "https://open.spotify.com/embed/artist/0BBZxotcIVnEEPhjA4iSiu", // ersetze mit echter Embed-URL
-        youtube: "https://www.youtube.com/watch?v=yzzXvjFCyaE/" // ersetze mit Video-ID / Playlist
+        spotify: "https://open.spotify.com/embed/artist/0BBZxotcIVnEEPhjA4iSiu",
+        youtube: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" // beliebige watch/youtu.be – wird automatisch zu /embed konvertiert
       },
       tour: {
-        source: "local", // "local" | "bandsintown" | "csv"
-        bandsintownId: "", // z.B. GabrielBenedek
-        csvUrl: "", // optional: veröffentlichte Google Sheet CSV URL
+        source: "local",
+        bandsintownId: "",
+        csvUrl: "",
         items: [
           { date: "2025-10-12", city: "Zürich, CH", venue: "Mascotte", url: "#" },
           { date: "2025-11-04", city: "Basel, CH", venue: "Kaserne", url: "#" },
@@ -389,7 +390,49 @@
         "https://images.unsplash.com/photo-1516927001710-81e1e0e62d1e?q=80&w=1200&auto=format&fit=crop",
         "https://images.unsplash.com/photo-1496372412473-e8548ffd82bc?q=80&w=1200&auto=format&fit=crop"
       ],
-      contact: { provider: "formsubmit", endpoint: "https://formsubmit.co/mgmt@gabrielbenedek.com" }
+      contact: { provider: "formsubmit", endpoint: "https://formsubmit.co/mgmt@gabrielbenedek.com" },
+
+      /* === Multilingual free-texts === */
+      i18n: {
+        tagline: {
+          de: "Singer · Songwriter · Guitar",
+          en: "Singer · Songwriter · Guitar",
+          fr: "Chanteur · Auteur-compositeur · Guitare",
+          it: "Cantante · Cantautore · Chitarra"
+        },
+        aboutText: {
+          de: 'Gabriel Benedek ist ein in Zürich ansässiger Singer/Songwriter. Ehrliche Texte, warme Gitarren und eine Stimme, die hängen bleibt. Neue EP "City Lights" erscheint bald.',
+          en: 'Gabriel Benedek is a Zurich-based singer/songwriter. Honest lyrics, warm guitars and a voice that sticks. New EP "City Lights" coming soon.',
+          fr: 'Gabriel Benedek est un auteur-compositeur-interprète basé à Zurich. Des textes sincères, des guitares chaudes et une voix marquante. Nouveau EP "City Lights" bientôt.',
+          it: 'Gabriel Benedek è un cantautore con base a Zurigo. Testi onesti, chitarre calde e una voce che resta. Nuovo EP "City Lights" in arrivo.'
+        },
+        quickFacts: {
+          de: [
+            'Swiss Artist🇨🇭with Irish/Hungarian roots',
+            'Label: <a href="https://www.instagram.com/universalmusicswitzerland/" target="_blank" rel="noopener">@universalmusicswitzerland</a>',
+            '<strong>Bookings:</strong> <a href="mailto:mgmt@gabrielbenedek.com">mgmt@gabrielbenedek.com</a>',
+            '<strong>LOST IN YOU</strong> out now!'
+          ],
+          en: [
+            'Swiss artist🇨🇭with Irish/Hungarian roots',
+            'Label: <a href="https://www.instagram.com/universalmusicswitzerland/" target="_blank" rel="noopener">@universalmusicswitzerland</a>',
+            '<strong>Bookings:</strong> <a href="mailto:mgmt@gabrielbenedek.com">mgmt@gabrielbenedek.com</a>',
+            '<strong>LOST IN YOU</strong> out now!'
+          ],
+          fr: [
+            'Artiste suisse🇨🇭d’origines irlandaise/hongroise',
+            'Label : <a href="https://www.instagram.com/universalmusicswitzerland/" target="_blank" rel="noopener">@universalmusicswitzerland</a>',
+            '<strong>Bookings :</strong> <a href="mailto:mgmt@gabrielbenedek.com">mgmt@gabrielbenedek.com</a>',
+            '<strong>LOST IN YOU</strong> disponible !'
+          ],
+          it: [
+            'Artista svizzero🇨🇭con radici irlandesi/ungheresi',
+            'Label: <a href="https://www.instagram.com/universalmusicswitzerland/" target="_blank" rel="noopener">@universalmusicswitzerland</a>',
+            '<strong>Bookings:</strong> <a href="mailto:mgmt@gabrielbenedek.com">mgmt@gabrielbenedek.com</a>',
+            '<strong>LOST IN YOU</strong> fuori ora!'
+          ]
+        }
+      }
     };
   </script>
 
@@ -403,6 +446,9 @@
         nav: { start: 'Start', about: 'Über', music: 'Musik', tours: 'Tours & Gigs', gallery: 'Galerie', links: 'Links', contact: 'Kontakt', impressum: 'Impressum' },
         cta: { tickets: 'Tickets & Termine', listen: 'Jetzt reinhören' },
         titles: { about: 'Über Gabriel', music: 'Musik & Videos', tours: 'Tours & Gigs', gallery: 'Galerie', links: 'Links', contact: 'Schreib eine Nachricht', impressum: 'Impressum', privacy: 'Datenschutz (Kurz)' },
+        hero: { eyebrow: 'Official' },
+        labels: { quick:'Schnellinfos', epk:'EPK / Pressekit' },
+        embed: { spotifyAsk:'Spotify-Player laden?', youtubeAsk:'YouTube-Video laden?' },
         subs: {
           music: 'Externe Medien werden erst nach Zustimmung geladen (Datenschutz). Klicke unten, um Spotify/YouTube einzublenden.',
           tours: 'Alle bestätigten Termine. Folge den Links für Tickets & Infos.',
@@ -417,6 +463,9 @@
         nav: { start: 'Start', about: 'About', music: 'Music', tours: 'Tours & Gigs', gallery: 'Gallery', links: 'Links', contact: 'Contact', impressum: 'Imprint' },
         cta: { tickets: 'Tickets & Dates', listen: 'Listen now' },
         titles: { about: 'About Gabriel', music: 'Music & Videos', tours: 'Tours & Gigs', gallery: 'Gallery', links: 'Links', contact: 'Send a message', impressum: 'Imprint', privacy: 'Privacy (short)' },
+        hero: { eyebrow: 'Official' },
+        labels: { quick:'Quick facts', epk:'EPK / Press' },
+        embed: { spotifyAsk:'Load Spotify player?', youtubeAsk:'Load YouTube video?' },
         subs: {
           music: 'External media only load after consent (privacy). Click below to load Spotify/YouTube.',
           tours: 'All confirmed dates. Follow the links for tickets & info.',
@@ -431,6 +480,9 @@
         nav: { start: 'Accueil', about: 'À propos', music: 'Musique', tours: 'Concerts', gallery: 'Galerie', links: 'Liens', contact: 'Contact', impressum: 'Mentions' },
         cta: { tickets: 'Billets & dates', listen: 'Écouter maintenant' },
         titles: { about: 'À propos de Gabriel', music: 'Musique & vidéos', tours: 'Concerts', gallery: 'Galerie', links: 'Liens', contact: 'Envoyer un message', impressum: 'Mentions légales', privacy: 'Protection des données (court)' },
+        hero: { eyebrow: 'Officiel' },
+        labels: { quick:'Infos rapides', epk:'EPK / Presse' },
+        embed: { spotifyAsk:'Charger le lecteur Spotify ?', youtubeAsk:'Charger la vidéo YouTube ?' },
         subs: {
           music: 'Les médias externes ne se chargent qu’après votre consentement (protection des données). Cliquez ci‑dessous pour afficher Spotify/YouTube.',
           tours: 'Toutes les dates confirmées. Suivez les liens pour billets & infos.',
@@ -445,6 +497,9 @@
         nav: { start: 'Home', about: 'Info', music: 'Musica', tours: 'Concerti', gallery: 'Galleria', links: 'Link', contact: 'Contatto', impressum: 'Note legali' },
         cta: { tickets: 'Biglietti & date', listen: 'Ascolta ora' },
         titles: { about: 'Info su Gabriel', music: 'Musica & video', tours: 'Concerti', gallery: 'Galleria', links: 'Link', contact: 'Scrivi un messaggio', impressum: 'Note legali', privacy: 'Protezione dati (breve)' },
+        hero: { eyebrow: 'Ufficiale' },
+        labels: { quick:'Info rapide', epk:'EPK / Stampa' },
+        embed: { spotifyAsk:'Caricare il lettore Spotify?', youtubeAsk:'Caricare il video YouTube?' },
         subs: {
           music: 'I media esterni si caricano solo dopo il consenso (privacy). Clicca sotto per mostrare Spotify/YouTube.',
           tours: 'Tutte le date confermate. Segui i link per biglietti e info.',
@@ -477,9 +532,9 @@
       $('#navLinks').textContent = t('nav.links');
       $('#navContact').textContent = t('nav.contact');
       $('#navImpressum').textContent = t('nav.impressum');
-      // Hero CTAs
-      $('#ctaTickets').textContent = t('cta.tickets');
-      $('#ctaListen').textContent = t('cta.listen');
+      // Hero
+      $('#heroEyebrow').textContent = t('hero.eyebrow');
+      $('#artistTag').textContent = CONFIG.i18n?.tagline?.[CURRENT_LANG] || CONFIG.tagline;
       // Titles
       $('#aboutTitle').textContent = t('titles.about');
       $('#musicTitle').textContent = t('titles.music');
@@ -494,16 +549,26 @@
       const thd = $('#tourHelp'); if (thd) thd.textContent = t('subs.tours');
       $('#linksSub').textContent = t('subs.links');
       $('#contactConsent').textContent = t('subs.contactConsent');
+      // About text
+      $('#aboutText').innerHTML = CONFIG.i18n?.aboutText?.[CURRENT_LANG] || CONFIG.aboutText;
+      // Quick facts
+      $('#quickTitle').textContent = t('labels.quick');
+      const facts = CONFIG.i18n?.quickFacts?.[CURRENT_LANG];
+      if (facts && Array.isArray(facts)) {
+        $('#quickFacts').innerHTML = facts.map(li => `<li>${li}</li>`).join('');
+      }
+      // EPK label
+      const epkBtn = $('#epkLink'); if (epkBtn) epkBtn.textContent = t('labels.epk');
+      // Embeds placeholders
+      const spPh = $('#spotifyAsk'); if (spPh) spPh.textContent = t('embed.spotifyAsk');
+      const ytPh = $('#youtubeAsk'); if (ytPh) ytPh.textContent = t('embed.youtubeAsk');
       // Tour table headers
       $('#thDate').textContent = t('tour.thDate');
       $('#thCity').textContent = t('tour.thCity');
       $('#thVenue').textContent = t('tour.thVenue');
-      // Tickets button text in rows
       document.querySelectorAll('#tourBody a.btn').forEach(b => b.textContent = t('tour.ticketsBtn'));
-      // Empty state
       const emptyCell = document.querySelector('#tourBody td[colspan]');
       if (emptyCell) emptyCell.textContent = t('tour.none');
-      // Source badge
       const srcMap = { de: {local:'lokal', csv:'CSV', bandsintown:'Bandsintown'}, en:{local:'local', csv:'CSV', bandsintown:'Bandsintown'}, fr:{local:'local', csv:'CSV', bandsintown:'Bandsintown'}, it:{local:'locale', csv:'CSV', bandsintown:'Bandsintown'} };
       const langKey = (CURRENT_LANG in srcMap) ? CURRENT_LANG : 'en';
       const src = (CONFIG.tour.source||'local');
@@ -511,16 +576,16 @@
       // Contact placeholders & button
       const f = $('#contactForm');
       if (f){
-        f.querySelector('input[name="name"]').placeholder = t('contact.namePh');
-        f.querySelector('input[name="email"]').placeholder = t('contact.emailPh');
-        f.querySelector('textarea[name="message"]').placeholder = t('contact.msgPh');
-        const btn = f.querySelector('button[type="submit"]'); if (btn) btn.textContent = t('contact.send');
+        f.querySelector('input[name="name"]').placeholder = I18N[CURRENT_LANG].contact.namePh;
+        f.querySelector('input[name="email"]').placeholder = I18N[CURRENT_LANG].contact.emailPh;
+        f.querySelector('textarea[name="message"]').placeholder = I18N[CURRENT_LANG].contact.msgPh;
+        const btn = f.querySelector('button[type="submit"]'); if (btn) btn.textContent = I18N[CURRENT_LANG].contact.send;
       }
       // Cookie
-      const c = $('#cookieText'); if (c) c.textContent = t('cookie.text');
-      const acc = $('#acceptAll'); if (acc) acc.textContent = t('cookie.allow');
-      const dis = $('#dismiss'); if (dis) dis.textContent = t('cookie.dismiss');
-      // Set select value
+      const c = $('#cookieText'); if (c) c.textContent = I18N[CURRENT_LANG].cookie.text;
+      const acc = $('#acceptAll'); if (acc) acc.textContent = I18N[CURRENT_LANG].cookie.allow;
+      const dis = $('#dismiss'); if (dis) dis.textContent = I18N[CURRENT_LANG].cookie.dismiss;
+      // Set select
       const sel = $('#langSel'); if (sel) sel.value = CURRENT_LANG;
     }
 
@@ -532,7 +597,12 @@
       // Theme
       const pref = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
       setTheme(pref);
-      $('#themeToggle')?.addEventListener('click', () => { setTheme(document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light'); });
+      const tt = $('#themeToggle');
+      tt?.addEventListener('click', (e) => {
+        e.preventDefault(); e.stopPropagation();
+        setTheme(document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+        return false;
+      });
       // Lang
       $('#langSel')?.addEventListener('change', (e)=> setLang(e.target.value));
       setLang(localStorage.getItem('lang') || 'de');
@@ -552,7 +622,6 @@
     // Fill from CONFIG
     function initFromConfig() {
       document.title = `${CONFIG.artist} — Official Site`;
-      $('#artistName').textContent = CONFIG.artist;
       $('#footerArtist').textContent = CONFIG.artist;
       $('#artistTag').textContent = CONFIG.tagline;
       $('#bookingEmail').href = `mailto:${CONFIG.bookingEmail}`;
@@ -572,27 +641,32 @@
       $('#impVat').textContent = CONFIG.impressum.vat || '—';
       $('#impResp').textContent = CONFIG.impressum.responsible || '—';
 
-      // About text & hero image
-      $('#aboutText').textContent = CONFIG.aboutText;
+      // Hero banner image
       const heroEl = document.querySelector('.hero img');
-      if (CONFIG.assets && CONFIG.assets.bannerFile) {
-        heroEl.src = (CONFIG.assets.otherDir || '') + CONFIG.assets.bannerFile;
+      heroEl.src = (CONFIG.assets?.bannerFile) ? `${CONFIG.assets.otherDir||''}${CONFIG.assets.bannerFile}` : CONFIG.heroImage;
+
+      // Hero title (wordmark image or typographic)
+      const titleHost = document.getElementById('heroTitle');
+      if (CONFIG.assets?.wordmarkFile) {
+        titleHost.innerHTML = `<img class="wordmark-img" src="${(CONFIG.assets.otherDir||'') + CONFIG.assets.wordmarkFile}" alt="${CONFIG.artist}">`;
       } else {
-        heroEl.src = CONFIG.heroImage;
+        const parts = String(CONFIG.artist).split(/\s+/);
+        const top = (parts[0]||CONFIG.artist).toUpperCase();
+        const bottom = (parts.slice(1).join(' ')||'').toUpperCase();
+        titleHost.innerHTML = `<div class="wordmark">\n  <span class="top">${top}</span>\n  <span class="bottom">${bottom || top}</span>\n</div>`;
       }
+
+      // About image
       const aboutEl = document.querySelector('.about-img');
-      if (CONFIG.assets && CONFIG.assets.aboutFile) {
-        aboutEl.src = (CONFIG.assets.otherDir || '') + CONFIG.assets.aboutFile;
-      }
+      if (CONFIG.assets?.aboutFile) { aboutEl.src = `${CONFIG.assets.otherDir||''}${CONFIG.assets.aboutFile}`; }
 
       // Socials
       const socials = CONFIG.socials.map(s => socialChip(s.name, s.url)).join('');
-      $('#socials').innerHTML = socials;
-      $('#footerSocials').innerHTML = socials;
+      $('#socials').innerHTML = socials; $('#footerSocials').innerHTML = socials;
 
       // Gallery
       let galleryList = CONFIG.gallery;
-      if (CONFIG.assets && CONFIG.assets.galleryFiles && CONFIG.assets.galleryFiles.length) {
+      if (CONFIG.assets?.galleryFiles?.length) {
         const base = CONFIG.assets.galleryDir || '';
         galleryList = CONFIG.assets.galleryFiles.map(f => base + f);
       }
@@ -604,8 +678,7 @@
       if (CONFIG.contact.provider === 'formspree' && CONFIG.contact.endpoint) {
         form.action = CONFIG.contact.endpoint;
       } else if (CONFIG.contact.provider === 'formsubmit' && CONFIG.contact.endpoint) {
-        form.action = CONFIG.contact.endpoint;
-        form.method = 'POST';
+        form.action = CONFIG.contact.endpoint; form.method = 'POST';
         form.insertAdjacentHTML('beforeend','<input type="hidden" name="_captcha" value="false"><input type="hidden" name="_subject" value="New message from website"><input type="hidden" name="_next" value="#contact">');
       } else {
         form.addEventListener('submit', (e) => { e.preventDefault(); alert('Formularziel noch nicht konfiguriert.'); });
@@ -623,10 +696,10 @@
 
     function socialChip(name, url){
       const icon = {
-        Instagram: svg('M12 2.2c-2.7 0-3 .01-4.05.06-1.05.05-1.77.22-2.4.47-.65.25-1.2.6-1.74 1.14-.54.54-.89 1.09-1.14 1.74-.25.63-.42 1.35-.47 2.4C2.2 9 2.2 9.3 2.2 12s.01 3 .06 4.05.22 1.77.47 2.4c.25.65.6 1.2 1.14 1.74.54.54 1.09.89 1.74 1.14.63.25 1.35.42 2.4.47 1.05.05 1.35.06 4.05.06s3-.01 4.05-.06 1.77-.22 2.4-.47c.65-.25 1.2-.6 1.74-1.14.54-.54.89-1.09 1.14-1.74.25-.63.42-1.35.47-2.4.05-1.05.06-1.35.06-4.05s-.01-3-.06-4.05-.22-1.77-.47-2.4a4.8 4.8 0 0 0-1.14-1.74 4.8 4.8 0 0 0-1.74-1.14c-.63-.25-1.35-.42-2.4-.47C15 2.21 14.7 2.2 12 2.2Zm0 1.8c2.67 0 2.98.01 4.03.06.97.05 1.5.2 1.85.33.47.18.8.39 1.15.73.34.35.55.68.73 1.15.13.35.28.88.33 1.85.05 1.05.06 1.36.06 4.03s-.01 2.98-.06 4.03c-.05.97-.2 1.5-.33 1.85-.18.47-.39.8-.73 1.15-.35.34-.68.55-1.15.73-.35.13-.88.28-1.85.33-1.05.05-1.36.06-4.03.06s-2.98-.01-4.03-.06c-.97-.05-1.5-.2-1.85-.33a3.1 3.1 0 0 1-1.15-.73 3.1 3.1 0 0 1-.73-1.15c-.13-.35-.28-.88-.33-1.85C3.99 14.98 3.98 14.67 3.98 12s.01-2.98.06-4.03c.05-.97.2-1.5.33-1.85.18-.47.39-.8.73-1.15.35-.34.68-.55 1.15-.73.35-.13.88-.28 1.85-.33C9.02 4.01 9.33 4 12 4Zm0 2.8a5.2 5.2 0 1 0 0 10.4 5.2 5.2 0 0 0 0-10.4Zm0 2a3.2 3.2 0 1 1 0 6.4 3.2 3.2 0 0 1 0-6.4Zm5.6-2.24a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4Z'),
-        Spotify: svg('M9.5 2C5.36 2 2 5.36 2 9.5S5.36 17 9.5 17 17 13.64 17 9.5 13.64 2 9.5 2Zm3.9 10.77a.74.74 0 0 1-1.02.25c-2.8-1.7-6.33-2.1-10.5-1.18a.75.75 0 1 1-.32-1.46c4.52-1 8.4-.56 11.49 1.29.35.21.46.66.26 1.01Zm.86-2.53a.9.9 0 0 1-1.24.3C9.69 8.49 6.3 8.1 3.1 8.82a.9.9 0 0 1-.39-1.76c3.58-.8 7.35-.37 10.7 1.4.44.24.6.79.35 1.18Zm.14-2.65c-3.07-1.72-7.52-1.88-10.23-1.28a1.05 1.05 0 1 1-.43-2.07c3.16-.66 8.15-.47 11.67 1.49a1.05 1.05 0 1 1-1.01 1.86Z'),
+        Instagram: svg('M12 2.2c-2.7 0-3 .01-4.05.06-1.05.05-1.77.22-2.4.47-.65.25-1.2.6-1.74 1.14-.54.54-.89 1.09-1.14 1.74-.25.63-.42 1.35-.47 2.4C2.2 9 2.2 9.3 2.2 12s.01 3 .06 4.05.22 1.77.47 2.4c.25.65.6 1.2 1.14 1.74.54.54 1.09.89 1.74 1.14.63.25 1.35.42 2.4.47 1.05.05 1.35.06 4.05.06s3-.01 4.05-.06 1.77-.22 2.4-.47c.65-.25 1.2-.6 1.74-1.14.54-.54.89-1.09 1.14-1.74.25-.63.42-1.35.47-2.4.05-1.05.06-1.35.06-4.05s-.01-3-.06-4.05-.22-1.77-.47-2.4a4.8 4.8 0 0 0-1.14-1.74 4.8 4.8 0 0 0-1.74-1.14c-.63-.25-1.35-.42-2.4-.47C15 2.21 14.7 2.2 12 2.2Zm0 1.8c2.67 0 2.98.01 4.03.06.97.05 1.5.2 1.85.33.47.18.8.39 1.15.73.34.35.55.68.73 1.15.13.35.28.88.33 1.85.05 1.05.06 1.36.06 4.03s-.01 2.98-.06 4.03c-.05.97-.2 1.5-.33 1.85-.18.47-.39.8-.73 1.15-.35.34-.68.55-1.15.73-.35.13-.88.28-1.85.33-1.05.05-1.36.06-4.03.06s-2.98-.01-4.03-.06c-.97-.05-1.5-.2-1.85-.33a3.1 3.1 0 0 1-1.15-.73 3.1 3.1 0  1 -.73-1.15c-.13-.35-.28-.88-.33-1.85C3.99 14.98 3.98 14.67 3.98 12s.01-2.98.06-4.03c.05-.97.2-1.5.33-1.85.18-.47.39-.8.73-1.15.35-.34.68-.55 1.15-.73.35-.13.88-.28 1.85-.33C9.02 4.01 9.33 4 12 4Zm0 2.8a5.2 5.2 0 1 0 0 10.4 5.2 5.2 0 0 0 0-10.4Zm0 2a3.2 3.2 0 1 1 0 6.4 3.2 3.2 0 0 1 0-6.4Zm5.6-2.24a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4Z'),
+        Spotify: svg('M9.5 2C5.36 2 2 5.36 2 9.5S5.36 17 9.5 17 17 13.64 17 9.5 13.64 2 9.5 2Zm3.9 10.77a.74.74 0 0 1-1.02.25c-2.8-1.7-6.33-2.1-10.5-1.18a.75.75 0 1 1-.32-1.46c4.52-1 8.4-.56 11.49 1.29.35.21.46.66.26 1.01Zm.86-2.53a.9.9 0 0 1-1.24.3C9.69 8.49 6.3 8.1 3.1 8.82a.9.9 0 0 1-.39-1.76c3.58-.8 7.35-.37 10.7 1.4.44.24.6.79.35 1.18Zm.14-2.65c-3.07-1.72-7.52-1.88-10.23-1.28a1.05 1.05 0  1 1-.43-2.07c3.16-.66 8.15-.47 11.67 1.49a1.05 1.05 0 1 1-1.01 1.86Z'),
         YouTube: svg('M2.5 5.5C2.5 4.12 3.62 3 5 3h10c1.38 0 2.5 1.12 2.5 2.5v7c0 1.38-1.12 2.5-2.5 2.5H5A2.5 2.5 0 0 1 2.5 12.5v-7Zm6.86 1.64v5.72l4.9-2.86-4.9-2.86Z'),
-        TikTok: svg('M11 2h2.5c.2 1.34 1.18 2.9 3.2 3.3V8.2c-1.36-.07-2.68-.47-3.7-1.15v4.95A4.99 4.99 0 1 1 8 7.2v2.38a2.5 2.5 0 1 0 3.01 2.44L11 2Z'),
+        TikTok: svg('M11 2h2.5c.2 1.34 1.18 2.9 3.2 3.3V8.2c-1.36-.07-2.68-.47-3.7-1.15v4.95A4.99 4.99 0 1 1 8 7.2v2.38a2.5 2.5 0  1 0 3.01 2.44L11 2Z'),
         'E‑Mail': svg('M3 5h14a1 1 0 0 1 .8.4L10 11 2.2 5.4A1 1 0 0 1 3 5Zm15 1.2-8 6-8-6V15a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V6.2Z')
       }[name] || '';
       return `<a href="${url}" target="_blank" rel="noopener">${icon}<span>${name}</span></a>`;
@@ -634,6 +707,23 @@
 
     function svg(path){
       return `<svg aria-hidden="true" width="18" height="18" viewBox="0 0 20 20" fill="currentColor"><path d="${path}"/></svg>`;
+    }
+
+    // Normalize various YouTube URLs to proper embed URLs
+    function toEmbedUrl(url){
+      try {
+        if (!url) return url;
+        if (url.includes('watch?v=')) {
+          const u = new URL(url);
+          const id = u.searchParams.get('v');
+          return id ? `https://www.youtube.com/embed/${id}` : url;
+        }
+        if (url.includes('youtu.be/')) {
+          const id = url.split('youtu.be/')[1].split(/[?&]/)[0];
+          return `https://www.youtube.com/embed/${id}`;
+        }
+        return url;
+      } catch(e){ return url; }
     }
 
     function renderLinktree(){
@@ -668,6 +758,8 @@
         const btn = ev.url ? `<a class=\"btn\" href=\"${ev.url}\" target=\"_blank\" rel=\"noopener\">Tickets</a>` : '';
         return `<tr><td>${date}</td><td>${ev.city || ''}</td><td>${ev.venue || ''}</td><td>${btn}</td></tr>`;
       }).join('');
+      // translate button after render
+      applyLang();
     }
 
     async function fetchCsv(url){
@@ -683,10 +775,8 @@
     }
 
     async function bandsintownData(artist){
-      // Simple client-side embed alternative: let user include Bandsintown widget manually if API not available.
-      // Here we just link to the Bandsintown page.
       $('#tourCard').insertAdjacentHTML('beforeend', `<p class="section-sub">Detaillierte Einbindung via Bandsintown Widget empfohlen.</p>`);
-      return CONFIG.tour.items; // fallback to local list
+      return CONFIG.tour.items; // fallback
     }
 
     // Embeds with consent
@@ -695,7 +785,7 @@
       if (!btn) return;
       const type = btn.dataset.embed;
       const target = type === 'spotify' ? '#spotifyEmbed' : '#youtubeEmbed';
-      const src = type === 'spotify' ? CONFIG.embeds.spotify : CONFIG.embeds.youtube;
+      const src = type === 'spotify' ? CONFIG.embeds.spotify : toEmbedUrl(CONFIG.embeds.youtube);
       if (!src) return alert('Embed-URL fehlt in der Konfiguration.');
       const html = type === 'spotify'
         ? `<iframe style="border-radius:12px" src="${src}" width="100%" height="352" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>`
@@ -747,7 +837,7 @@
     "jobTitle": "Singer-Songwriter",
     "address": {"@type":"PostalAddress","addressCountry":"CH"},
     "url": "",
-    "sameAs": ["https://instagram.com/", "https://youtube.com/", "https://open.spotify.com/"]
+    "sameAs": ["https://www.instagram.com/gabrielbenedek_official/", "https://www.youtube.com/@GabrielBenedek/featured", "https://open.spotify.com/intl-de/artist/0BBZxotcIVnEEPhjA4iSiu"]
   }
   </script>
 </body>
