@@ -333,13 +333,13 @@
     </div>
   </footer>
 
-  <!-- SIMPLE CONFIG (edit here) -->
+  <!-- SIMPLE CONFIG (@Gabriel edit here) -->
   <script>
     const CONFIG = {
       artist: "Gabriel Benedek",
       tagline: "Singer · Songwriter · Guitar",
       heroImage: "https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1600&auto=format&fit=crop",
-      aboutText: "Gabriel Benedek ist ein in Zürich ansässiger Singer/Songwriter. Ehrliche Texte, warme Gitarren und eine Stimme, die hängen bleibt. Neue EP \"City Lights\" erscheint bald.",
+      aboutText: "Halb Ire, halb Ungar, Songschreiber und Musiker, der mit Hilfe von Klavier und Gitarre eigene Songs bastelt und diese mit seiner warmen, leicht rauchigen Stimme zum Leben erweckt. Obwohl bereits Vater einer wunderbaren Tochter, wirkt er auf der Bühne mit seiner verschmitzten und humorvollen Art vielfach wie ein grosser Bube, der mit neugierigen Augen gerade die Welt am entdeckten ist. Kein Wunder, wird seine Fanbase von Tag zu Tag grösser.",
       bookingEmail: "mgmt@gabrielbenedek.com",
       pressEmail: "mgmt@gabrielbenedek.com",
       management: { name: "—", address: "—" },
@@ -353,7 +353,7 @@
         bannerFile: "banner.jpg",
         aboutFile: "artist.jpg",
         wordmarkFile: "", // optional: z.B. wordmark.png – wenn leer, Typo-Wordmark wird gerendert
-        galleryFiles: ["g1.jpg","g2.jpg","g3.jpg","g4.jpg"]
+        galleryFiles: Array.from({ length: 14 }, (_, i) => `g (${i + 1}).jpg`)
       },
       socials: [
         { name: "Instagram", url: "https://www.instagram.com/gabrielbenedek_official/", icon: "mdi:instagram" },
