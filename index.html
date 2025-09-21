@@ -74,10 +74,34 @@
     .btn.primary { border-color: transparent; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color:#0b0b10; }
 
     /* Wordmark (typographic fallback) */
-    .wordmark { display:grid; line-height:.9; margin:.8rem auto .4rem; }
+    /* Wordmark nebeneinander */
+.wordmark{
+  display:inline-flex;           /* statt grid */
+  gap:.6rem;                     /* Abstand zwischen den Wörtern */
+  align-items:baseline;          /* schöne Grundlinien-Ausrichtung */
+  justify-content:center;
+  line-height:.9;
+  margin:.8rem auto .4rem;
+  flex-wrap:wrap;                /* darf auf sehr kleinen Screens umbrechen */
+}
+/* Beide Wörter gleich stylen (falls noch nicht so eingestellt) */
+.wordmark .top,
+.wordmark .bottom{
+  font-weight:900;
+  letter-spacing:.04em;
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  color: var(--ink);
+  -webkit-text-stroke: 0;
+  text-stroke: 0;
+}
     .wordmark .top{ font-weight:900; letter-spacing:.04em; font-size: clamp(2.2rem, 6vw, 4rem); }
-    .wordmark .bottom{ font-weight:900; letter-spacing:.04em; font-size: clamp(2.2rem, 6vw, 4rem); color:transparent; -webkit-text-stroke: 2px var(--ink); text-stroke: 2px var(--ink); }
-    [data-theme="light"] .wordmark .bottom{ -webkit-text-stroke-color:#0b0b10; text-stroke-color:#0b0b10; }
+    .wordmark .bottom{font-weight:900;letter-spacing:.04em;font-size: clamp(2.2rem, 6vw, 4rem);
+  color: var(--ink);-webkit-text-stroke: 0;text-stroke: 0;
+}
+[data-theme="light"] .wordmark .bottom{
+  -webkit-text-stroke-color: initial;
+  text-stroke-color: initial;
+}
     .wordmark-img{ width:min(90%, 560px); margin:.8rem auto .4rem; display:block; }
 
     /* Sections */
@@ -115,6 +139,13 @@
     .link-btn:hover { transform: translateY(-1px); transition: transform .12s ease; }
     .link-btn.highlight { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color:#0b0b10; border-color: transparent; }
 
+    /* Youtube Short*/
+    .yt-embed{position:relative;width:100%;overflow:hidden;border-radius:12px;border:1px solid rgba(255,255,255,.08)}
+    .yt-embed iframe{position:absolute;inset:0;width:100%;height:100%}
+    .yt-embed:not(.yt-vertical){aspect-ratio:16/9}   /* normale Videos */
+    .yt-embed.yt-vertical{aspect-ratio:9/16;max-width:420px;margin-inline:auto} /* Shorts */
+
+
     /* Contact */
     form { display:grid; gap:.8rem; }
     input, textarea { background:#0f0f16; color:var(--ink); border:1px solid rgba(255,255,255,.14); padding:.8rem; border-radius:10px; font: inherit; }
@@ -128,6 +159,17 @@
     /* Cookie banner */
     .cookie { position: fixed; bottom: 12px; left: 12px; right: 12px; z-index: 99; background: var(--card); border:1px solid rgba(255,255,255,.12); border-radius: 12px; box-shadow: var(--shadow); padding: 1rem; display:none; }
     .cookie.show { display:block; }
+:root{
+  --cookie-green: #22c55e;      /* Textfarbe */
+  --cookie-green-hover: #34d399; /* Hover */
+}
+/* Buttons im Cookie-Banner in Türkis (wie die Chips) */
+.cookie .btn{
+  color: var(--brand-2) !important;
+}
+.cookie .btn:hover{
+  color: #64e6e1 !important; /* etwas heller beim Hover */
+}
 
     /* Skip link */
     .skip { position:absolute; left:-9999px; }
@@ -272,6 +314,17 @@
       </div>
     </section>
 
+    <!-- YOUTUBE SHORT -->
+    <div class="yt-embed yt-vertical">
+  <iframe
+    src="https://www.youtube.com/embed/Y7qgucGaRsU?modestbranding=1&rel=0&playsinline=1"
+    title="YouTube Shorts"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    ></iframe>
+    </div>
+
     <!-- GALLERY (below Links) -->
     <section id="gallery" aria-label="Galerie">
       <div class="container">
@@ -308,12 +361,12 @@
         <div class="card pad">
           <h2 class="section-title" id="impressumTitle">Impressum</h2>
           <p><strong>Verantwortlich:</strong><br><span id="impName">Gabriel Benedek</span><br><span id="impAddr">[Straße, PLZ Ort, Schweiz]</span><br>E‑Mail: <a id="impEmail" href="mailto:mgmt@gabrielbenedek.com">mgmt@gabrielbenedek.com</a></p>
-          <p>Umsatzsteuer-ID / CHE (falls vorhanden): <span id="impVat">—</span></p>
-          <p>Inhaltlich Verantwortlicher gem. § 55 Abs. 2 RStV (DE, falls anwendbar): <span id="impResp">—</span></p>
+          <p> <span id="impVat">—</span></p>
+          <p> <span id="impResp">—</span></p>
         </div>
         <div class="card pad">
           <h2 class="section-title" id="privacyTitle">Datenschutz (Kurz)</h2>
-          <p>Diese Website verarbeitet nur die Daten, die du im Kontaktformular eingibst. Externe Einbettungen (Spotify/YouTube) werden erst nach deinem Klick geladen. Details siehe vollständige <a href="#" id="ppLink">Datenschutzerklärung</a>.</p>
+          <p>Diese Website verarbeitet nur die Daten, die du im Kontaktformular eingibst. Externe Einbettungen (Spotify/YouTube) werden erst nach deinem Klick geladen. Details siehe vollständige Datenschutzerklärung.</p>
           <div class="cookie" id="cookie">
             <p id="cookieText">Wir verwenden technisch notwendige Cookies. Externe Medien werden erst nach deiner Zustimmung geladen.</p>
             <div class="cta-row" style="justify-content:flex-start;">
@@ -342,9 +395,10 @@
       aboutText: "Halb Ire, halb Ungar, Songschreiber und Musiker, der mit Hilfe von Klavier und Gitarre eigene Songs bastelt und diese mit seiner warmen, leicht rauchigen Stimme zum Leben erweckt. Obwohl bereits Vater einer wunderbaren Tochter, wirkt er auf der Bühne mit seiner verschmitzten und humorvollen Art vielfach wie ein grosser Bube, der mit neugierigen Augen gerade die Welt am entdeckten ist. Kein Wunder, wird seine Fanbase von Tag zu Tag grösser.",
       bookingEmail: "mgmt@gabrielbenedek.com",
       pressEmail: "mgmt@gabrielbenedek.com",
-      management: { name: "—", address: "—" },
+      management: { name: "mgmt@gabrielbenedek.com", address: "Schweiz" },
       epkUrl: "#", // Link zu PDF oder Google Drive/Dropbox
-      impressum: { name: "Gabriel Benedek", address: "[Straße, PLZ Ort, Schweiz]", email: "mgmt@gabrielbenedek.com", vat: "—", responsible: "—" },
+      impressum: { name: "Gabriel Benedek", address: "Kontaktanfragen direkt via Mail", email: "mgmt@gabrielbenedek.com", 
+      vat: " ", responsible: " " }, //<5> Falls benötigt können VAT-NUmmer und Verantwortlichkeit im Impressum eingetragen werden
       privacyUrl: "#",
       // === ASSETS ===
       assets: {
@@ -361,27 +415,79 @@
         { name: "YouTube",   url: "https://www.youtube.com/@GabrielBenedek/featured", icon: "mdi:youtube" },
         { name: "E‑Mail",    url: "mailto:mgmt@gabrielbenedek.com", icon: "mdi:email" }
       ],
+
+    //<3> Linktree Anfang
+      /* <3> Kommentar Fabian: Hier findest du alle Überschriften und Links für den Linktree die beliebig geändert werden kann 
+      Du kannst hier auch neue Links hinzufügen oder entfernen
+      */
       linktree: [
-        { label: "🎧 Spotify",           url: "https://open.spotify.com/intl-de/artist/0BBZxotcIVnEEPhjA4iSiu", highlight: true },
+        { label: "🎧 Spotify",           url: "https://emea01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fopen.spotify.com%2Fintl-de%2Fartist%2F0BBZxotcIVnEEPhjA4iSiu%3Fsi%3DaN65X2uyRmyvNKVqB_fJrQ&data=05%7C02%7C%7C7035d90b5da04c5f41ca08ddf55f72ba%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638936512478400142%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=LNEz3h%2Bx6cfwo0LqxjWczq%2BbnjI5TkosPbNxPuEJvaw%3D&reserved=0", highlight: true },
         { label: "▶️ YouTube",           url: "https://www.youtube.com/@GabrielBenedek/featured" },
         { label: "🎵 YouTube Music",     url: "https://music.youtube.com/channel/UC0RxibqX7b6CnxNWmxG0JJw" },
         { label: "📸 Instagram",         url: "https://www.instagram.com/gabrielbenedek_official/" },
         { label: "🌐 All platforms",     url: "https://gabrielbenedek.lnk.to/LostInYou?prerelease_service=SpotifyPreRelease&prerelease_result=success&has_email=1&notification_id=86de4e88-a0a8-5d8e-879c-063887d8902b&fbclid=PAZXh0bgNhZW0CMTEAAaeoyxVCiyuursO5Ama7PnyXw-VwkG8sWZmxf6lpCJKnMG9lnm5Mv32Mudw0iw_aem_5KfkixLe0iyAA3G9h675VA" },
-        { label: "🎫 Tickets & Tour",    url: "#tours" },
-        { label: "📰 EPK / Presse",      url: "#" }
+        { label: "📰 Schweizer Illustrierte",    url: "https://emea01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.schweizer-illustrierte.ch%2Fpeople%2Fswiss-stars%2Fgabriel-benedek-liefert-tone-mit-tiefgang-766133%3Fsrsltid%3DAfmBOork6GyxGFo0sWtRS-eilHMsprbLyQod2JRGWh9Tm8Mibr9el43j&data=05%7C02%7C%7C7035d90b5da04c5f41ca08ddf55f72ba%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638936512478448144%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=CqrCqd1UaUwWWxMVlfhnlThaMeje%2BJfSxwRZxsRuoS4%3D&reserved=0" },
+        { label: "📰 20 Minuten",    url: "https://emea01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.20min.ch%2Fstory%2Fsaenger-gabriel-benedek-wurde-fuer-eine-frau-vegetarier-103210225&data=05%7C02%7C%7C7035d90b5da04c5f41ca08ddf55f72ba%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638936512478453647%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=Got11%2BjG1ceC28s2kvChkQaJ8Kk626C0ifRzP5fWGuY%3D&reserved=0" },
+        { label: "📰 SRF",      url: "https://emea01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.srf.ch%2Faudio%2Fsrf-3-punkt-ch%2Fgabriel-benedek-zueckt-die-spanische-gitarre%3Fid%3D2a45de14-c892-44e1-88e2-82816fdfcca3&data=05%7C02%7C%7C7035d90b5da04c5f41ca08ddf55f72ba%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638936512478459168%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=HjO0vpfkOuGc8q8CvvCmke6Vo%2BAp16n%2FS5EqWtDsnUA%3D&reserved=0" },
+        { label: "📹 Geschichten & Gesichter Portrait",         url: "https://emea01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.srf.ch%2Fplay%2Ftv%2Fgesichter--geschichten%2Fvideo%2Fdie-schweizer-musikentdeckung-gabriel-benedek-im-portrait%3Furn%3Durn%3Asrf%3Avideo%3A5326733b-ccf1-4b62-b54d-5964d397cca9&data=05%7C02%7C%7C7035d90b5da04c5f41ca08ddf55f72ba%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638936512478464619%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=NtTfkx1A71UQEYwOsw9h8Tiyfp%2BBO3JpjrMtVyM35HY%3D&reserved=0" },
+     // { label: "Neuer Linktree eintrag",    url: "#linkhier" },
+     // { label: "Neuer Linktree eintrag",    url: "#linkhier" },
+     // { label: "Neuer Linktree eintrag",    url: "#linkhier" },     
+        { label: "🎫 Tickets & Tour",    url: "#tours" }
       ],
+    //<3> Linktree Ende
+
+      //<2> Embedded Players Anfang
+      /*<2> Kommentar Fabian: Hier kannst du den Youtube Link und Spotify Link für den embedded Stream rein machen*/
       embeds: {
         spotify: "https://open.spotify.com/embed/artist/0BBZxotcIVnEEPhjA4iSiu",
-        youtube: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" // beliebige watch/youtu.be – wird automatisch zu /embed konvertiert
+        youtube: "https://www.youtube.com/watch?v=yzzXvjFCyaE&list=PLjHHIhzS2ZaVDnkVjBXeq5nF_bM8JY-rx" 
+      //<2> Embedded Player Ende
       },
       tour: {
         source: "local",
         bandsintownId: "",
         csvUrl: "",
         items: [
-          { date: "2025-10-12", city: "Zürich, CH", venue: "Mascotte", url: "#" },
-          { date: "2025-11-04", city: "Basel, CH", venue: "Kaserne", url: "#" },
-          { date: "2026-01-18", city: "München, DE", venue: "Muffathalle", url: "#" }
+  //<1> Konzertdaten Anfang
+    /*<1> Kommentar Fabian: Hier kannst du beliebig viele Konzert daten hinzufügen oder entfernen
+    wenn du hinter der venue noch den folgenden text mit URL + link hinzufügst bekommen die leute auch einen
+    Link wo sie tickets kaufen können, bspw.:
+    { date: "2025-10-12", city: "Zürich, CH", venue: "Mascotte", url: "https://www.ticketcorner.ch/" }, 
+    wichtig ist das jeder neue Link mit einem Komma am ende gekennzeichnit wird, bis auf den letzten, der braucht/darf kein Komma
+    haben
+    */
+  //{ date: "2025-10-12", city: "TEST FABIAN, CH",       venue: "BEISPIEL MIT LINK", url: "https://www.ticketcorner.ch/" },
+  { date: "2025-01-17", city: "Zürich, CH",       venue: "Komplex (Support Twocolors)" },
+  { date: "2025-01-31", city: "Basel, CH",        venue: "Les Trois Rois (Mitarbeiteranlass)" },
+  { date: "2025-02-14", city: "Gelterkinden, CH", venue: "Marabu Bar" },
+  { date: "2025-02-22", city: "Liestal, CH",      venue: "Guggeheim (Support Nickless)" },
+  { date: "2025-03-07", city: "Bettmeralp, CH",   venue: "Q-Stall" },
+  { date: "2025-03-21", city: "Münchenstein, CH", venue: "Diplomfeier" },
+  { date: "2025-04-17", city: "Basel, CH",        venue: "Kuppel (Support Linda Elys)" },
+  { date: "2025-04-18", city: "Allschwil, CH",    venue: "Wirtschaftskammer" },
+  { date: "2025-05-09", city: "Liestal, CH",      venue: "Elefantehuus" },
+  { date: "2025-05-11", city: "Basel, CH",        venue: "ESC – Marktplatz" },
+  { date: "2025-05-11", city: "Basel, CH",        venue: "ESC – Rümelinsplatz" },
+  { date: "2025-05-11", city: "Basel, CH",        venue: "ESC – Freie Strasse" },
+  { date: "2025-05-17", city: "Basel, CH",        venue: "ESC Finale – Schifflände" },
+  { date: "2025-05-17", city: "Basel, CH",        venue: "ESC Finale – Steinenvorstadt" },
+  { date: "2025-05-24", city: "Basel, CH",        venue: "Atlantis" },
+  { date: "2025-06-05", city: "Solothurn, CH",    venue: "Sommerparty (Privat)" },
+  { date: "2025-06-20", city: "Pratteln, CH",     venue: "Bredella Village Sommerfest" },
+  { date: "2025-06-21", city: "Stoos, CH",        venue: "Migros Hiking Sounds" },
+  { date: "2025-06-22", city: "Stoos, CH",        venue: "Migros Hiking Sounds" },
+  { date: "2025-06-28", city: "Attiswil, CH",     venue: "Sommernachts-Party (Privat)" },
+  { date: "2025-07-06", city: "Montreux, CH",     venue: "Montreux Jazz Festival" },
+  { date: "2025-07-11", city: "Charette-Varennes, FR", venue: "Hochzeit – Château de Varennes (Privat)" },
+  { date: "2025-08-07", city: "Solothurn, CH",    venue: "Geburtstagsfest (Privat)" },
+  { date: "2025-08-22", city: "Nidwalden, CH",    venue: "Musiglanzgmeind Open Air" },
+  { date: "2025-08-29", city: "Spiez, CH",        venue: "Seaside Festival" },
+  { date: "2025-09-11", city: "Kaiseraugst, CH",  venue: "Solvias Sommerfest" },
+  { date: "2025-09-20", city: "Schwarzsee, CH",   venue: "Migros Hiking Sounds" },
+  { date: "2025-09-21", city: "Schwarzsee, CH",   venue: "Migros Hiking Sounds" },
+  { date: "2025-10-04", city: "Baselland, CH",    venue: "Geburtstagsfest (Privat)" }
+//<1> Konzertdaten Ende 
         ]
       },
       gallery: [
@@ -392,13 +498,15 @@
       ],
       contact: { provider: "formsubmit", endpoint: "https://formsubmit.co/mgmt@gabrielbenedek.com" },
 
+
       /* === Multilingual free-texts === */
       i18n: {
         tagline: {
-          de: "Singer · Songwriter · Guitar",
-          en: "Singer · Songwriter · Guitar",
-          fr: "Chanteur · Auteur-compositeur · Guitare",
-          it: "Cantante · Cantautore · Chitarra"
+        //<4> Kommentar Fabian: hier kannst du als Untertitel schreiben was du willst
+          de: "Swiss Artist",
+          en: "Swiss Artist",
+          fr: "Swiss Artist",
+          it: "Swiss Artist"
         },
         aboutText: {
           de: 'Halb Ire, halb Ungar, Songschreiber und Musiker, der mit Hilfe von Klavier und Gitarre eigene Songs bastelt und diese mit seiner warmen, leicht rauchigen Stimme zum Leben erweckt. Obwohl bereits Vater einer wunderbaren Tochter, wirkt er auf der Bühne mit seiner verschmitzten und humorvollen Art vielfach wie ein grosser Bube, der mit neugierigen Augen gerade die Welt am entdeckten ist. Kein Wunder, wird seine Fanbase von Tag zu Tag grösser.',
@@ -443,9 +551,9 @@
     /* ========= I18N + Theme ========= */
     const I18N = {
       de: {
-        nav: { start: 'Start', about: 'Über', music: 'Musik', tours: 'Tours & Gigs', gallery: 'Galerie', links: 'Links', contact: 'Kontakt', impressum: 'Impressum' },
+        nav: { start: 'Start', about: 'Über', music: 'Musik', tours: 'Tours & Gigs 2025', gallery: 'Galerie', links: 'Links', contact: 'Kontakt', impressum: 'Impressum' },
         cta: { tickets: 'Tickets & Termine', listen: 'Jetzt reinhören' },
-        titles: { about: 'Über Gabriel', music: 'Musik & Videos', tours: 'Tours & Gigs', gallery: 'Galerie', links: 'Links', contact: 'Schreib eine Nachricht', impressum: 'Impressum', privacy: 'Datenschutz (Kurz)' },
+        titles: { about: 'Über Gabriel', music: 'Musik & Videos', tours: 'Tours & Gigs 2025', gallery: 'Galerie', links: 'Links', contact: 'Schreib eine Nachricht', impressum: 'Impressum', privacy: 'Datenschutz (Kurz)' },
         hero: { eyebrow: 'Official' },
         labels: { quick:'Schnellinfos', epk:'EPK / Pressekit' },
         embed: { spotifyAsk:'Spotify-Player laden?', youtubeAsk:'YouTube-Video laden?' },
@@ -460,9 +568,9 @@
         cookie: { text: 'Wir verwenden technisch notwendige Cookies. Externe Medien werden erst nach deiner Zustimmung geladen.', allow: 'Externe Medien erlauben', dismiss: 'Nur notwendige' }
       },
       en: {
-        nav: { start: 'Start', about: 'About', music: 'Music', tours: 'Tours & Gigs', gallery: 'Gallery', links: 'Links', contact: 'Contact', impressum: 'Imprint' },
+        nav: { start: 'Start', about: 'About', music: 'Music', tours: 'Tours & Gigs 2025', gallery: 'Gallery', links: 'Links', contact: 'Contact', impressum: 'Imprint' },
         cta: { tickets: 'Tickets & Dates', listen: 'Listen now' },
-        titles: { about: 'About Gabriel', music: 'Music & Videos', tours: 'Tours & Gigs', gallery: 'Gallery', links: 'Links', contact: 'Send a message', impressum: 'Imprint', privacy: 'Privacy (short)' },
+        titles: { about: 'About Gabriel', music: 'Music & Videos', tours: 'Tours & Gigs 2025', gallery: 'Gallery', links: 'Links', contact: 'Send a message', impressum: 'Imprint', privacy: 'Privacy (short)' },
         hero: { eyebrow: 'Official' },
         labels: { quick:'Quick facts', epk:'EPK / Press' },
         embed: { spotifyAsk:'Load Spotify player?', youtubeAsk:'Load YouTube video?' },
@@ -631,7 +739,7 @@
       $('#mgmtName').textContent = CONFIG.management.name;
       $('#mgmtAddr').textContent = CONFIG.management.address;
       $('#epkLink').href = CONFIG.epkUrl || '#';
-      $('#ppLink').href = CONFIG.privacyUrl || '#';
+    
 
       // Impressum
       $('#impName').textContent = CONFIG.impressum.name;
