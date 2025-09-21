@@ -44,7 +44,22 @@
     .controls select, .controls .theme-toggle { background: var(--card); color: var(--ink); border:1px solid rgba(255,255,255,.14); padding:.45rem .6rem; border-radius:10px; font-weight:600; }
     .controls select { cursor:pointer; }
     .controls .theme-toggle { cursor:pointer; }
-    @media (max-width: 860px){ .controls{ position:absolute; right:1rem; top:10px; } }
+   @media (max-width: 860px){
+  .nav{
+    flex-wrap: wrap;      /* zweite Zeile zulassen */
+    row-gap: .5rem;
+  }
+  nav ul{
+    display:none; position:absolute; left:1rem; right:1rem; top:60px;
+    background:var(--card); padding:1rem; border-radius:12px;
+    box-shadow: var(--shadow); border:1px solid rgba(255,255,255,.06);
+  }
+  nav ul.open{ display:block; }
+  .burger{ display:block; order:2; }
+  .logo{ order:1; }
+  .controls{ position:static; margin-left:auto; order:3; }  /* >>> neu */
+}
+
 
     /* Header / Nav */
     header { position: sticky; top:0; z-index: 50; backdrop-filter: blur(8px); background: rgba(11,11,16,.6); border-bottom: 1px solid rgba(255,255,255,.06); }
@@ -94,14 +109,7 @@
   -webkit-text-stroke: 0;
   text-stroke: 0;
 }
-    .wordmark .top{ font-weight:900; letter-spacing:.04em; font-size: clamp(2.2rem, 6vw, 4rem); }
-    .wordmark .bottom{font-weight:900;letter-spacing:.04em;font-size: clamp(2.2rem, 6vw, 4rem);
-  color: var(--ink);-webkit-text-stroke: 0;text-stroke: 0;
-}
-[data-theme="light"] .wordmark .bottom{
-  -webkit-text-stroke-color: initial;
-  text-stroke-color: initial;
-}
+
     .wordmark-img{ width:min(90%, 560px); margin:.8rem auto .4rem; display:block; }
 
     /* Sections */
@@ -123,6 +131,16 @@
     .embed-placeholder p { margin:0; color:var(--muted); }
 
     /* Tour table */
+    /* Card darf horizontal scrollen, falls nötig */
+    #tourCard{ overflow-x:auto; }
+    /* etwas Mindestbreite, damit Spalten nicht gequetscht werden */
+    #tourCard table{ min-width:620px; }
+
+    /* bessere Umbrüche mobil */
+    #tourBody td:nth-child(1),
+    #tourBody td:nth-child(2){ white-space:nowrap; }  /* Datum, Stadt */
+    #tourBody td:nth-child(3){ word-break:break-word; } /* Venue kann umbrechen */
+
     table { width:100%; border-collapse: collapse; }
     th, td { padding: .9rem; border-bottom:1px solid rgba(255,255,255,.08); text-align:left; }
     th { color:var(--muted); font-weight:600; }
@@ -155,6 +173,13 @@
     footer { padding: 2.5rem 0 4rem; color: var(--muted); border-top: 1px solid rgba(255,255,255,.06); }
     .socials { display:flex; gap:.8rem; flex-wrap:wrap; }
     .socials a { border:1px solid rgba(255,255,255,.14); padding:.5rem .7rem; border-radius:999px; display:inline-flex; align-items:center; gap:.5rem; }
+/* feste Icon-Größe, kein Verzerren */
+.socials a svg{
+  width:18px; height:18px;
+  flex:0 0 18px;
+  display:inline-block;
+  vertical-align:middle;
+}
 
     /* Cookie banner */
     .cookie { position: fixed; bottom: 12px; left: 12px; right: 12px; z-index: 99; background: var(--card); border:1px solid rgba(255,255,255,.12); border-radius: 12px; box-shadow: var(--shadow); padding: 1rem; display:none; }
