@@ -244,7 +244,7 @@
       <div class="container content">
         <span class="eyebrow" id="heroEyebrow">Official</span>
         <div id="heroTitle"></div>
-        <p class="tagline" id="artistTag">Singer · Songwriter · Guitar</p>
+        <p class="tagline" id="artistTag"></p>
         <div class="cta-row">
           <a class="btn primary" id="ctaTickets" href="#tours">Tickets & Termine</a>
           <a class="btn" id="ctaListen" href="#music">Jetzt reinhören</a>
@@ -416,7 +416,7 @@
   <script>
     const CONFIG = {
       artist: "Gabriel Benedek",
-      tagline: "Singer · Songwriter · Guitar",
+      tagline: "",
       heroImage: "https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1600&auto=format&fit=crop",
       aboutText: "Halb Ire, halb Ungar, Songschreiber und Musiker, der mit Hilfe von Klavier und Gitarre eigene Songs bastelt und diese mit seiner warmen, leicht rauchigen Stimme zum Leben erweckt. Obwohl bereits Vater einer wunderbaren Tochter, wirkt er auf der Bühne mit seiner verschmitzten und humorvollen Art vielfach wie ein grosser Bube, der mit neugierigen Augen gerade die Welt am entdeckten ist. Kein Wunder, wird seine Fanbase von Tag zu Tag grösser.",
       bookingEmail: "mgmt@gabrielbenedek.com",
@@ -424,7 +424,7 @@
       management: { name: "mgmt@gabrielbenedek.com", address: "Schweiz" },
       epkUrl: "#", // Link zu PDF oder Google Drive/Dropbox
       impressum: { name: "Gabriel Benedek", address: "Kontaktanfragen direkt via Mail", email: "mgmt@gabrielbenedek.com", 
-      vat: " ", responsible: " " }, //<5> Falls benötigt können VAT-NUmmer und Verantwortlichkeit im Impressum eingetragen werden
+      vat: " ", responsible: "Lauber Music" }, //<5> Falls benötigt können VAT-NUmmer und Verantwortlichkeit im Impressum eingetragen werden
       privacyUrl: "#",
       // === ASSETS ===
       assets: {
@@ -433,7 +433,10 @@
         bannerFile: "banner.jpg",
         aboutFile: "artist.jpg",
         wordmarkFile: "", // optional: z.B. wordmark.png – wenn leer, Typo-Wordmark wird gerendert
-        galleryFiles: Array.from({ length: 17 }, (_, i) => `g (${i + 1}).jpg`)
+        galleryFiles: [
+  "g (3).jpg","g (5).jpg","g (6).jpg","g (7).jpg","g (8).jpg","g (9).jpg","g (10).jpg",
+  "g (12).jpg","g (13).jpg","g (15).jpg","g (16).jpg","g (17).jpg"
+]
       },
       socials: [
         { name: "Instagram", url: "https://www.instagram.com/gabrielbenedek_official/", icon: "mdi:instagram" },
@@ -529,10 +532,10 @@
       i18n: {
         tagline: {
         //<4> Kommentar Fabian: hier kannst du als Untertitel schreiben was du willst
-          de: "Swiss Artist",
-          en: "Swiss Artist",
-          fr: "Swiss Artist",
-          it: "Swiss Artist"
+          de: "",
+          en: "",
+          fr: "",
+          it: ""
         },
         aboutText: {
           de: 'Halb Ire, halb Ungar, Songschreiber und Musiker, der mit Hilfe von Klavier und Gitarre eigene Songs bastelt und diese mit seiner warmen, leicht rauchigen Stimme zum Leben erweckt. Obwohl bereits Vater einer wunderbaren Tochter, wirkt er auf der Bühne mit seiner verschmitzten und humorvollen Art vielfach wie ein grosser Bube, der mit neugierigen Augen gerade die Welt am entdeckten ist. Kein Wunder, wird seine Fanbase von Tag zu Tag grösser.',
@@ -545,26 +548,38 @@
             'Swiss Artist 🇨🇭 mit irischen/ungarischen Wurzeln',
             'Label: <a href="https://www.instagram.com/universalmusicswitzerland/" target="_blank" rel="noopener">@universalmusicswitzerland</a>',
             '<strong>Bookings:</strong> <a href="mailto:mgmt@gabrielbenedek.com">mgmt@gabrielbenedek.com</a>',
-            '<strong>LOST IN YOU</strong> out now!'
-          ],
+            '📰 <a href="https://emea01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.schweizer-illustrierte.ch%2Fpeople%2Fswiss-stars%2Fgabriel-benedek-liefert-tone-mit-tiefgang-766133&data=05%7C02%7C%7C7035d90b5da04c5f41ca08ddf55f72ba%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C%7C&sdata=%2F&reserved=0" target="_blank" rel="noopener">Schweizer Illustrierte</a>',
+    '📰 <a href="https://emea01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.20min.ch%2Fstory%2Fsaenger-gabriel-benedek-wurde-fuer-eine-frau-vegetarier-103210225&data=05%7C02%7C%7C7035d90b5da04c5f41ca08ddf55f72ba%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C%7C&sdata=%2F&reserved=0" target="_blank" rel="noopener">20 Minuten</a>',
+    '📰 <a href="https://emea01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.srf.ch%2Faudio%2Fsrf-3-punkt-ch%2Fgabriel-benedek-zueckt-die-spanische-gitarre%3Fid%3D2a45de14-c892-44e1-88e2-82816fdfcca3&data=05%7C02%7C%7C7035d90b5da04c5f41ca08ddf55f72ba%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C%7C&sdata=%2F&reserved=0" target="_blank" rel="noopener">SRF</a>',
+    '🎥 <a href="https://www.youtube.com/shorts/Y7qgucGaRsU" target="_blank" rel="noopener">Montreux Jazz Festival (YouTube Short)</a>'
+  ],
           en: [
             'Swiss artist 🇨🇭 with Irish/Hungarian roots',
             'Label: <a href="https://www.instagram.com/universalmusicswitzerland/" target="_blank" rel="noopener">@universalmusicswitzerland</a>',
             '<strong>Bookings:</strong> <a href="mailto:mgmt@gabrielbenedek.com">mgmt@gabrielbenedek.com</a>',
-            '<strong>LOST IN YOU</strong> out now!'
-          ],
+            '📰 <a href="https://emea01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.schweizer-illustrierte.ch%2Fpeople%2Fswiss-stars%2Fgabriel-benedek-liefert-tone-mit-tiefgang-766133&data=05%7C02%7C%7C7035d90b5da04c5f41ca08ddf55f72ba%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C%7C&sdata=%2F&reserved=0" target="_blank" rel="noopener">Schweizer Illustrierte</a>',
+    '📰 <a href="https://emea01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.20min.ch%2Fstory%2Fsaenger-gabriel-benedek-wurde-fuer-eine-frau-vegetarier-103210225&data=05%7C02%7C%7C7035d90b5da04c5f41ca08ddf55f72ba%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C%7C&sdata=%2F&reserved=0" target="_blank" rel="noopener">20 Minuten</a>',
+    '📰 <a href="https://emea01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.srf.ch%2Faudio%2Fsrf-3-punkt-ch%2Fgabriel-benedek-zueckt-die-spanische-gitarre%3Fid%3D2a45de14-c892-44e1-88e2-82816fdfcca3&data=05%7C02%7C%7C7035d90b5da04c5f41ca08ddf55f72ba%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C%7C&sdata=%2F&reserved=0" target="_blank" rel="noopener">SRF</a>',
+    '🎥 <a href="https://www.youtube.com/shorts/Y7qgucGaRsU" target="_blank" rel="noopener">Montreux Jazz Festival (YouTube Short)</a>'
+  ],
           fr: [
             'Artiste suisse 🇨🇭 d’origines irlandaise/hongroise',
             'Label : <a href="https://www.instagram.com/universalmusicswitzerland/" target="_blank" rel="noopener">@universalmusicswitzerland</a>',
             '<strong>Bookings :</strong> <a href="mailto:mgmt@gabrielbenedek.com">mgmt@gabrielbenedek.com</a>',
-            '<strong>LOST IN YOU</strong> disponible !'
-          ],
+            '📰 <a href="https://emea01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.schweizer-illustrierte.ch%2Fpeople%2Fswiss-stars%2Fgabriel-benedek-liefert-tone-mit-tiefgang-766133&data=05%7C02%7C%7C7035d90b5da04c5f41ca08ddf55f72ba%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C%7C&sdata=%2F&reserved=0" target="_blank" rel="noopener">Schweizer Illustrierte</a>',
+    '📰 <a href="https://emea01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.20min.ch%2Fstory%2Fsaenger-gabriel-benedek-wurde-fuer-eine-frau-vegetarier-103210225&data=05%7C02%7C%7C7035d90b5da04c5f41ca08ddf55f72ba%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C%7C&sdata=%2F&reserved=0" target="_blank" rel="noopener">20 Minuten</a>',
+    '📰 <a href="https://emea01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.srf.ch%2Faudio%2Fsrf-3-punkt-ch%2Fgabriel-benedek-zueckt-die-spanische-gitarre%3Fid%3D2a45de14-c892-44e1-88e2-82816fdfcca3&data=05%7C02%7C%7C7035d90b5da04c5f41ca08ddf55f72ba%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C%7C&sdata=%2F&reserved=0" target="_blank" rel="noopener">SRF</a>',
+    '🎥 <a href="https://www.youtube.com/shorts/Y7qgucGaRsU" target="_blank" rel="noopener">Montreux Jazz Festival (YouTube Short)</a>'
+  ],
           it: [
             'Artista svizzero 🇨🇭 con radici irlandesi/ungheresi',
             'Label: <a href="https://www.instagram.com/universalmusicswitzerland/" target="_blank" rel="noopener">@universalmusicswitzerland</a>',
             '<strong>Bookings:</strong> <a href="mailto:mgmt@gabrielbenedek.com">mgmt@gabrielbenedek.com</a>',
-            '<strong>LOST IN YOU</strong> fuori ora!'
-          ]
+            '📰 <a href="https://emea01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.schweizer-illustrierte.ch%2Fpeople%2Fswiss-stars%2Fgabriel-benedek-liefert-tone-mit-tiefgang-766133&data=05%7C02%7C%7C7035d90b5da04c5f41ca08ddf55f72ba%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C%7C&sdata=%2F&reserved=0" target="_blank" rel="noopener">Schweizer Illustrierte</a>',
+    '📰 <a href="https://emea01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.20min.ch%2Fstory%2Fsaenger-gabriel-benedek-wurde-fuer-eine-frau-vegetarier-103210225&data=05%7C02%7C%7C7035d90b5da04c5f41ca08ddf55f72ba%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C%7C&sdata=%2F&reserved=0" target="_blank" rel="noopener">20 Minuten</a>',
+    '📰 <a href="https://emea01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.srf.ch%2Faudio%2Fsrf-3-punkt-ch%2Fgabriel-benedek-zueckt-die-spanische-gitarre%3Fid%3D2a45de14-c892-44e1-88e2-82816fdfcca3&data=05%7C02%7C%7C7035d90b5da04c5f41ca08ddf55f72ba%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C%7C&sdata=%2F&reserved=0" target="_blank" rel="noopener">SRF</a>',
+    '🎥 <a href="https://www.youtube.com/shorts/Y7qgucGaRsU" target="_blank" rel="noopener">Montreux Jazz Festival (YouTube Short)</a>'
+  ]
         }
       }
     };
@@ -773,7 +788,7 @@
       $('#impEmail').href = `mailto:${CONFIG.impressum.email}`;
       $('#impEmail').textContent = CONFIG.impressum.email;
       $('#impVat').textContent = CONFIG.impressum.vat || '—';
-      $('#impResp').textContent = CONFIG.impressum.responsible || '—';
+      $('#impResp').textContent = CONFIG.impressum.responsible || 'Lauber Music';
 
       // Hero banner image
       const heroEl = document.querySelector('.hero img');
