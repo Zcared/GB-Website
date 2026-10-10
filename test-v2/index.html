@@ -1,0 +1,736 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>[TEST V2] Gabriel Benedek — Official Site</title>
+  <meta name="description" content="Offizielle Website von Gabriel Benedek – Singer-Songwriter aus der Schweiz. Neue Single, Live-Termine, Videos, Presse und Booking." />
+  <meta property="og:title" content="Gabriel Benedek — Official Site" />
+  <meta property="og:description" content="Neue Single „Say You Remember“ – out now." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://gabrielbenedek.ch/assets/other/press-1.jpg" />
+  <meta name="theme-color" content="#0e0d0c" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add('js')</script>
+  <style>
+    :root{
+      --bg:#0e0d0c; --bg-2:#161412; --ink:#f3eee7; --ink-2:#d9d2c8; --muted:#a39b91; --line:rgba(243,238,231,.12);
+      --accent:#ff6b35; --accent-2:#ff8a5c; --accent-ink:#160b06;
+      --wrap:1200px; --gutter:clamp(1rem,4vw,2.5rem); --radius:14px; --header:68px;
+      --sans:"Archivo",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; --serif:"Instrument Serif",Georgia,serif;
+      color-scheme:dark;
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:var(--header)}
+    body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    img,video,iframe{display:block;max-width:100%}
+    a{color:inherit}
+    :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+    .wrap{width:min(100% - 2*var(--gutter), var(--wrap));margin-inline:auto}
+    .skip{position:absolute;left:-9999px}
+    .skip:focus{left:1rem;top:1rem;z-index:100;background:var(--ink);color:var(--bg);padding:.5rem .8rem;border-radius:8px}
+
+    /* Filmkorn über allem – passt zu den Fotos */
+    body::after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.07;
+      background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+
+    /* ===== Header ===== */
+    .site-header{position:fixed;inset:0 0 auto;z-index:50;border-bottom:1px solid transparent;transition:background .3s,border-color .3s}
+    .site-header.solid{background:rgba(14,13,12,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-color:var(--line)}
+    /* backdrop-filter würde das fixe Vollbild-Menü auf Header-Höhe beschneiden */
+    body.nav-open .site-header{background:var(--bg);backdrop-filter:none;-webkit-backdrop-filter:none}
+    .bar{display:flex;align-items:center;gap:1.5rem;height:var(--header)}
+    .brand{margin-right:auto;font-weight:800;font-stretch:125%;text-transform:uppercase;letter-spacing:.02em;text-decoration:none;font-size:.95rem;position:relative;z-index:2}
+    .nav{display:flex;gap:1.6rem}
+    .nav a{text-decoration:none;font-size:.9rem;font-weight:500;color:rgba(243,238,231,.78);transition:color .2s}
+    .nav a:hover{color:var(--ink)}
+    .lang{position:relative;z-index:2;background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:.35rem .55rem;font:inherit;font-size:.8rem;cursor:pointer}
+    .lang option{background:var(--bg)}
+    .burger{display:none;position:relative;z-index:2;width:42px;height:42px;border:1px solid var(--line);border-radius:999px;background:transparent;cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:5px}
+    .burger span{display:block;width:16px;height:1.5px;background:var(--ink);transition:transform .25s}
+    body.nav-open .burger span:first-child{transform:translateY(3.25px) rotate(45deg)}
+    body.nav-open .burger span:last-child{transform:translateY(-3.25px) rotate(-45deg)}
+    @media (max-width:860px){
+      .burger{display:inline-flex}
+      .nav{position:fixed;inset:0;z-index:1;flex-direction:column;justify-content:center;align-items:center;gap:1.2rem;background:var(--bg);opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+      .nav a{font-size:clamp(1.6rem,8vw,2.4rem);font-weight:800;font-stretch:125%;text-transform:uppercase;color:var(--ink)}
+      body.nav-open{overflow:hidden}
+      body.nav-open .nav{opacity:1;visibility:visible}
+    }
+
+    /* ===== Hero ===== */
+    .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;padding:0}
+    .hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,rgba(14,13,12,.6) 38%,rgba(14,13,12,.08) 68%,rgba(14,13,12,.55) 100%)}
+    .hero-inner{position:relative;z-index:1;padding-block:calc(var(--header) + 3rem) clamp(3rem,9vh,5.5rem)}
+    .eyebrow{margin:0 0 .5rem;font-family:var(--serif);font-style:italic;font-size:clamp(1.15rem,2.2vw,1.5rem);color:var(--ink-2)}
+    .hero-name{margin:0;font-weight:800;font-stretch:125%;text-transform:uppercase;line-height:.86;letter-spacing:-.015em;font-size:clamp(3rem,14vw,10.5rem)}
+    .hero-release{display:inline-flex;align-items:center;gap:1rem;margin-top:2rem;padding:.55rem 1.2rem .55rem .55rem;border-radius:16px;background:rgba(14,13,12,.55);border:1px solid var(--line);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);text-decoration:none;transition:transform .2s,border-color .2s}
+    .hero-release:hover{transform:translateY(-2px);border-color:rgba(255,107,53,.6)}
+    .hero-release img{width:60px;height:60px;border-radius:8px;object-fit:cover}
+    .hero-release em{display:block;font-family:var(--serif);font-size:1.05rem;color:var(--accent);line-height:1.2}
+    .hero-release strong{font-size:1.15rem;font-weight:700}
+    .hero-release .arrow{margin-left:.4rem;color:var(--accent);font-size:1.2rem}
+    @keyframes heroZoom{from{transform:scale(1.08)}to{transform:none}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+    .hero-img{animation:heroZoom 2.6s cubic-bezier(.2,.7,.2,1) both}
+    .hero-inner > *{animation:fadeUp 1s cubic-bezier(.2,.7,.2,1) both}
+    .hero-inner > :nth-child(1){animation-delay:.25s}
+    .hero-inner > :nth-child(2){animation-delay:.4s}
+    .hero-inner > :nth-child(3){animation-delay:.7s}
+
+    /* Laufband */
+    .marquee{overflow:hidden;background:var(--accent);color:var(--accent-ink);padding:.85rem 0;white-space:nowrap;font-weight:800;font-stretch:125%;text-transform:uppercase;font-size:clamp(.95rem,1.6vw,1.2rem)}
+    .marquee-track{display:inline-flex;animation:marquee 45s linear infinite}
+    .marquee-track span::after{content:"✦";margin:0 2rem;font-size:.8em;vertical-align:.1em}
+    @keyframes marquee{to{transform:translateX(-50%)}}
+
+    /* Statement über Schwarz-Weiss-Foto */
+    .statement{position:relative;display:flex;align-items:center;min-height:85vh;min-height:85svh;overflow:hidden}
+    .statement img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%;filter:grayscale(1) contrast(1.05);opacity:.5}
+    .statement::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--bg) 0%,rgba(14,13,12,.75) 45%,rgba(14,13,12,.2) 100%),linear-gradient(to top,var(--bg),transparent 30%,transparent 70%,var(--bg))}
+    .statement p{position:relative;z-index:1;margin:0;max-width:16ch;font-family:var(--serif);font-style:italic;font-size:clamp(2.4rem,6.5vw,5.6rem);line-height:1.02;letter-spacing:-.01em}
+
+    /* ===== Sections ===== */
+    section{padding-block:clamp(4.5rem,10vw,8rem)}
+    .alt{background:var(--bg-2)}
+    .kicker{margin:0 0 .3rem;font-family:var(--serif);font-style:italic;font-size:clamp(1.15rem,2vw,1.45rem);color:var(--accent)}
+    h2{margin:0 0 clamp(1.8rem,4vw,3rem);font-weight:800;font-stretch:118%;text-transform:uppercase;line-height:.95;letter-spacing:-.01em;word-spacing:.12em;font-size:clamp(2.3rem,7vw,5.5rem);overflow-wrap:anywhere}
+    h3{font-weight:700;font-size:1.05rem;margin:0 0 1rem}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.3rem;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);font:inherit;font-weight:600;font-size:.95rem;text-decoration:none;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+    .btn:hover{border-color:var(--ink)}
+    .btn-primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+    .btn-primary:hover{background:var(--accent-2);border-color:var(--accent-2)}
+    .btn-sm{padding:.5rem .95rem;font-size:.85rem}
+    .actions{display:flex;flex-wrap:wrap;gap:.7rem}
+    .muted{color:var(--muted)}
+
+    /* Reveal beim Scrollen */
+    .js .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+    .js .reveal.in{opacity:1;transform:none}
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      .js .reveal{opacity:1;transform:none;transition:none}
+      .hero-img,.hero-inner > *,.marquee-track{animation:none}
+    }
+
+    /* ===== Release ===== */
+    #music{background:radial-gradient(55% 60% at 22% 50%,rgba(255,107,53,.13),transparent 70%)}
+    .release-grid{display:grid;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+    @media (min-width:860px){.release-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr)}}
+    .cover{width:100%;aspect-ratio:1;object-fit:cover;border-radius:6px;box-shadow:0 40px 80px -30px rgba(0,0,0,.85)}
+    .chip{display:inline-block;padding:.3rem .75rem;border-radius:999px;border:1px solid rgba(255,107,53,.5);color:var(--accent);font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+    .release-info h2{margin-bottom:1rem;font-size:clamp(2.2rem,4.6vw,4.2rem)}
+    .spotify{width:100%;height:152px;border:0;border-radius:12px;margin:1.8rem 0 1.4rem;background:#282828}
+
+    /* ===== Live ===== */
+    .gigs{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+    .gig{display:grid;grid-template-columns:5.5rem 1fr auto;gap:.4rem 1.5rem;align-items:center;padding:1.15rem .75rem;border-bottom:1px solid var(--line)}
+    .gig-date{display:flex;flex-direction:column;line-height:1}
+    .gig-date .d{font-size:2rem;font-weight:800;font-stretch:118%}
+    .gig-date .m{margin-top:.35rem;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+    .gig-info{display:flex;flex-direction:column}
+    .gig-venue{font-weight:600;font-size:1.1rem;line-height:1.3}
+    .gig-city{color:var(--muted);font-size:.95rem}
+    .gig.hl{background:linear-gradient(90deg,rgba(255,107,53,.16),transparent 75%);box-shadow:inset 3px 0 0 var(--accent)}
+    .tag{display:inline-block;margin-left:.4rem;padding:.12rem .5rem;border-radius:999px;background:var(--accent);color:var(--accent-ink);font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;vertical-align:middle}
+    .empty{display:flex;flex-wrap:wrap;gap:1rem 2rem;align-items:center;justify-content:space-between;padding:2rem .75rem;border-bottom:1px solid var(--line)}
+    .empty p{margin:0;font-family:var(--serif);font-style:italic;font-size:clamp(1.4rem,3vw,2rem)}
+    .past{margin-top:3rem}
+    .past summary{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem .75rem;border-bottom:1px solid var(--line);font-weight:600;cursor:pointer;list-style:none}
+    .past summary::-webkit-details-marker{display:none}
+    .past summary::after{content:"+";font-size:1.5rem;line-height:1;color:var(--accent);transition:transform .2s}
+    .past[open] summary::after{transform:rotate(45deg)}
+    .past .gigs{border-top:0}
+    .past .gig{padding-block:.8rem}
+    .past .gig-date .d{font-size:1.4rem}
+    .gig:not(.hl){transition:background .2s}
+    .gig:not(.hl):hover{background:rgba(243,238,231,.035)}
+    @media (max-width:560px){
+      .gig{grid-template-columns:4.2rem 1fr}
+      .gig .btn{grid-column:2;justify-self:start}
+    }
+
+    /* ===== Video ===== */
+    .video-grid{display:grid;gap:1.2rem;grid-template-columns:1fr 1fr;grid-template-areas:"head head" "main main" "a b"}
+    @media (min-width:960px){.video-grid{gap:1.5rem 2rem;grid-template-columns:1fr 1fr 1.3fr;grid-template-areas:"a b head" "a b main";align-items:start}}
+    .video-head{grid-area:head}
+    .video-head h2{margin-bottom:1rem}
+    .video-main{grid-area:main}
+    .vid-a{grid-area:a}
+    .vid-b{grid-area:b}
+    figure{margin:0}
+    .video-grid video,.video-grid iframe{width:100%;border:0;border-radius:var(--radius);background:#000}
+    .vertical{aspect-ratio:9/16;object-fit:cover}
+    .wide{aspect-ratio:16/9}
+    figcaption{margin-top:.7rem;font-size:.88rem;color:var(--muted);line-height:1.4}
+
+    /* ===== About ===== */
+    .about-grid{display:grid;gap:clamp(2rem,5vw,5rem);align-items:center}
+    @media (min-width:860px){.about-grid{grid-template-columns:.9fr 1.1fr}}
+    .about-img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:6px}
+    .about-text p{margin:0;max-width:60ch;font-size:clamp(1.05rem,1.4vw,1.2rem);color:var(--ink-2)}
+    .facts{margin:2.2rem 0 0;border-top:1px solid var(--line)}
+    .facts div{display:grid;grid-template-columns:7.5rem 1fr;gap:1rem;padding:.85rem 0;border-bottom:1px solid var(--line)}
+    .facts dt{padding-top:.15rem;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+    .facts dd{margin:0}
+
+    /* ===== Galerie & Lightbox ===== */
+    .gallery{columns:3 240px;column-gap:.8rem}
+    .gallery img{width:100%;margin:0 0 .8rem;border-radius:4px;break-inside:avoid;cursor:zoom-in;transition:opacity .2s}
+    .gallery img:hover,.press-photos img:hover{opacity:.85}
+    #lightbox{padding:0;border:0;background:transparent;max-width:none;max-height:none}
+    #lightbox::backdrop{background:rgba(8,7,6,.92)}
+    #lightbox img{max-width:92vw;max-height:90vh;object-fit:contain;border-radius:4px}
+    #lightbox button{position:fixed;top:1rem;right:1rem;width:44px;height:44px;border-radius:999px;border:1px solid var(--line);background:rgba(14,13,12,.7);color:var(--ink);font-size:1.4rem;cursor:pointer}
+
+    /* ===== Presse ===== */
+    .press-grid{display:grid;gap:clamp(2.5rem,5vw,4rem)}
+    @media (min-width:860px){.press-grid{grid-template-columns:1fr 1fr}}
+    .mentions{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+    .mentions a{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:1.1rem 0;border-bottom:1px solid var(--line);text-decoration:none;font-size:clamp(1.15rem,2vw,1.45rem);font-weight:600;transition:color .2s,padding .2s}
+    .mentions a:hover{color:var(--accent);padding-left:.4rem}
+    .mentions span{flex-shrink:0;font-family:var(--serif);font-style:italic;font-weight:400;font-size:1rem;color:var(--muted)}
+    .press-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-bottom:1.4rem}
+    .press-photos img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:4px;cursor:zoom-in;transition:opacity .2s}
+
+    /* ===== Links ===== */
+    .links-head{display:none}
+    .links{display:grid;gap:.6rem;grid-template-columns:repeat(auto-fill,minmax(min(100%,270px),1fr))}
+    .links a{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem 1.2rem;border:1px solid var(--line);border-radius:12px;text-decoration:none;font-weight:600;transition:border-color .2s,background .2s}
+    .links a::after{content:"↗";color:var(--accent)}
+    .links a:hover{border-color:var(--accent);background:rgba(255,107,53,.06)}
+    .links a.hl{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+    .links a.hl::after{color:inherit}
+
+    /* ===== Kontakt ===== */
+    .contact-grid{display:grid;gap:clamp(2.5rem,5vw,4rem)}
+    @media (min-width:860px){.contact-grid{grid-template-columns:1fr 1fr}}
+    .mail-big{display:inline-block;margin-top:.6rem;font-size:clamp(1.25rem,3vw,2.1rem);font-weight:700;font-stretch:112%;text-decoration:none;border-bottom:2px solid var(--accent);overflow-wrap:anywhere}
+    .mail-big:hover{color:var(--accent)}
+    form{display:grid;gap:.8rem}
+    input,textarea{width:100%;padding:.9rem 1rem;border:1px solid var(--line);border-radius:10px;background:var(--bg-2);color:var(--ink);font:inherit}
+    input:focus,textarea:focus{outline:none;border-color:var(--accent)}
+    form .btn{justify-self:start}
+
+    /* ===== Footer ===== */
+    footer{padding-block:3.5rem 2.5rem;border-top:1px solid var(--line);font-size:.9rem;color:var(--muted)}
+    .foot-grid{display:grid;gap:2.2rem}
+    @media (min-width:860px){.foot-grid{grid-template-columns:1.1fr 1fr 1.5fr}}
+    footer h3{margin:0 0 .8rem;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
+    footer p{margin:0 0 .6rem}
+    .foot-brand{font-weight:800;font-stretch:125%;text-transform:uppercase;font-size:1.4rem;color:var(--ink);line-height:1.1;margin-bottom:1rem}
+    .socials{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem}
+    .socials a{text-decoration:none;color:var(--ink)}
+    .socials a:hover{color:var(--accent)}
+    .copy{margin-top:2.5rem;font-size:.8rem}
+    .mega{margin-top:3rem;font-weight:800;font-stretch:125%;text-transform:uppercase;line-height:.8;white-space:nowrap;font-size:7.6vw;letter-spacing:-.02em;color:transparent;-webkit-text-stroke:1px rgba(243,238,231,.22);text-align:center;user-select:none;overflow:hidden}
+
+    /* ===== Link-in-Bio-Modus (?links=1) ===== */
+    .links-only main > :not(#links),.links-only footer,.links-only .nav,.links-only .burger{display:none}
+    .links-only #links{padding-top:calc(var(--header) + 2.5rem);min-height:100svh}
+    .links-only #links .wrap{max-width:560px}
+    .links-only .links{grid-template-columns:1fr}
+    .links-only .links-head{display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:2rem}
+    .links-only .links-head img{width:112px;height:112px;border-radius:50%;object-fit:cover;object-position:50% 20%;margin-bottom:1rem}
+    .links-only #links .kicker,.links-only #links h2{display:none}
+
+    .testbar{position:fixed;right:12px;bottom:12px;z-index:95;padding:.45rem .8rem;border-radius:8px;background:#f59e0b;color:#000;font-size:.8rem;font-weight:800;box-shadow:0 4px 12px rgba(0,0,0,.4)}
+    .testbar a{color:#000}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Zum Inhalt springen</a>
+  <div class="testbar">TEST V2 · <a href="../">Live-Seite</a> · <a href="../test/">V1</a></div>
+
+  <header class="site-header">
+    <div class="wrap bar">
+      <a class="brand" href="#top">Gabriel Benedek</a>
+      <nav class="nav" id="nav" aria-label="Hauptnavigation">
+        <a href="#music" data-i18n="nav.music">Musik</a>
+        <a href="#tours" data-i18n="nav.live">Live</a>
+        <a href="#video" data-i18n="nav.video">Video</a>
+        <a href="#about" data-i18n="nav.about">Über</a>
+        <a href="#press" data-i18n="nav.press">Presse</a>
+        <a href="#contact" data-i18n="nav.contact">Kontakt</a>
+      </nav>
+      <select class="lang" id="lang" aria-label="Sprache / Language">
+        <option value="de">DE</option>
+        <option value="en">EN</option>
+        <option value="fr">FR</option>
+        <option value="it">IT</option>
+      </select>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menü"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <img class="hero-img" src="../assets/gallery/live-3.jpg" alt="Gabriel Benedek live auf der Bühne" fetchpriority="high">
+      <div class="wrap hero-inner">
+        <p class="eyebrow" data-i18n="hero.eyebrow">Singer-Songwriter aus der Schweiz</p>
+        <h1 class="hero-name">Gabriel<br>Benedek</h1>
+        <a class="hero-release" href="#music">
+          <img data-release-cover src="" alt="">
+          <span><em data-i18n="release.new">Neue Single</em><strong data-release-title></strong></span>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true"><div class="marquee-track" id="marquee"></div></div>
+
+    <!-- NEUE SINGLE -->
+    <section id="music">
+      <div class="wrap release-grid">
+        <img class="cover reveal" data-release-cover src="" alt="" loading="lazy">
+        <div class="release-info reveal">
+          <p class="kicker" data-i18n="release.new">Neue Single</p>
+          <h2 data-release-title></h2>
+          <span class="chip" data-i18n="release.out">Out now</span>
+          <iframe class="spotify" id="relEmbed" title="Spotify-Player" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          <div class="actions">
+            <a class="btn btn-primary" id="relLink" href="#" target="_blank" rel="noopener" data-i18n="release.listen">Auf Spotify öffnen</a>
+            <a class="btn" id="artistLink" href="#" target="_blank" rel="noopener" data-i18n="release.all">Alle Songs</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIVE -->
+    <section id="tours" class="alt">
+      <div class="wrap">
+        <p class="kicker reveal" data-i18n="live.kicker">Tour & Gigs 2026</p>
+        <h2 class="reveal">Live</h2>
+        <h3 class="muted" data-i18n="live.upcoming">Bevorstehend</h3>
+        <ul class="gigs reveal" id="gigsUpcoming"></ul>
+        <details class="past" id="past">
+          <summary><span><span data-i18n="live.past">Vergangene Gigs</span> <span class="muted" id="pastCount"></span></span></summary>
+          <ul class="gigs" id="gigsPast"></ul>
+        </details>
+      </div>
+    </section>
+
+    <!-- VIDEO (Videos hier im HTML ändern) -->
+    <section id="video">
+      <div class="wrap video-grid">
+        <div class="video-head reveal">
+          <p class="kicker" data-i18n="video.kicker">Musikvideo & Live-Momente</p>
+          <h2>Video</h2>
+        </div>
+        <figure class="video-main reveal">
+          <iframe class="wide" src="https://www.youtube-nocookie.com/embed/yzzXvjFCyaE?rel=0" title="Gabriel Benedek – Musikvideo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+          <figcaption>Lost In You · <a href="https://www.youtube.com/@GabrielBenedek/featured" target="_blank" rel="noopener">YouTube ↗</a></figcaption>
+        </figure>
+        <figure class="vid-a reveal">
+          <video class="vertical" src="../assets/other/locarno-2026.mp4" poster="../assets/other/locarno-2026.jpg" controls playsinline preload="none"></video>
+          <figcaption>Locarno Film Festival 2026 · La Rotonda</figcaption>
+        </figure>
+        <figure class="vid-b reveal">
+          <iframe class="vertical" src="https://www.youtube-nocookie.com/embed/Y7qgucGaRsU?rel=0&playsinline=1" title="Montreux Jazz Festival – YouTube Short" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+          <figcaption>Montreux Jazz Festival 2025</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- STATEMENT -->
+    <section class="statement" aria-label="Statement">
+      <img src="../assets/gallery/live-1.jpg" alt="" loading="lazy">
+      <div class="wrap"><p class="reveal" data-i18n="about.quote">Klavier, Gitarre und eine warme, leicht rauchige Stimme.</p></div>
+    </section>
+
+    <!-- ÜBER -->
+    <section id="about" class="alt">
+      <div class="wrap about-grid">
+        <img class="about-img reveal" src="../assets/other/press-2.jpg" alt="Gabriel Benedek im Café" loading="lazy">
+        <div class="about-text reveal">
+          <p class="kicker" data-i18n="about.kicker">Bio</p>
+          <h2 data-i18n="about.title">Über Gabriel</h2>
+          <p id="aboutText"></p>
+          <dl class="facts">
+            <div><dt data-i18n="about.fOrigin">Herkunft</dt><dd data-i18n="about.vOrigin">Schweiz, mit irischen & ungarischen Wurzeln</dd></div>
+            <div><dt data-i18n="about.fLabel">Label</dt><dd><a href="https://www.instagram.com/universalmusicswitzerland/" target="_blank" rel="noopener">Universal Music Switzerland</a></dd></div>
+            <div><dt data-i18n="about.fBooking">Booking</dt><dd><a data-mail href="#"></a></dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERIE -->
+    <section id="gallery">
+      <div class="wrap">
+        <p class="kicker reveal" data-i18n="gallery.kicker">Live-Impressionen</p>
+        <h2 class="reveal" data-i18n="gallery.title">Galerie</h2>
+        <div class="gallery" id="galleryGrid"></div>
+      </div>
+    </section>
+
+    <!-- PRESSE -->
+    <section id="press" class="alt">
+      <div class="wrap">
+        <p class="kicker reveal" data-i18n="press.kicker">Presse & Medien</p>
+        <h2 class="reveal" data-i18n="press.title">Presse</h2>
+        <div class="press-grid">
+          <ul class="mentions reveal" id="mentions"></ul>
+          <div class="reveal">
+            <h3 data-i18n="press.photos">Pressefotos</h3>
+            <div class="press-photos" id="pressPhotos"></div>
+            <a class="btn" id="epkLink" href="#" target="_blank" rel="noopener" data-i18n="press.download">Pressefotos & EPK herunterladen</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LINKS (auch Link-in-Bio: ?links=1) -->
+    <section id="links">
+      <div class="wrap">
+        <div class="links-head">
+          <img src="../assets/other/press-portrait.jpg" alt="Gabriel Benedek">
+          <div class="foot-brand">Gabriel Benedek</div>
+        </div>
+        <p class="kicker reveal" data-i18n="links.kicker">Hören & folgen</p>
+        <h2 class="reveal" data-i18n="links.title">Links</h2>
+        <div class="links reveal" id="linkList"></div>
+      </div>
+    </section>
+
+    <!-- KONTAKT -->
+    <section id="contact" class="alt">
+      <div class="wrap contact-grid">
+        <div class="reveal">
+          <p class="kicker" data-i18n="contact.kicker">Booking & Kontakt</p>
+          <h2 data-i18n="contact.title">Kontakt</h2>
+          <p class="muted" data-i18n="contact.text">Für Booking, Presse und Kooperationen schreib direkt an:</p>
+          <a class="mail-big" data-mail href="#"></a>
+        </div>
+        <form id="contactForm" class="reveal" method="POST">
+          <input type="text" name="name" required autocomplete="name" aria-label="Name" data-i18n-ph="contact.name" placeholder="Name">
+          <input type="email" name="email" required autocomplete="email" aria-label="E-Mail" data-i18n-ph="contact.email" placeholder="E-Mail">
+          <textarea name="message" rows="5" required aria-label="Nachricht" data-i18n-ph="contact.msg" placeholder="Nachricht"></textarea>
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_subject" value="Neue Nachricht über gabrielbenedek.ch">
+          <input type="hidden" name="_next" value="">
+          <button class="btn btn-primary" type="submit" data-i18n="contact.send">Nachricht senden</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer id="impressum">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <div class="foot-brand">Gabriel<br>Benedek</div>
+          <h3 data-i18n="foot.follow">Folgen</h3>
+          <div class="socials" id="socials"></div>
+        </div>
+        <div>
+          <h3 data-i18n="foot.imprint">Impressum</h3>
+          <p><span data-i18n="foot.resp">Verantwortlich</span>: Gabriel Benedek<br>Lauber Music<br><a data-mail href="#"></a></p>
+        </div>
+        <div>
+          <h3 data-i18n="foot.privacy">Datenschutz</h3>
+          <p id="privacyText"></p>
+        </div>
+      </div>
+      <p class="copy">© <span id="year"></span> Gabriel Benedek · <span data-i18n="foot.rights">Alle Rechte vorbehalten.</span></p>
+    </div>
+    <div class="mega" aria-hidden="true">Gabriel Benedek</div>
+  </footer>
+
+  <dialog id="lightbox" aria-label="Foto">
+    <img alt="">
+    <button type="button" aria-label="Schliessen">×</button>
+  </dialog>
+
+  <!-- ================= KONFIGURATION (@Gabriel hier bearbeiten) ================= -->
+  <script>
+    const CONFIG = {
+      artist: "Gabriel Benedek",
+      bookingEmail: "mgmt@gabrielbenedek.com",
+      epkUrl: "https://www.dropbox.com/scl/fo/5vrudyc5chm236j9ucld2/AFkdZlrKPtZ_g7T4hm9kjcI?rlkey=u9lj4k290u7o624pykym7acz4&dl=0",
+      spotifyArtist: "https://open.spotify.com/intl-de/artist/0BBZxotcIVnEEPhjA4iSiu",
+
+      // Neue Single: Titel, Cover und die Spotify-Track-ID (das Stück nach /track/ im Spotify-Link)
+      release: {
+        title: "Say You Remember",
+        cover: "../assets/other/say-you-remember.webp",
+        spotifyTrackId: "6sJfJO3MilNSPJVfUzoipj"
+      },
+
+      /* Konzertdaten: beliebig viele Termine eintragen, Format JJJJ-MM-TT.
+         Die Seite sortiert automatisch in "Bevorstehend" und "Vergangen".
+         Mit url: "https://..." erscheint ein Tickets-Button, mit highlight: true wird der Termin hervorgehoben.
+         Wichtig: jeder Eintrag endet mit einem Komma, ausser der letzte. */
+      tour: [
+        { date: "2026-05-25", city: "Basel, CH",        venue: "Geburtstag (Privat)" },
+        { date: "2026-06-06", city: "Sissach, CH",      venue: "Hochzeit (Privat)" },
+        { date: "2026-06-12", city: "Liestal, CH",      venue: "Diplomfeier Wirtschaftsmittelschule" },
+        { date: "2026-06-19", city: "Münchenstein, CH", venue: "Diplomfeier Wirtschaftskammer" },
+        { date: "2026-08-05", city: "Locarno, CH",      venue: "La Rotonda – Locarno Film Festival", highlight: true },
+        { date: "2026-08-07", city: "Himmelried, CH",   venue: "60. Geburtstag (Privat)" },
+        { date: "2026-08-08", city: "Reitnau, CH",      venue: "Hochzeit (Privat)" },
+        { date: "2026-08-15", city: "Rheinfelden, CH",  venue: "Bootsclub Sommerfest" },
+        { date: "2026-08-29", city: "Hasliberg, CH",    venue: "Migros Hiking Sounds" },
+        { date: "2026-08-30", city: "Hasliberg, CH",    venue: "Migros Hiking Sounds" },
+        { date: "2026-09-12", city: "Airolo, CH",       venue: "Migros Hiking Sounds" },
+        { date: "2026-09-13", city: "Airolo, CH",       venue: "Migros Hiking Sounds" },
+        { date: "2026-09-25", city: "Basel, CH",        venue: "Atlantis" },
+        { date: "2026-10-09", city: "Basel, CH",        venue: "Basso" }
+      ],
+
+      gallery: [
+        "../assets/gallery/live-1.jpg", "../assets/gallery/live-4.webp", "../assets/gallery/live-2.jpg", "../assets/gallery/live-3.jpg",
+        "../assets/gallery/g (3).jpg", "../assets/gallery/g (5).jpg", "../assets/gallery/g (6).jpg", "../assets/gallery/g (7).jpg",
+        "../assets/gallery/g (8).jpg", "../assets/gallery/g (9).jpg", "../assets/gallery/g (10).jpg", "../assets/gallery/g (12).jpg",
+        "../assets/gallery/g (13).jpg", "../assets/gallery/g (15).jpg", "../assets/gallery/g (16).jpg", "../assets/gallery/g (17).jpg"
+      ],
+      pressPhotos: ["../assets/other/press-1.jpg", "../assets/other/press-2.jpg", "../assets/other/press-portrait.jpg"],
+
+      // Presseberichte: type = article | radio | tv
+      press: [
+        { name: "Schweizer Illustrierte", type: "article", url: "https://www.schweizer-illustrierte.ch/people/swiss-stars/gabriel-benedek-liefert-tone-mit-tiefgang-766133" },
+        { name: "20 Minuten",             type: "article", url: "https://www.20min.ch/story/saenger-gabriel-benedek-wurde-fuer-eine-frau-vegetarier-103210225" },
+        { name: "SRF 3",                  type: "radio",   url: "https://www.srf.ch/audio/srf-3-punkt-ch/gabriel-benedek-zueckt-die-spanische-gitarre?id=2a45de14-c892-44e1-88e2-82816fdfcca3" },
+        { name: "SRF Gesichter & Geschichten", type: "tv", url: "https://www.srf.ch/play/tv/gesichter--geschichten/video/die-schweizer-musikentdeckung-gabriel-benedek-im-portrait?urn=urn:srf:video:5326733b-ccf1-4b62-b54d-5964d397cca9" }
+      ],
+
+      // Links (auch für den Instagram-Bio-Link: gabrielbenedek.ch/?links=1)
+      links: [
+        { label: "🎧 Say You Remember – Spotify", url: "https://open.spotify.com/intl-de/track/6sJfJO3MilNSPJVfUzoipj", highlight: true },
+        { label: "🎧 Spotify",            url: "https://open.spotify.com/intl-de/artist/0BBZxotcIVnEEPhjA4iSiu" },
+        { label: "▶️ YouTube",            url: "https://www.youtube.com/@GabrielBenedek/featured" },
+        { label: "🎵 YouTube Music",      url: "https://music.youtube.com/channel/UC0RxibqX7b6CnxNWmxG0JJw" },
+        { label: "📸 Instagram",          url: "https://www.instagram.com/gabrielbenedek_official/" },
+        { label: "🌐 Lost In You – alle Plattformen", url: "https://gabrielbenedek.lnk.to/LostInYou" },
+        { label: "📰 Schweizer Illustrierte", url: "https://www.schweizer-illustrierte.ch/people/swiss-stars/gabriel-benedek-liefert-tone-mit-tiefgang-766133" },
+        { label: "📰 20 Minuten",         url: "https://www.20min.ch/story/saenger-gabriel-benedek-wurde-fuer-eine-frau-vegetarier-103210225" },
+        { label: "📻 SRF 3",              url: "https://www.srf.ch/audio/srf-3-punkt-ch/gabriel-benedek-zueckt-die-spanische-gitarre?id=2a45de14-c892-44e1-88e2-82816fdfcca3" },
+        { label: "📹 Gesichter & Geschichten", url: "https://www.srf.ch/play/tv/gesichter--geschichten/video/die-schweizer-musikentdeckung-gabriel-benedek-im-portrait?urn=urn:srf:video:5326733b-ccf1-4b62-b54d-5964d397cca9" },
+        { label: "🎫 Live & Termine",     url: "#tours" }
+      ],
+
+      socials: [
+        { name: "Instagram", url: "https://www.instagram.com/gabrielbenedek_official/" },
+        { name: "Spotify",   url: "https://open.spotify.com/intl-de/artist/0BBZxotcIVnEEPhjA4iSiu" },
+        { name: "YouTube",   url: "https://www.youtube.com/@GabrielBenedek/featured" }
+      ],
+
+      contactEndpoint: "https://formsubmit.co/mgmt@gabrielbenedek.com",
+
+      aboutText: {
+        de: "Halb Ire, halb Ungar, Songschreiber und Musiker, der mit Hilfe von Klavier und Gitarre eigene Songs bastelt und diese mit seiner warmen, leicht rauchigen Stimme zum Leben erweckt. Obwohl bereits Vater einer wunderbaren Tochter, wirkt er auf der Bühne mit seiner verschmitzten und humorvollen Art vielfach wie ein grosser Bube, der mit neugierigen Augen gerade die Welt am Entdecken ist. Kein Wunder, wird seine Fanbase von Tag zu Tag grösser.",
+        en: "Half Irish, half Hungarian, a songwriter and musician who crafts his own songs with piano and guitar and brings them to life with his warm, slightly smoky voice. Although already the father of a wonderful daughter, on stage his mischievous, humorous manner often makes him seem like a big kid discovering the world with curious eyes. No wonder his fan base is growing day by day.",
+        fr: "Mi-irlandais, mi-hongrois, auteur-compositeur et musicien qui façonne ses propres chansons au piano et à la guitare et leur donne vie avec sa voix chaude, légèrement rauque. Bien qu’il soit déjà le père d’une merveilleuse fille, sur scène, son côté espiègle et son humour le font souvent apparaître comme un grand gamin qui découvre le monde les yeux curieux. Pas étonnant que sa base de fans grandisse de jour en jour.",
+        it: "Per metà irlandese e per metà ungherese, cantautore e musicista che crea i propri brani con pianoforte e chitarra e li anima con la sua voce calda e leggermente roca. Sebbene sia già padre di una meravigliosa figlia, sul palco, con il suo modo birichino e ironico, appare spesso come un ragazzo cresciuto che scopre il mondo con occhi curiosi. Non c’è da stupirsi se la sua fanbase cresce di giorno in giorno."
+      }
+    };
+  </script>
+
+  <!-- ================= Texte der Oberfläche (4 Sprachen) ================= -->
+  <script>
+    const I18N = {
+      de: {
+        nav: { music:'Musik', live:'Live', video:'Video', about:'Über', press:'Presse', contact:'Kontakt' },
+        hero: { eyebrow:'Singer-Songwriter aus der Schweiz' },
+        release: { new:'Neue Single', out:'Out now', listen:'Auf Spotify öffnen', all:'Alle Songs' },
+        live: { kicker:'Tour & Gigs 2026', upcoming:'Bevorstehend', none:'Neue Termine folgen bald.', book:'Booking anfragen', past:'Vergangene Gigs', tickets:'Tickets', highlight:'Highlight' },
+        video: { kicker:'Musikvideo & Live-Momente' },
+        about: { kicker:'Bio', title:'Über Gabriel', quote:'Klavier, Gitarre und eine warme, leicht rauchige Stimme.', fOrigin:'Herkunft', vOrigin:'Schweiz, mit irischen & ungarischen Wurzeln', fLabel:'Label', fBooking:'Booking' },
+        gallery: { kicker:'Live-Impressionen', title:'Galerie' },
+        press: { kicker:'Presse & Medien', title:'Presse', photos:'Pressefotos', download:'Pressefotos & EPK herunterladen', article:'Artikel', radio:'Radio', tv:'TV-Porträt' },
+        links: { kicker:'Hören & folgen', title:'Links' },
+        contact: { kicker:'Booking & Kontakt', title:'Kontakt', text:'Für Booking, Presse und Kooperationen schreib direkt an:', name:'Name', email:'E-Mail', msg:'Nachricht', send:'Nachricht senden' },
+        foot: { follow:'Folgen', imprint:'Impressum', resp:'Verantwortlich', privacy:'Datenschutz', rights:'Alle Rechte vorbehalten.',
+          privacyText:'Diese Website wird über GitHub Pages bereitgestellt; dabei fallen technisch notwendige Server-Logs an (z. B. IP-Adresse). Schriften werden über Google Fonts geladen. Die eingebetteten Player von Spotify und YouTube (YouTube im erweiterten Datenschutzmodus) werden direkt angezeigt – dabei werden Daten wie deine IP-Adresse an Spotify bzw. Google übermittelt, und es können Cookies gesetzt werden. Diese kannst du in deinen Browser-Einstellungen blockieren. Nachrichten aus dem Kontaktformular werden über den Dienst FormSubmit an uns weitergeleitet. Fragen: mgmt@gabrielbenedek.com' }
+      },
+      en: {
+        nav: { music:'Music', live:'Live', video:'Video', about:'About', press:'Press', contact:'Contact' },
+        hero: { eyebrow:'Singer-songwriter from Switzerland' },
+        release: { new:'New single', out:'Out now', listen:'Open in Spotify', all:'All songs' },
+        live: { kicker:'Tour & gigs 2026', upcoming:'Upcoming', none:'New dates coming soon.', book:'Booking request', past:'Past gigs', tickets:'Tickets', highlight:'Highlight' },
+        video: { kicker:'Music video & live moments' },
+        about: { kicker:'Bio', title:'About Gabriel', quote:'Piano, guitar and a warm, slightly smoky voice.', fOrigin:'Origin', vOrigin:'Switzerland, with Irish & Hungarian roots', fLabel:'Label', fBooking:'Booking' },
+        gallery: { kicker:'Live impressions', title:'Gallery' },
+        press: { kicker:'Press & media', title:'Press', photos:'Press photos', download:'Download press photos & EPK', article:'Article', radio:'Radio', tv:'TV portrait' },
+        links: { kicker:'Listen & follow', title:'Links' },
+        contact: { kicker:'Booking & contact', title:'Contact', text:'For booking, press and collaborations, write directly to:', name:'Name', email:'Email', msg:'Message', send:'Send message' },
+        foot: { follow:'Follow', imprint:'Imprint', resp:'Responsible', privacy:'Privacy', rights:'All rights reserved.',
+          privacyText:'This website is hosted on GitHub Pages, which keeps technically necessary server logs (e.g. IP address). Fonts are loaded from Google Fonts. The embedded Spotify and YouTube players (YouTube in privacy-enhanced mode) load directly; this transmits data such as your IP address to Spotify or Google, and cookies may be set. You can block them in your browser settings. Messages from the contact form are forwarded to us via FormSubmit. Questions: mgmt@gabrielbenedek.com' }
+      },
+      fr: {
+        nav: { music:'Musique', live:'Live', video:'Vidéo', about:'À propos', press:'Presse', contact:'Contact' },
+        hero: { eyebrow:'Auteur-compositeur-interprète suisse' },
+        release: { new:'Nouveau single', out:'Out now', listen:'Ouvrir dans Spotify', all:'Toutes les chansons' },
+        live: { kicker:'Tournée & concerts 2026', upcoming:'À venir', none:'Nouvelles dates bientôt.', book:'Demande de booking', past:'Concerts passés', tickets:'Billets', highlight:'Highlight' },
+        video: { kicker:'Clip & moments live' },
+        about: { kicker:'Bio', title:'À propos de Gabriel', quote:'Piano, guitare et une voix chaude, légèrement rauque.', fOrigin:'Origine', vOrigin:'Suisse, aux racines irlandaises & hongroises', fLabel:'Label', fBooking:'Booking' },
+        gallery: { kicker:'Impressions live', title:'Galerie' },
+        press: { kicker:'Presse & médias', title:'Presse', photos:'Photos de presse', download:'Télécharger photos de presse & EPK', article:'Article', radio:'Radio', tv:'Portrait TV' },
+        links: { kicker:'Écouter & suivre', title:'Liens' },
+        contact: { kicker:'Booking & contact', title:'Contact', text:'Pour le booking, la presse et les collaborations, écris directement à :', name:'Nom', email:'E-mail', msg:'Message', send:'Envoyer le message' },
+        foot: { follow:'Suivre', imprint:'Mentions légales', resp:'Responsable', privacy:'Protection des données', rights:'Tous droits réservés.',
+          privacyText:'Ce site est hébergé sur GitHub Pages, qui enregistre des journaux serveur techniquement nécessaires (p. ex. adresse IP). Les polices sont chargées via Google Fonts. Les lecteurs Spotify et YouTube intégrés (YouTube en mode de confidentialité renforcé) se chargent directement ; des données comme ton adresse IP sont alors transmises à Spotify ou Google et des cookies peuvent être déposés. Tu peux les bloquer dans les réglages de ton navigateur. Les messages du formulaire de contact nous sont transmis via FormSubmit. Questions : mgmt@gabrielbenedek.com' }
+      },
+      it: {
+        nav: { music:'Musica', live:'Live', video:'Video', about:'Info', press:'Stampa', contact:'Contatto' },
+        hero: { eyebrow:'Cantautore svizzero' },
+        release: { new:'Nuovo singolo', out:'Out now', listen:'Apri su Spotify', all:'Tutte le canzoni' },
+        live: { kicker:'Tour & concerti 2026', upcoming:'Prossimi', none:'Nuove date in arrivo.', book:'Richiedi booking', past:'Concerti passati', tickets:'Biglietti', highlight:'Highlight' },
+        video: { kicker:'Videoclip & momenti live' },
+        about: { kicker:'Bio', title:'Su Gabriel', quote:'Pianoforte, chitarra e una voce calda e leggermente roca.', fOrigin:'Origine', vOrigin:'Svizzera, con radici irlandesi e ungheresi', fLabel:'Etichetta', fBooking:'Booking' },
+        gallery: { kicker:'Impressioni live', title:'Galleria' },
+        press: { kicker:'Stampa & media', title:'Stampa', photos:'Foto stampa', download:'Scarica foto stampa & EPK', article:'Articolo', radio:'Radio', tv:'Ritratto TV' },
+        links: { kicker:'Ascolta & segui', title:'Link' },
+        contact: { kicker:'Booking & contatto', title:'Contatto', text:'Per booking, stampa e collaborazioni scrivi direttamente a:', name:'Nome', email:'E-mail', msg:'Messaggio', send:'Invia messaggio' },
+        foot: { follow:'Segui', imprint:'Note legali', resp:'Responsabile', privacy:'Privacy', rights:'Tutti i diritti riservati.',
+          privacyText:'Questo sito è ospitato su GitHub Pages, che registra i log del server tecnicamente necessari (ad es. indirizzo IP). I caratteri vengono caricati da Google Fonts. I player Spotify e YouTube incorporati (YouTube in modalità privacy avanzata) si caricano direttamente; in questo modo dati come il tuo indirizzo IP vengono trasmessi a Spotify o Google e possono essere impostati cookie. Puoi bloccarli nelle impostazioni del browser. I messaggi del modulo di contatto ci vengono inoltrati tramite FormSubmit. Domande: mgmt@gabrielbenedek.com' }
+      }
+    };
+  </script>
+
+  <!-- ================= Logik ================= -->
+  <script>
+    const $ = s => document.querySelector(s);
+    const $$ = s => [...document.querySelectorAll(s)];
+    const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c]));
+    const LOCALES = { de:'de-CH', en:'en-GB', fr:'fr-CH', it:'it-CH' };
+    const store = { get: k => { try { return localStorage.getItem(k); } catch { return null; } }, set: (k, v) => { try { localStorage.setItem(k, v); } catch {} } };
+
+    let lang = store.get('lang') || 'de';
+    const pick = (dict, key) => key.split('.').reduce((o, p) => o?.[p], dict);
+    const t = key => pick(I18N[lang], key) ?? pick(I18N.de, key) ?? key;
+
+    function isoToday(){
+      const n = new Date();
+      return `${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,'0')}-${String(n.getDate()).padStart(2,'0')}`;
+    }
+
+    function gigRow(ev){
+      const [y, m, d] = ev.date.split('-').map(Number);
+      const mon = new Intl.DateTimeFormat(LOCALES[lang], { month:'short' }).format(new Date(y, m - 1, d)).replace('.', '');
+      const tag = ev.highlight ? ` <span class="tag">${t('live.highlight')}</span>` : '';
+      const btn = ev.url ? `<a class="btn btn-sm" href="${esc(ev.url)}" target="_blank" rel="noopener">${t('live.tickets')}</a>` : '';
+      return `<li class="gig${ev.highlight ? ' hl' : ''}">
+        <time class="gig-date" datetime="${esc(ev.date)}"><span class="d">${String(d).padStart(2,'0')}</span><span class="m">${esc(mon)} ${y}</span></time>
+        <span class="gig-info"><span class="gig-venue">${esc(ev.venue)}${tag}</span><span class="gig-city">${esc(ev.city)}</span></span>${btn}</li>`;
+    }
+
+    function renderTours(){
+      const today = isoToday();
+      const all = [...CONFIG.tour].sort((a, b) => a.date.localeCompare(b.date));
+      const upcoming = all.filter(ev => ev.date >= today);
+      const past = all.filter(ev => ev.date < today).reverse(); // neueste zuerst
+      $('#gigsUpcoming').innerHTML = upcoming.length ? upcoming.map(gigRow).join('')
+        : `<li class="empty"><p>${t('live.none')}</p><a class="btn" href="mailto:${esc(CONFIG.bookingEmail)}">${t('live.book')}</a></li>`;
+      $('#gigsPast').innerHTML = past.map(gigRow).join('');
+      $('#pastCount').textContent = `(${past.length})`;
+      $('#past').hidden = !past.length;
+    }
+
+    function renderPress(){
+      $('#mentions').innerHTML = CONFIG.press.map(p =>
+        `<li><a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.name)}<span>${t('press.' + p.type)}</span></a></li>`).join('');
+    }
+
+    function applyLang(l){
+      lang = I18N[l] ? l : 'de';
+      store.set('lang', lang);
+      document.documentElement.lang = lang;
+      $('#lang').value = lang;
+      $$('[data-i18n]').forEach(el => el.textContent = t(el.dataset.i18n));
+      $$('[data-i18n-ph]').forEach(el => el.placeholder = t(el.dataset.i18nPh));
+      $('#aboutText').textContent = CONFIG.aboutText[lang] || CONFIG.aboutText.de;
+      $('#privacyText').textContent = t('foot.privacyText');
+      renderTours();
+      renderPress();
+      // Laufband: zwei identische Hälften, damit die Schleife nahtlos ist
+      const unit = [CONFIG.release.title, t('release.out'), t('release.new')].map(s => `<span>${esc(s)}</span>`).join('');
+      $('#marquee').innerHTML = unit.repeat(8);
+    }
+
+    function init(){
+      const R = CONFIG.release;
+      $$('[data-release-title]').forEach(el => el.textContent = R.title);
+      $$('[data-release-cover]').forEach(img => img.src = R.cover);
+      $('.cover').alt = `Cover: ${R.title}`;
+      $('#relEmbed').src = `https://open.spotify.com/embed/track/${R.spotifyTrackId}?theme=0`;
+      $('#relLink').href = `https://open.spotify.com/track/${R.spotifyTrackId}`;
+      $('#artistLink').href = CONFIG.spotifyArtist;
+      $('#epkLink').href = CONFIG.epkUrl;
+      $$('[data-mail]').forEach(a => { a.href = `mailto:${CONFIG.bookingEmail}`; a.textContent = CONFIG.bookingEmail; });
+
+      const img = (src, alt) => `<img src="${esc(src)}" alt="${esc(alt)}" loading="lazy">`;
+      $('#galleryGrid').innerHTML = CONFIG.gallery.map(s => img(s, `${CONFIG.artist} live`)).join('');
+      $('#pressPhotos').innerHTML = CONFIG.pressPhotos.map(s => img(s, `Pressefoto ${CONFIG.artist}`)).join('');
+      $('#linkList').innerHTML = CONFIG.links.map(l => {
+        const ext = l.url.startsWith('#') ? '' : ' target="_blank" rel="noopener"';
+        return `<a class="${l.highlight ? 'hl' : ''}" href="${esc(l.url)}"${ext}>${esc(l.label)}</a>`;
+      }).join('');
+      $('#socials').innerHTML = CONFIG.socials.map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)} ↗</a>`).join('');
+
+      const form = $('#contactForm');
+      form.action = CONFIG.contactEndpoint;
+      form.elements._next.value = location.href.split('#')[0] + '#contact';
+      $('#year').textContent = new Date().getFullYear();
+
+      $('#lang').addEventListener('change', e => applyLang(e.target.value));
+      applyLang(lang);
+    }
+
+    // Header: transparent über dem Foto, danach dunkel
+    const header = $('.site-header');
+    const onScroll = () => header.classList.toggle('solid', scrollY > 40);
+    addEventListener('scroll', onScroll, { passive:true });
+    onScroll();
+
+    // Mobile-Menü
+    const burger = $('.burger');
+    const setNav = open => { document.body.classList.toggle('nav-open', open); burger.setAttribute('aria-expanded', String(open)); };
+    burger.addEventListener('click', () => setNav(!document.body.classList.contains('nav-open')));
+    $$('.nav a').forEach(a => a.addEventListener('click', () => setNav(false)));
+    addEventListener('keydown', e => { if (e.key === 'Escape') setNav(false); });
+
+    // Fotos gross anzeigen
+    const lb = $('#lightbox');
+    document.addEventListener('click', e => {
+      const pic = e.target.closest('.gallery img, .press-photos img');
+      if (!pic) return;
+      lb.querySelector('img').src = pic.src;
+      lb.querySelector('img').alt = pic.alt;
+      lb.showModal();
+    });
+    lb.addEventListener('click', () => lb.close());
+
+    // Sanftes Einblenden beim Scrollen
+    const io = new IntersectionObserver(entries => entries.forEach(en => {
+      if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+    }), { rootMargin:'0px 0px -8% 0px' });
+    $$('.reveal').forEach(el => io.observe(el));
+
+    // Link-in-Bio-Modus: gabrielbenedek.ch/?links=1 oder /#links-only
+    if (new URLSearchParams(location.search).get('links') === '1' || location.hash === '#links-only') {
+      document.documentElement.classList.add('links-only');
+    }
+
+    init();
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Gabriel Benedek",
+    "jobTitle": "Singer-Songwriter",
+    "address": { "@type": "PostalAddress", "addressCountry": "CH" },
+    "url": "https://gabrielbenedek.ch/",
+    "sameAs": ["https://www.instagram.com/gabrielbenedek_official/", "https://www.youtube.com/@GabrielBenedek/featured", "https://open.spotify.com/intl-de/artist/0BBZxotcIVnEEPhjA4iSiu"]
+  }
+  </script>
+</body>
+</html>
