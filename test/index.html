@@ -113,6 +113,16 @@
 
     .wordmark-img{ width:min(90%, 560px); margin:.8rem auto .4rem; display:block; }
 
+    /* Neue Single im Hero */
+    .release{ display:inline-flex; align-items:center; gap:.8rem; margin-top:1rem; padding:.5rem 1.1rem .5rem .5rem; border-radius:14px; background:rgba(11,11,16,.55); border:1px solid rgba(255,255,255,.16); color:#fff; text-align:left; backdrop-filter:blur(6px); }
+    .release:hover{ text-decoration:none; transform:translateY(-1px); transition:transform .12s ease; }
+    .release img{ width:64px; height:64px; border-radius:8px; object-fit:cover; }
+    .release small{ display:block; color:var(--brand-2); font-weight:700; text-transform:uppercase; letter-spacing:.08em; font-size:.7rem; }
+    .release strong{ font-size:1.1rem; }
+
+    /* Hochformat-Video (Locarno) */
+    .vertical-video{ display:block; width:100%; max-width:420px; aspect-ratio:9/16; margin-inline:auto; border-radius:12px; background:#000; }
+
     /* Sections */
     section { padding: 3.5rem 0; }
     .section-title { font-size: clamp(1.4rem, 2.2vw, 2rem); margin-bottom: .75rem; font-weight:800; }
@@ -124,7 +134,7 @@
     .pad { padding: 1.2rem; }
 
     /* About */
-    .about-img { width:100%; aspect-ratio: 4 / 3; object-fit: cover; border-bottom:1px solid rgba(255,255,255,.06); }
+    .about-img { width:100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 30%; border-bottom:1px solid rgba(255,255,255,.06); }
     #about { position: relative; z-index: 2; }
 
     /* Music embeds */
@@ -250,6 +260,10 @@
         <span class="eyebrow" id="heroEyebrow">Official</span>
         <div id="heroTitle"></div>
         <p class="tagline" id="artistTag"></p>
+        <a class="release" href="https://open.spotify.com/intl-de/artist/0BBZxotcIVnEEPhjA4iSiu" target="_blank" rel="noopener">
+          <img src="../assets/other/say-you-remember.webp" alt="Cover: Say You Remember" width="64" height="64">
+          <span><small id="releaseLabel">Neue Single</small><strong>Say You Remember</strong></span>
+        </a>
         <div class="cta-row">
           <a class="btn primary" id="ctaTickets" href="#tours">Tickets & Termine</a>
           <a class="btn" id="ctaListen" href="#music">Jetzt reinhören</a>
@@ -291,6 +305,10 @@
         <h2 class="section-title" id="musicTitle">Musik & Videos</h2>
         <p class="section-sub" id="musicSub">Externe Medien werden erst nach Zustimmung geladen (Datenschutz). Klicke unten, um Spotify/YouTube einzublenden.</p>
         <div class="grid">
+          <div class="card pad">
+            <h3>Locarno Film Festival 2026 – Aftermovie</h3>
+            <video class="vertical-video" src="../assets/other/locarno-2026.mp4" poster="../assets/other/locarno-2026.jpg" controls playsinline preload="none"></video>
+          </div>
           <div class="card pad">
             <h3>Spotify</h3>
             <div id="spotifyEmbed" class="embed-placeholder">
@@ -360,6 +378,10 @@
     <section id="gallery" aria-label="Galerie">
       <div class="container">
         <h2 class="section-title" id="galleryTitle">Galerie</h2>
+        <h3 class="section-title" id="pressTitle">Pressefotos</h3>
+        <div class="gallery" id="pressGrid"></div>
+        <p><a class="btn" id="pressDl" href="#" target="_blank" rel="noopener">Pressefotos in voller Auflösung</a></p>
+        <h3 class="section-title" id="liveTitle">Live-Impressionen</h3>
         <div class="gallery" id="galleryGrid"></div>
       </div>
     </section>
@@ -427,7 +449,7 @@
       bookingEmail: "mgmt@gabrielbenedek.com",
       pressEmail: "mgmt@gabrielbenedek.com",
       management: { name: "mgmt@gabrielbenedek.com", address: "Schweiz" },
-      epkUrl: "#", // Link zu PDF oder Google Drive/Dropbox
+      epkUrl: "https://www.dropbox.com/scl/fo/5vrudyc5chm236j9ucld2/AFkdZlrKPtZ_g7T4hm9kjcI?rlkey=u9lj4k290u7o624pykym7acz4&dl=0", // Link zu PDF oder Google Drive/Dropbox
       impressum: { name: "Gabriel Benedek", address: "Kontaktanfragen direkt via Mail", email: "mgmt@gabrielbenedek.com", 
       vat: " ", responsible: "Lauber Music" }, //<5> Falls benötigt können VAT-NUmmer und Verantwortlichkeit im Impressum eingetragen werden
       privacyUrl: "#",
@@ -436,9 +458,11 @@
         otherDir: "../assets/other/",
         galleryDir: "../assets/gallery/",
         bannerFile: "banner.jpg",
-        aboutFile: "artist.jpg",
+        aboutFile: "press-1.jpg",
         wordmarkFile: "", // optional: z.B. wordmark.png – wenn leer, Typo-Wordmark wird gerendert
+        pressFiles: ["press-1.jpg", "press-2.jpg", "press-portrait.jpg"], // liegen in otherDir
         galleryFiles: [
+  "live-3.jpg","live-1.jpg","live-4.webp","live-2.jpg",
   "g (3).jpg","g (5).jpg","g (6).jpg","g (7).jpg","g (8).jpg","g (9).jpg","g (10).jpg",
   "g (12).jpg","g (13).jpg","g (15).jpg","g (16).jpg","g (17).jpg"
 ]
@@ -588,7 +612,7 @@
         cta: { tickets: 'Tickets & Termine', listen: 'Jetzt reinhören' },
         titles: { about: 'Über Gabriel', music: 'Musik & Videos', tours: 'Tours & Gigs 2026', gallery: 'Galerie', links: 'Links', contact: 'Schreib eine Nachricht', impressum: 'Impressum', privacy: 'Datenschutz (Kurz)' },
         hero: { eyebrow: 'Official' },
-        labels: { quick:'Schnellinfos', epk:'EPK / Pressekit' },
+        labels: { quick:'Schnellinfos', epk:'EPK / Pressekit', release:'Neue Single', press:'Pressefotos', live:'Live-Impressionen', pressDl:'Pressefotos in voller Auflösung' },
         embed: { spotifyAsk:'Spotify-Player laden?', youtubeAsk:'YouTube-Video laden?' },
         subs: {
           music: 'Externe Medien werden erst nach Zustimmung geladen (Datenschutz). Klicke unten, um Spotify/YouTube einzublenden.',
@@ -605,7 +629,7 @@
         cta: { tickets: 'Tickets & Dates', listen: 'Listen now' },
         titles: { about: 'About Gabriel', music: 'Music & Videos', tours: 'Tours & Gigs 2026', gallery: 'Gallery', links: 'Links', contact: 'Send a message', impressum: 'Imprint', privacy: 'Privacy (short)' },
         hero: { eyebrow: 'Official' },
-        labels: { quick:'Quick facts', epk:'EPK / Press' },
+        labels: { quick:'Quick facts', epk:'EPK / Press', release:'New single', press:'Press photos', live:'Live impressions', pressDl:'Press photos in full resolution' },
         embed: { spotifyAsk:'Load Spotify player?', youtubeAsk:'Load YouTube video?' },
         subs: {
           music: 'External media only load after consent (privacy). Click below to load Spotify/YouTube.',
@@ -622,7 +646,7 @@
         cta: { tickets: 'Billets & dates', listen: 'Écouter maintenant' },
         titles: { about: 'À propos de Gabriel', music: 'Musique & vidéos', tours: 'Concerts', gallery: 'Galerie', links: 'Liens', contact: 'Envoyer un message', impressum: 'Mentions légales', privacy: 'Protection des données (court)' },
         hero: { eyebrow: 'Officiel' },
-        labels: { quick:'Infos rapides', epk:'EPK / Presse' },
+        labels: { quick:'Infos rapides', epk:'EPK / Presse', release:'Nouveau single', press:'Photos de presse', live:'Impressions live', pressDl:'Photos de presse en haute résolution' },
         embed: { spotifyAsk:'Charger le lecteur Spotify ?', youtubeAsk:'Charger la vidéo YouTube ?' },
         subs: {
           music: 'Les médias externes ne se chargent qu’après votre consentement (protection des données). Cliquez ci‑dessous pour afficher Spotify/YouTube.',
@@ -639,7 +663,7 @@
         cta: { tickets: 'Biglietti & date', listen: 'Ascolta ora' },
         titles: { about: 'Info su Gabriel', music: 'Musica & video', tours: 'Concerti', gallery: 'Galleria', links: 'Link', contact: 'Scrivi un messaggio', impressum: 'Note legali', privacy: 'Protezione dati (breve)' },
         hero: { eyebrow: 'Ufficiale' },
-        labels: { quick:'Info rapide', epk:'EPK / Stampa' },
+        labels: { quick:'Info rapide', epk:'EPK / Stampa', release:'Nuovo singolo', press:'Foto stampa', live:'Impressioni live', pressDl:'Foto stampa in alta risoluzione' },
         embed: { spotifyAsk:'Caricare il lettore Spotify?', youtubeAsk:'Caricare il video YouTube?' },
         subs: {
           music: 'I media esterni si caricano solo dopo il consenso (privacy). Clicca sotto per mostrare Spotify/YouTube.',
@@ -700,6 +724,7 @@
       }
       // EPK label
       const epkBtn = $('#epkLink'); if (epkBtn) epkBtn.textContent = t('labels.epk');
+      [['#releaseLabel','release'],['#pressTitle','press'],['#liveTitle','live'],['#pressDl','pressDl']].forEach(([sel,key]) => { const el = $(sel); if (el) el.textContent = t('labels.' + key); });
       // Embeds placeholders
       const spPh = $('#spotifyAsk'); if (spPh) spPh.textContent = t('embed.spotifyAsk');
       const ytPh = $('#youtubeAsk'); if (ytPh) ytPh.textContent = t('embed.youtubeAsk');
@@ -814,6 +839,9 @@
       }
       const g = (galleryList || []).map(src => `<img src="${src}" alt="Konzertfoto" loading="lazy">`).join('');
       $('#galleryGrid').innerHTML = g;
+      const press = (CONFIG.assets?.pressFiles || []).map(f => `<img src="${CONFIG.assets.otherDir||''}${f}" alt="Pressefoto ${CONFIG.artist}" loading="lazy">`).join('');
+      $('#pressGrid').innerHTML = press;
+      $('#pressDl').href = CONFIG.epkUrl || '#';
 
       // Contact form
       const form = $('#contactForm');
